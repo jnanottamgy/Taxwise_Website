@@ -22,7 +22,7 @@ import { markPaths, markViewBox } from "@/lib/brand";
 
 const SAMPLES = 120; // per path — the mark's edges are gentle, this is plenty
 const DEPTH = 0.34; // extrusion depth as a fraction of the mark's height
-const SPOKE_EVERY = 6; // connector between front and back every Nth sample
+const SPOKE_EVERY = 4; // connector between front and back every Nth sample
 
 type V3 = { x: number; y: number; z: number };
 
@@ -147,7 +147,55 @@ export default function Mark3D({ className = "" }: { className?: string }) {
         const front = loop.map((p) => project({ ...p, z: -DEPTH / 2 }, rot));
         const back = loop.map((p) => project({ ...p, z: DEPTH / 2 }, rot));
 
-        // Back outline first, then the walls, then the front edge over them.
+        // The solid is smoked glass, not a solid: every face carries a low
+        // fill so the crest has mass, and the fills stay translucent so the
+        // far side ghosts through the way it does in the lit cards.
+
+        // Back face, darkest — the inside of the object.
+        ctx.beginPath();
+        back.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
+        ctx.closePath();
+        ctx.fillStyle = "rgba(14, 27, 47, 0.5)";
+        ctx.fill();
+
+        // Walls, one quad per sample, shaded by their own depth.
+        for (let i = 0; i < front.length; i++) {
+          const j = (i + 1) % front.length;
+          const n = Math.max(
+            0,
+            Math.min(1, 0.5 - ((front[i].d + back[j].d) / 2) * 0.55)
+          );
+          ctx.beginPath();
+          ctx.moveTo(front[i].x, front[i].y);
+          ctx.lineTo(front[j].x, front[j].y);
+          ctx.lineTo(back[j].x, back[j].y);
+          ctx.lineTo(back[i].x, back[i].y);
+          ctx.closePath();
+          ctx.fillStyle = `rgba(34, 50, 80, ${(0.1 + n * 0.26).toFixed(3)})`;
+          ctx.fill();
+        }
+
+        // Front face: a raised glass panel with a gold sheen falling down it.
+        ctx.beginPath();
+        front.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
+        ctx.closePath();
+        ctx.fillStyle = "rgba(52, 71, 106, 0.3)";
+        ctx.fill();
+        let top = Infinity;
+        let bot = -Infinity;
+        for (const p of front) {
+          if (p.y < top) top = p.y;
+          if (p.y > bot) bot = p.y;
+        }
+        const sheen = ctx.createLinearGradient(0, top, 0, bot);
+        sheen.addColorStop(0, "rgba(201, 168, 76, 0.13)");
+        sheen.addColorStop(0.45, "rgba(201, 168, 76, 0.03)");
+        sheen.addColorStop(1, "rgba(201, 168, 76, 0)");
+        ctx.fillStyle = sheen;
+        ctx.fill();
+
+        // The wireframe rides on top: back outline, walls, then the front
+        // edge over everything.
         for (let i = 0; i < back.length; i++) {
           stroke(back[i], back[(i + 1) % back.length]);
         }
