@@ -4,6 +4,7 @@ import { firm } from "@/lib/content";
 import { organizationJsonLd } from "@/lib/jsonld";
 import CursorLight from "@/components/CursorLight";
 import SmoothScroll from "@/components/SmoothScroll";
+import Ambient from "@/components/Ambient";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        <Ambient />
         {children}
         <CursorLight />
         <SmoothScroll />

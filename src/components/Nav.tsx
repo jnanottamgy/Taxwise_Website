@@ -104,7 +104,8 @@ export default function Nav() {
       />
 
       <div
-        className={`transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        data-pill={pill ? "true" : undefined}
+        className={`nav-shell transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           pill
             ? "mx-3 mt-3 rounded-2xl border border-paper-12 bg-ink/70 shadow-[0_24px_70px_-32px_rgba(0,0,0,0.85)] backdrop-blur-2xl sm:mx-6 lg:mx-10"
             : "mx-0 mt-0 rounded-none border border-transparent bg-transparent"

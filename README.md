@@ -31,7 +31,7 @@ whole site is statically prerendered.
 | `ink-2` | `#223250` | raised surfaces |
 | `ink-3` | `#34476A` | rules and borders |
 | `slate` | `#536B94` | large text only — 3.20:1 on ink |
-| `mist` | `#7184A9` | secondary text — 4.59:1 on ink |
+| `mist` | `#8A9BBF` | secondary text — 6.18:1 on ink, 5.18:1 on lit ground |
 | `paper` | `#F5F4F2` | off-white |
 | `gold` | `#C9A84C` | the accent — 7.55:1 on ink |
 | `gold-lit` | `#E8C97A` | lit and hover states — 10.74:1 on ink |
