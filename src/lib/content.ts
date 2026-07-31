@@ -29,14 +29,26 @@ export const firm = {
   /** The office line and the office address. No personal numbers. */
   phone: "+919740540239",
   email: "taxxwiseconsultants@gmail.com",
-  mapsUrl:
-    "https://maps.google.com/?q=307+1st+Floor+14th+Main+Road+RMV+Extension+Sadhashivnagar+Bangalore",
+  /**
+   * The firm's own Google Maps link — its verified listing, supplied by the
+   * practice. Preferred over a search-by-address URL, which only guesses at
+   * the place from a text string.
+   */
+  mapsUrl: "https://maps.app.goo.gl/djf1imNEaAoifZmd9",
   /** Taken from the map embed on the firm's existing site. */
   coords: { lat: 13.0137413, lng: 77.5743894 },
 } as const;
 
-/** Opens turn-by-turn directions to the office from wherever the visitor is. */
-export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${firm.coords.lat}%2C${firm.coords.lng}`;
+/**
+ * Where "Get directions" goes.
+ *
+ * The firm's own listing rather than a coordinate route: opening the verified
+ * place is guaranteed to be the right office, and Maps offers directions from
+ * there in one tap. The coordinates below came from the previous site's embed
+ * and have not been checked against this listing, so routing straight to them
+ * would be trusting the older, less certain source.
+ */
+export const directionsUrl = firm.mapsUrl;
 
 /**
  * The embed from the firm's existing site, which resolves to the office rather
