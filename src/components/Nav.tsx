@@ -26,7 +26,9 @@ function Wordmark() {
   return (
     <a
       href="/"
-      className="group flex items-center gap-3 rounded-sm"
+      // -my-2/py-2 gives the wordmark a 44px tap height without moving it:
+      // the bar is a centred flex row, so the padding grows the hit area only.
+      className="group -my-2 flex items-center gap-3 rounded-sm py-2"
       aria-label={`${firm.name} — home`}
     >
       <Mark className="h-7 w-auto shrink-0 text-paper" />

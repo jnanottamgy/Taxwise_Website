@@ -33,7 +33,7 @@ export default function Footer() {
                 <span className="text-mist">Consultants</span>
               </span>
             </p>
-            <p className="mt-3 font-mono text-[0.5625rem] uppercase tracking-[0.22em] text-mist">
+            <p className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-mist">
               {firm.descriptor} · {firm.city}
             </p>
             <address className="mt-8 max-w-[26ch] text-sm not-italic leading-[1.8] text-paper-64">
@@ -45,12 +45,15 @@ export default function Footer() {
             </address>
           </div>
 
-          <nav aria-label="Footer" className="flex flex-col gap-3">
+          {/* Padding, not gap, carries the spacing on touch: it is the same
+              rhythm but the whole strip is tappable. 17px links were the real
+              defect here — a finger is nearer 44. */}
+          <nav aria-label="Footer" className="-my-3 flex flex-col lg:my-0 lg:gap-3">
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper-64 transition-colors duration-300 hover:text-paper"
+                className="py-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper-64 transition-colors duration-300 hover:text-paper lg:py-0"
               >
                 {item.label}
               </a>
@@ -58,16 +61,16 @@ export default function Footer() {
           </nav>
 
           {/* Office line and office address only — no personal contacts. */}
-          <div className="flex flex-col gap-3 text-sm">
+          <div className="-my-3 flex flex-col text-sm lg:my-0 lg:gap-3">
             <a
               href={`tel:${firm.phone}`}
-              className="text-paper-64 transition-colors duration-300 hover:text-gold-lit"
+              className="py-3 text-paper-64 transition-colors duration-300 hover:text-gold-lit lg:py-0"
             >
               {displayPhone(firm.phone)}
             </a>
             <a
               href={`mailto:${firm.email}`}
-              className="text-paper-64 transition-colors duration-300 hover:text-gold-lit"
+              className="py-3 text-paper-64 transition-colors duration-300 hover:text-gold-lit lg:py-0"
             >
               {firm.email}
             </a>
@@ -75,10 +78,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-3 border-t border-paper-12 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-mist">
+          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-mist">
             © {year} {firm.name}
           </p>
-          <p className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-mist">
+          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-mist">
             {firm.constitution} firm · Established {firm.founded}
           </p>
         </div>
