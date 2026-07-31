@@ -6,8 +6,22 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-paper-12 py-16">
-      <Container>
+    <footer className="relative overflow-hidden border-t border-paper-12 py-16">
+      {/* The closing plate: a low pool of warm light, and the firm's name set
+          enormous and almost invisible — a watermark pressed into the page. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 select-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(60% 90% at 50% 130%, rgba(201,168,76,0.07), transparent 62%)",
+          }}
+        />
+        <p className="absolute -bottom-[0.18em] left-1/2 -translate-x-1/2 whitespace-nowrap font-display text-[clamp(6rem,17vw,15rem)] leading-none tracking-[-0.03em] text-paper/[0.03]">
+          TaxWise Consultants
+        </p>
+      </div>
+      <Container className="relative">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div>
             {/* The same lockup as the nav, one step larger — this is the

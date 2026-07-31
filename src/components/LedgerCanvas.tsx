@@ -18,6 +18,22 @@ import { useEffect, useRef } from "react";
 const CELL = 88; // must match the ledger-ground utility in globals.css
 const HEAVY_EVERY = 4;
 
+/** Motes of gold dust drifting through the light — the depth cue. */
+const MOTE_COUNT = 42;
+
+type Mote = { x: number; y: number; z: number; vx: number; vy: number; s: number };
+
+function makeMotes(): Mote[] {
+  return Array.from({ length: MOTE_COUNT }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    z: 0.35 + Math.random() * 0.65, // depth: parallax and brightness scale with it
+    vx: (Math.random() - 0.5) * 0.00009,
+    vy: (Math.random() - 0.5) * 0.00006,
+    s: Math.random() * Math.PI * 2,
+  }));
+}
+
 /** The grid at full strength. Only ever painted once, into an offscreen layer. */
 function paintBrightGrid(ctx: CanvasRenderingContext2D, w: number, h: number) {
   ctx.clearRect(0, 0, w, h);
@@ -73,6 +89,7 @@ export default function LedgerCanvas({ className = "" }: { className?: string })
     let lx = 0;
     let ly = 0;
     const pointer = { x: 0, y: 0, active: false };
+    const motes = makeMotes();
 
     let raf = 0;
     let running = false;
@@ -155,6 +172,21 @@ export default function LedgerCanvas({ className = "" }: { className?: string })
       ctx.fillRect(0, 0, w, h);
 
       ctx.drawImage(lit, 0, 0);
+
+      // Gold motes, drifting slowly and parallaxed against the light: deeper
+      // ones move more with the pointer and glow brighter, which is what makes
+      // the flat canvas read as a volume. ~40 arcs a frame is negligible.
+      for (const m of motes) {
+        m.x = (m.x + m.vx + 1) % 1;
+        m.y = (m.y + m.vy + 1) % 1;
+        const px = m.x * w + (lx - w * 0.5) * 0.045 * m.z;
+        const py = m.y * h + (ly - h * 0.5) * 0.045 * m.z;
+        const twinkle = 0.5 + 0.5 * Math.sin(elapsed * 0.0011 + m.s);
+        ctx.fillStyle = `rgba(201, 168, 76, ${(0.05 + 0.17 * twinkle) * m.z})`;
+        ctx.beginPath();
+        ctx.arc(px, py, 0.6 + m.z * 1.15, 0, 6.2832);
+        ctx.fill();
+      }
     }
 
     function loop(now: number) {

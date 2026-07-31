@@ -109,7 +109,7 @@ export default function Location() {
             href={directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-9 inline-flex items-center gap-3 rounded-full border border-paper-12 px-7 py-3.5 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold hover:text-gold-lit"
+            className="btn-sheen mt-9 inline-flex items-center gap-3 rounded-full border border-paper-12 px-7 py-3.5 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold hover:text-gold-lit"
           >
             Get directions
             <svg

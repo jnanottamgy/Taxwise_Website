@@ -3,6 +3,7 @@ import { Instrument_Serif, Instrument_Sans, IBM_Plex_Mono } from "next/font/goog
 import { firm } from "@/lib/content";
 import { organizationJsonLd } from "@/lib/jsonld";
 import CursorLight from "@/components/CursorLight";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -94,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         {children}
         <CursorLight />
+        <SmoothScroll />
         <script
           type="application/ld+json"
           // Structured data is a static, trusted object built in lib/jsonld.ts

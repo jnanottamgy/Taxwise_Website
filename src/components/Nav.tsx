@@ -1,18 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+} from "framer-motion";
 import { firm, nav, whatsappUrl } from "@/lib/content";
 import { Container } from "./Section";
 import Mark from "./Mark";
+import Magnetic from "./Magnetic";
 
 /**
- * The firm is TaxWise Consultants. "Chartered Accountants" is what they are,
- * not part of the name — so the wordmark carries the full name and the
- * qualification appears only where it reads unmistakably as a descriptor.
- *
- * The mark sits slightly taller than the cap height of the wordmark, which is
- * what stops a shield from looking like a bullet point next to type.
+ * The nav does not simply stick — it evolves. At the top of the page it is a
+ * transparent rail; once the page moves it becomes a floating glass pill:
+ * inset, rounded, blurred, compressed. A gold rule across its top fills as
+ * you read (spring-smoothed), and a scrollspy keeps the underline on the
+ * section you are actually in.
  */
 function Wordmark() {
   return (
@@ -35,7 +42,12 @@ function Wordmark() {
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
   const reduce = useReducedMotion();
+  const pathname = usePathname();
+
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 26, mass: 0.4 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -43,6 +55,29 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Scrollspy — only meaningful on the homepage, where the sections live.
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActive(null);
+      return;
+    }
+    const ids = nav.map((i) => i.href.split("#")[1]).filter(Boolean);
+    const els = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [pathname]);
 
   // Close the panel on Escape, and lock the page behind it
   useEffect(() => {
@@ -57,98 +92,123 @@ export default function Nav() {
     };
   }, [open]);
 
+  const pill = scrolled || open;
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        scrolled || open
-          ? "border-b border-paper-12 bg-ink/85 backdrop-blur-xl"
-          : "border-b border-transparent"
-      }`}
-    >
-      <Container>
-        <div className="flex h-[4.5rem] items-center justify-between gap-6">
-          <Wordmark />
+    <header className="site-nav fixed inset-x-0 top-0 z-50">
+      {/* Reading progress — the ledger line that fills as you go */}
+      <motion.div
+        aria-hidden="true"
+        style={{ scaleX: reduce ? 1 : progress }}
+        className="absolute left-0 top-0 z-10 h-[2px] w-full origin-left bg-gold/70"
+      />
 
-          <nav aria-label="Primary" className="hidden items-center gap-9 md:flex">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="relative rounded-sm py-1 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper-64 transition-colors duration-300 hover:text-gold-lit"
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-paper-12 bg-paper-06 px-5 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-colors duration-300 hover:border-paper-40 hover:bg-paper-12"
-            >
-              Book a consultation
-            </a>
-          </nav>
-
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-sm md:hidden"
+      <div
+        className={`transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          pill
+            ? "mx-3 mt-3 rounded-2xl border border-paper-12 bg-ink/70 shadow-[0_24px_70px_-32px_rgba(0,0,0,0.85)] backdrop-blur-2xl sm:mx-6 lg:mx-10"
+            : "mx-0 mt-0 rounded-none border border-transparent bg-transparent"
+        }`}
+      >
+        <Container>
+          <div
+            className={`flex items-center justify-between gap-6 transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              pill ? "h-[3.75rem]" : "h-[4.5rem]"
+            }`}
           >
-            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-            <span aria-hidden="true" className="relative block h-3 w-6">
-              <span
-                className={`absolute left-0 block h-px w-6 bg-paper transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  open ? "top-1.5 rotate-45" : "top-0"
-                }`}
-              />
-              <span
-                className={`absolute left-0 block h-px w-6 bg-paper transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  open ? "top-1.5 -rotate-45" : "top-3"
-                }`}
-              />
-            </span>
-          </button>
-        </div>
-      </Container>
+            <Wordmark />
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="mobile-nav"
-            initial={reduce ? false : { height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={reduce ? undefined : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-paper-12 md:hidden"
-          >
-            <Container>
-              <nav aria-label="Primary" className="flex flex-col py-6">
-                {nav.map((item) => (
+            <nav aria-label="Primary" className="hidden items-center gap-9 md:flex">
+              {nav.map((item) => {
+                const id = item.href.split("#")[1];
+                const isActive = active === id;
+                return (
                   <a
                     key={item.href}
                     href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="border-b border-paper-12 py-4 font-display text-2xl text-paper"
+                    data-active={isActive || undefined}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`nav-link relative rounded-sm py-1 font-mono text-[0.6875rem] uppercase tracking-[0.18em] transition-colors duration-300 ${
+                      isActive ? "text-paper" : "text-paper-64 hover:text-gold-lit"
+                    }`}
                   >
                     {item.label}
                   </a>
-                ))}
+                );
+              })}
+              <Magnetic strength={0.3}>
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="mt-6 rounded-full border border-paper-40 px-6 py-3.5 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper"
+                  className="btn-sheen block rounded-full border border-paper-12 bg-paper-06 px-5 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-colors duration-300 hover:border-gold hover:text-gold-lit"
                 >
                   Book a consultation
                 </a>
-              </nav>
-            </Container>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </Magnetic>
+            </nav>
+
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              className="-mr-2 flex h-11 w-11 items-center justify-center rounded-sm md:hidden"
+            >
+              <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+              <span aria-hidden="true" className="relative block h-3 w-6">
+                <span
+                  className={`absolute left-0 block h-px w-6 bg-paper transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    open ? "top-1.5 rotate-45" : "top-0"
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 block h-px w-6 bg-paper transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    open ? "top-1.5 -rotate-45" : "top-3"
+                  }`}
+                />
+              </span>
+            </button>
+          </div>
+        </Container>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              id="mobile-nav"
+              initial={reduce ? false : { height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={reduce ? undefined : { height: 0, opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden border-t border-paper-12 md:hidden"
+            >
+              <Container>
+                <nav aria-label="Primary" className="flex flex-col py-6">
+                  {nav.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="border-b border-paper-12 py-4 font-display text-2xl text-paper"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="mt-6 rounded-full border border-paper-40 px-6 py-3.5 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper"
+                  >
+                    Book a consultation
+                  </a>
+                </nav>
+              </Container>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </header>
   );
 }

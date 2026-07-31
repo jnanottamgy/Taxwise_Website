@@ -2,23 +2,38 @@ import type { CSSProperties, ReactNode } from "react";
 import { hero, stats, whatsappUrl } from "@/lib/content";
 import { Container } from "./Section";
 import LedgerCanvas from "./LedgerCanvas";
+import Magnetic from "./Magnetic";
+import CountUp from "./CountUp";
 
 /**
  * The hero is a server component. Its entrance runs on CSS keyframes that
- * start at first paint, so the headline is never waiting on JavaScript, and
- * the only client code in this section is the canvas behind it.
+ * start at first paint, so the headline is never waiting on JavaScript — the
+ * word-stagger below is server-rendered spans with per-word delays, not a
+ * hydrated animation. The only client code in this section is the canvas
+ * behind it and the counting figures at its foot.
+ *
+ * Parallax: CursorLight writes --par-x/--par-y onto this section; the content
+ * block consumes them in a calc() transform, so depth costs no extra
+ * hydration. The canvas light already leans toward the pointer, one layer
+ * deeper, which is what sells the depth.
  */
 
 const d = (delay: number) => ({ "--d": `${delay}s` }) as CSSProperties;
 
-/** A headline line that rises out of its own edge. */
-function Line({ children, delay }: { children: ReactNode; delay: number }) {
+/** A run of words, each rising out of its own edge in sequence. */
+function Words({ text, delay, step = 0.055 }: { text: string; delay: number; step?: number }) {
+  const words = text.split(" ");
   return (
-    <span className="block overflow-hidden pb-[0.08em]">
-      <span data-hero-line className="block" style={d(delay)}>
-        {children}
-      </span>
-    </span>
+    <>
+      {words.map((word, i) => (
+        <span key={i} className="inline-block overflow-hidden pb-[0.08em] align-top">
+          <span data-hero-line className="inline-block" style={d(delay + i * step)}>
+            {word}
+            {i < words.length - 1 ? " " : ""}
+          </span>
+        </span>
+      ))}
+    </>
   );
 }
 
@@ -39,6 +54,14 @@ function Fade({
 }
 
 export default function Hero() {
+  // The emphasis line ends in a full stop; that stop is the one gold mark in
+  // the headline — the entry closed, the way a final figure is ruled off.
+  const emphasis = hero.headlineEmphasis.endsWith(".")
+    ? hero.headlineEmphasis.slice(0, -1)
+    : hero.headlineEmphasis;
+  const hasStop = hero.headlineEmphasis.endsWith(".");
+  const emphasisWords = emphasis.split(" ").length;
+
   return (
     <section
       id="top"
@@ -59,7 +82,13 @@ export default function Hero() {
 
       <div className="flex flex-1 items-center pt-28 pb-12">
         <Container>
-          <div className="max-w-[64rem]">
+          <div
+            className="max-w-[64rem] transition-transform duration-500 ease-out will-change-transform"
+            style={{
+              transform:
+                "translate3d(calc(var(--par-x, 0) * 14px), calc(var(--par-y, 0) * 10px), 0)",
+            }}
+          >
             <Fade delay={0.04}>
               <p className="label flex items-center gap-3">
                 <span aria-hidden="true" className="inline-block h-px w-8 bg-gold" />
@@ -68,33 +97,48 @@ export default function Hero() {
             </Fade>
 
             <h1 className="mt-8 font-display text-[clamp(3rem,10vw,8.75rem)] leading-[0.9] tracking-[-0.035em] text-paper">
-              <Line delay={0.05}>{hero.headlineLead}</Line>
-              <Line delay={0.13}>
-                <em className="not-italic text-mist">{hero.headlineEmphasis}</em>
-              </Line>
+              <span className="block">
+                <Words text={hero.headlineLead} delay={0.05} />
+              </span>
+              <em className="block not-italic text-mist">
+                <Words text={emphasis} delay={0.2} />
+                {hasStop ? (
+                  <span className="inline-block overflow-hidden pb-[0.08em] align-top">
+                    <span
+                      data-hero-line
+                      className="inline-block text-gold"
+                      style={d(0.2 + emphasisWords * 0.055 + 0.1)}
+                    >
+                      .
+                    </span>
+                  </span>
+                ) : null}
+              </em>
             </h1>
 
-            <Fade delay={0.4} className="mt-8 max-w-[46ch]">
+            <Fade delay={0.48} className="mt-8 max-w-[46ch]">
               <p className="text-[clamp(1rem,1.5vw,1.1875rem)] leading-[1.7] text-paper-80">
                 {hero.standfirst}
               </p>
             </Fade>
 
             <Fade
-              delay={0.5}
+              delay={0.58}
               className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
             >
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-paper px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-ink transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(245,244,242,0.4)]"
-              >
-                {hero.primaryCta}
-              </a>
+              <Magnetic strength={0.25}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-sheen block rounded-full bg-paper px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-ink transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(232,201,122,0.45)]"
+                >
+                  {hero.primaryCta}
+                </a>
+              </Magnetic>
               <a
                 href="#services"
-                className="rounded-full border border-paper-12 px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-paper-40 hover:bg-paper-06"
+                className="btn-sheen rounded-full border border-paper-12 px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold hover:text-gold-lit"
               >
                 {hero.secondaryCta}
               </a>
@@ -104,7 +148,7 @@ export default function Hero() {
       </div>
 
       {/* The figures sit on the balance rule at the foot of the page */}
-      <Fade delay={0.62} className="relative border-t border-paper-12">
+      <Fade delay={0.68} className="relative border-t border-paper-12">
         <Container>
           <dl className="grid grid-cols-2 lg:grid-cols-4">
             {stats.map((stat, i) => (
@@ -126,7 +170,7 @@ export default function Hero() {
                   {"prefix" in stat && stat.prefix ? (
                     <span className="text-gold">{stat.prefix}</span>
                   ) : null}
-                  {stat.figure}
+                  <CountUp value={Number(stat.figure)} />
                   <span className="text-gold">{stat.suffix}</span>
                 </dd>
                 <dt className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-paper-64">

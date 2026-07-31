@@ -87,11 +87,11 @@ export default function Calendar() {
                 {month.entries.map((entry) => (
                   <div
                     key={entry.form + entry.date}
-                    className="flex flex-col gap-1 py-2.5 sm:flex-row sm:items-baseline sm:gap-6"
+                    className="group -mx-3 flex flex-col gap-1 rounded-sm px-3 py-2.5 transition-colors duration-300 hover:bg-ink-2/25 sm:flex-row sm:items-baseline sm:gap-6"
                   >
                     <dt
                       data-figure
-                      className="shrink-0 font-mono text-[0.6875rem] tracking-[0.14em] text-gold sm:w-8"
+                      className="shrink-0 font-mono text-[0.6875rem] tracking-[0.14em] text-gold transition-colors duration-300 group-hover:text-gold-lit sm:w-8"
                     >
                       {entry.date}
                     </dt>

@@ -46,7 +46,7 @@ export default function Team() {
                 height={448}
                 loading="lazy"
                 decoding="async"
-                className="h-[9.5rem] w-[9.5rem] rounded-full object-cover shadow-[0_0_0_1px_rgba(245,244,242,0.14)] transition-shadow duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:shadow-[0_0_0_1px_rgba(245,244,242,0.4)]"
+                className="h-[9.5rem] w-[9.5rem] rounded-full object-cover shadow-[0_0_0_1px_rgba(245,244,242,0.14)] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045] group-hover:shadow-[0_0_0_1px_rgba(201,168,76,0.55),0_18px_50px_-20px_rgba(0,0,0,0.7)]"
               />
 
               <h3 className="mt-9 font-display text-[1.5rem] leading-none text-paper">
