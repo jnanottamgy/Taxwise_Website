@@ -43,14 +43,11 @@ function useReveal() {
     const el = ref.current;
     if (!el) return;
 
-    // Anything already on screen, or any browser without the observer, is
-    // shown at once — content must never be left stranded at opacity 0.
+    // No measuring here on purpose. Reading getBoundingClientRect per instance
+    // forces a synchronous layout for every reveal on the page during
+    // hydration; the observer reports anything already on screen in its first
+    // callback, which costs nothing and arrives within a frame.
     if (typeof IntersectionObserver === "undefined") {
-      show(el);
-      return;
-    }
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
       show(el);
       return;
     }

@@ -1,4 +1,5 @@
-import { firm, services } from "./content";
+import { firm } from "./content";
+import { services } from "./services";
 
 /**
  * Structured data for the practice. AccountingService is the most specific

@@ -85,76 +85,6 @@ export const why = [
   },
 ] as const;
 
-export type Service = {
-  slug: string;
-  name: string;
-  summary: string;
-  detail: string;
-  points: readonly string[];
-  feature?: boolean;
-};
-
-export const services: readonly Service[] = [
-  {
-    slug: "taxation",
-    name: "Taxation",
-    summary:
-      "Direct tax planning and filing for individuals, firms and companies. We structure your position before the year closes, not after it.",
-    detail:
-      "Most tax is decided by choices made months before the return is filed. We work on the decision, not the paperwork that follows it.",
-    points: ["Income tax returns", "Advance tax planning", "Capital gains structuring", "Assessments and appeals"],
-    feature: true,
-  },
-  {
-    slug: "audit",
-    name: "Audit",
-    summary:
-      "Statutory, internal and tax audits conducted to ICAI standards, with findings written so you can act on them.",
-    detail: "",
-    points: ["Statutory audit", "Tax audit", "Internal and stock audit"],
-  },
-  {
-    slug: "gst",
-    name: "GST",
-    summary:
-      "Registration, monthly and annual returns, input reconciliation and representation before the department.",
-    detail: "",
-    points: ["Registration", "GSTR-1, 3B and 9", "Input tax reconciliation"],
-  },
-  {
-    slug: "accounting",
-    name: "Accounting",
-    summary:
-      "Books kept to audit-ready standard and closed every month, with management reporting you can actually read.",
-    detail: "",
-    points: ["Monthly close", "Payroll and TDS", "Management reporting"],
-  },
-  {
-    slug: "business-advisory",
-    name: "Business Advisory",
-    summary:
-      "Structuring, valuation and financial planning for owners making decisions with long consequences.",
-    detail: "",
-    points: ["Entity structuring", "Valuation", "Financial modelling"],
-  },
-  {
-    slug: "roc-compliance",
-    name: "ROC Compliance",
-    summary:
-      "Annual filings, board resolutions and statutory registers kept current with the Companies Act, 2013.",
-    detail: "",
-    points: ["Annual filings", "Board and shareholder resolutions", "Statutory registers"],
-  },
-  {
-    slug: "startup-advisory",
-    name: "Startup Advisory",
-    summary:
-      "Incorporation, founder agreements, ESOP structuring and the diligence readiness your first institutional round will demand.",
-    detail: "",
-    points: ["Incorporation", "ESOP schemes", "Diligence readiness"],
-  },
-] as const;
-
 export const process = [
   {
     step: "01",
@@ -241,9 +171,11 @@ export const finalCta = {
   body: "A first consultation is a conversation about your position and what it will cost you to get it wrong. No charge, no obligation.",
 } as const;
 
+/** Root-relative so the same nav works from a service page as from home. */
 export const nav = [
-  { label: "Services", href: "#services" },
-  { label: "Approach", href: "#process" },
-  { label: "Firm", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Calendar", href: "/#calendar" },
+  { label: "Approach", href: "/#process" },
+  { label: "Firm", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ] as const;

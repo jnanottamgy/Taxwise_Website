@@ -130,6 +130,60 @@
    Motion — every transition uses the one easing, and all of it is optional
    ========================================================================== */
 
+/* Lit surfaces. Both light layers are pseudo-elements, so a card costs two
+   paint layers rather than two extra DOM nodes, and the whole thing renders on
+   the server — CursorLight only writes --mx and --my. */
+[data-lightcard] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    background-color 0.5s var(--ease-settle),
+    border-color 0.5s var(--ease-settle);
+}
+
+[data-lightcard]::before,
+[data-lightcard]::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease-settle);
+}
+
+/* The pool of light under the cursor */
+[data-lightcard]::before {
+  inset: 0;
+  background: radial-gradient(
+    18rem 18rem at var(--mx, 50%) var(--my, 50%),
+    rgba(113, 132, 169, 0.22),
+    rgba(113, 132, 169, 0.06) 42%,
+    transparent 70%
+  );
+}
+
+/* A single specular edge along the top — the glass catch */
+[data-lightcard]::after {
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 244, 242, 0.34) 35%,
+    rgba(245, 244, 242, 0.34) 65%,
+    transparent
+  );
+}
+
+[data-lightcard]:hover::before,
+[data-lightcard]:hover::after,
+[data-lightcard]:focus-within::before,
+[data-lightcard]:focus-within::after {
+  opacity: 1;
+}
+
 /* The hero entrance. Pure CSS so it begins at first paint instead of waiting
    for hydration — the headline is the largest contentful paint on the page,
    and nothing should stand between it and the screen. */
