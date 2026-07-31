@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { hero, stats, whatsappUrl } from "@/lib/content";
 import { Container } from "./Section";
 import LedgerCanvas from "./LedgerCanvas";
-import YieldSurface from "./YieldSurface";
+import StatutoryDial from "./StatutoryDial";
 import Magnetic from "./Magnetic";
 import CountUp from "./CountUp";
 
@@ -71,14 +71,17 @@ export default function Hero() {
       {/* The light that rakes across the ruled ground */}
       <LedgerCanvas className="absolute inset-0 -z-20 h-full w-full" />
 
-      {/* The surface occupies the right of the masthead, which the headline
-          leaves empty. Hidden below lg: there the type needs the full width,
-          and a decorative canvas would only crowd it. */}
+      {/* The statutory year occupies the right of the masthead, which the
+          headline leaves empty — the firm's own compliance calendar as a
+          wheel, gold ticks on the filing dates and today's position marked.
+          aria-hidden because the calendar section below carries the same
+          data as real text. Hidden below lg, where the type needs the
+          full width. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden w-[52%] items-center justify-center lg:flex"
+        className="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden w-1/2 items-center justify-center lg:flex"
       >
-        <YieldSurface className="h-[78%] w-full max-w-[46rem]" />
+        <StatutoryDial className="h-[74%] w-full max-w-[38rem]" />
       </div>
 
       {/* Vignette: lets the page fall away at the edges so the type stays first */}
