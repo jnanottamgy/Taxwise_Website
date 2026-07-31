@@ -194,15 +194,28 @@ lives in `src/lib/`.
 
 ### Where the client-side code is
 
-The site is almost entirely server-rendered. Four components ship JavaScript:
+The site is still overwhelmingly server-rendered. The client components:
 
-- `LedgerCanvas` — the hero light
-- `Nav` — scroll state and the mobile panel
+- `LedgerCanvas` — the hero light, its drift, and the gold motes
+- `Nav` — the evolving pill, scrollspy, reading-progress line, mobile panel
 - `Process` — the scroll-linked timeline
-- `Reveal` and `CursorLight` — one shared observer, one delegated listener
+- `Reveal` and `CursorLight` — one shared observer; one delegated pointer
+  listener driving the page glow, every card's light and tilt, and the hero
+  parallax (written onto the hero section, not `:root`, so the style
+  invalidation stays scoped)
+- `SmoothScroll` — Lenis, created only when reduced motion allows
+- `Magnetic` and `CountUp` — the magnetic CTAs and the counting figures
+- `Location` — the click-to-load map
 
-Framer Motion is used where it earns its weight: the nav panel transition and
-the scroll-linked timeline. Everything else is CSS.
+Framer Motion is used where it earns its weight: the nav panel, the progress
+spring, the magnetic springs, the timeline. Everything else — reveals, sheens,
+tilts, the hero entrance, route transitions — is CSS.
+
+One trap worth recording: the route-transition wrapper must never end its
+animation holding a `filter` or `transform` (see `page-in` in `globals.css`).
+A lingering filter on an ancestor becomes the containing block for
+`position: fixed`, and the nav scrolls away with the page. It fills
+`backwards` for exactly this reason.
 
 Two decisions were made against measurements rather than taste:
 
