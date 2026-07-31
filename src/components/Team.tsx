@@ -52,7 +52,11 @@ export default function Team() {
               <h3 className="mt-9 font-display text-[1.5rem] leading-none text-paper">
                 {member.name}
               </h3>
-              <p className="mt-3 font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.16em] text-mist">
+              {/* Two lines' worth of space is reserved whether or not the
+                  credential needs it — one of the four wraps, and without this
+                  its biography starts lower than the other three and the row
+                  stops lining up. 0.6875rem at 1.6 leading = 1.1rem a line. */}
+              <p className="mt-3 min-h-[2.2rem] font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.16em] text-mist">
                 <span className="text-gold">{member.role}</span>
                 <span aria-hidden="true"> · </span>
                 {member.credential}
@@ -63,8 +67,14 @@ export default function Team() {
               </p>
 
               {/* Pinned to the foot so the four rules line up across the row
-                  even though the biographies are different lengths. */}
-              <p className="mt-auto border-t border-paper-12 pt-4 font-mono text-[0.625rem] uppercase leading-[1.7] tracking-[0.12em] text-paper-64">
+                  even though the biographies are different lengths — and given
+                  two lines' worth of height, because one focus list wraps and
+                  a taller block would otherwise start its rule higher than the
+                  rest. The height is written out rather than rounded because
+                  box-sizing is border-box here: it has to cover two lines
+                  (2 × 1.0625rem), the top padding (1rem) and the rule (1px),
+                  or the padding alone satisfies it and the rule never moves. */}
+              <p className="mt-auto min-h-[calc(2*1.0625rem+1rem+1px)] border-t border-paper-12 pt-4 font-mono text-[0.625rem] uppercase leading-[1.7] tracking-[0.12em] text-paper-64">
                 {member.focus}
               </p>
             </Reveal>
