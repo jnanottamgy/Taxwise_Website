@@ -18,7 +18,7 @@ whole site is statically prerendered.
 
 ## Design
 
-**Palette.** Five navies and one off-white, fixed:
+**Palette.** Five navies, one off-white, and one gold:
 
 | Token | Hex | Used for |
 |---|---|---|
@@ -28,10 +28,22 @@ whole site is statically prerendered.
 | `slate` | `#536B94` | large text only — 3.20:1 on ink |
 | `mist` | `#7184A9` | secondary text — 4.59:1 on ink |
 | `paper` | `#F5F4F2` | off-white |
+| `gold` | `#C9A84C` | the accent — 7.55:1 on ink |
+| `gold-lit` | `#E8C97A` | lit and hover states — 10.74:1 on ink |
 
-There is no accent colour. Light is the accent: a soft pool that rakes across
-the hero, catches the cursor on a card, and pools once more at the closing
-section. Nothing on the page glows on its own.
+The gold carries over from the firm's previous identity, and it is the only warm
+thing on the page. It is spent in four places and nowhere else: the core of the
+light raking across the hero, the rule beside the hero eyebrow, the glyphs
+attached to the figures — the rupee sign, the plus, the per-cent, never the
+digits — and the timeline that draws itself across the approach section as you
+scroll. Restraint is the point; a fifth use would start to look like decoration.
+
+**Gold never touches the light section.** It measures 7.55:1 on ink but only
+2.08:1 on `paper`, so `About` stays strictly ink-on-paper.
+
+Light is still doing most of the work: a pool that rakes across the hero,
+catches the cursor on a card, and pools once more at the closing section.
+Nothing on the page glows on its own.
 
 Body copy on the dark ground uses tints of `paper` (`paper-80`, `paper-64`)
 rather than the mid navies, because those tints clear 4.5:1 and `slate` does

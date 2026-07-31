@@ -62,7 +62,7 @@ export default function Hero() {
           <div className="max-w-[64rem]">
             <Fade delay={0.04}>
               <p className="label flex items-center gap-3">
-                <span aria-hidden="true" className="inline-block h-px w-8 bg-mist" />
+                <span aria-hidden="true" className="inline-block h-px w-8 bg-gold" />
                 {hero.eyebrow}
               </p>
             </Fade>
@@ -120,11 +120,14 @@ export default function Hero() {
                   data-figure
                   className="font-display text-[clamp(2rem,3.6vw,3.25rem)] leading-none text-paper"
                 >
+                  {/* The glyphs, not the digits. A rupee sign and a plus in
+                      gold read as a mark on a statement; a whole figure in
+                      gold reads as a highlighter. */}
                   {"prefix" in stat && stat.prefix ? (
-                    <span className="text-mist">{stat.prefix}</span>
+                    <span className="text-gold">{stat.prefix}</span>
                   ) : null}
                   {stat.figure}
-                  <span className="text-mist">{stat.suffix}</span>
+                  <span className="text-gold">{stat.suffix}</span>
                 </dd>
                 <dt className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-paper-64">
                   {stat.label}

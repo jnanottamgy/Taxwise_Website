@@ -84,12 +84,12 @@ export default function Process() {
         <motion.div
           aria-hidden="true"
           style={reduce ? { scaleY: 1, scaleX: 1 } : { scaleY: scrollYProgress }}
-          className="absolute left-[2px] top-0 h-full w-px origin-top bg-mist lg:hidden"
+          className="absolute left-[2px] top-0 h-full w-px origin-top bg-gold lg:hidden"
         />
         <motion.div
           aria-hidden="true"
           style={reduce ? { scaleX: 1 } : { scaleX: scrollYProgress }}
-          className="absolute left-0 top-0 hidden h-px w-full origin-left bg-mist lg:block"
+          className="absolute left-0 top-0 hidden h-px w-full origin-left bg-gold lg:block"
         />
 
         <ol className="grid gap-12 lg:grid-cols-5 lg:gap-8">

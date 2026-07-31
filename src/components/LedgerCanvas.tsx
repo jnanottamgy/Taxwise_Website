@@ -41,8 +41,9 @@ function paintBrightGrid(ctx: CanvasRenderingContext2D, w: number, h: number) {
   }
   ctx.stroke();
 
-  // Column rules read brighter, the way an inked rule does against pencil
-  ctx.strokeStyle = "rgba(150, 170, 210, 0.72)";
+  // Column rules read brighter, the way an inked rule does against pencil —
+  // and warm, because the only thing lighting them is the lamp.
+  ctx.strokeStyle = "rgba(201, 168, 76, 0.62)";
   ctx.beginPath();
   for (let c = 0; c <= cols; c += HEAVY_EVERY) {
     const x = Math.round(c * CELL) + 0.5;
@@ -127,20 +128,30 @@ export default function LedgerCanvas({ className = "" }: { className?: string })
       litCtx.globalCompositeOperation = "destination-in";
       const mask = litCtx.createRadialGradient(lx, ly, 0, lx, ly, radius);
       mask.addColorStop(0, "rgba(255,255,255,1)");
-      mask.addColorStop(0.28, "rgba(255,255,255,0.6)");
-      mask.addColorStop(0.6, "rgba(255,255,255,0.17)");
+      mask.addColorStop(0.34, "rgba(255,255,255,0.72)");
+      mask.addColorStop(0.66, "rgba(255,255,255,0.2)");
       mask.addColorStop(1, "rgba(255,255,255,0)");
       litCtx.fillStyle = mask;
       litCtx.fillRect(0, 0, w, h);
 
       ctx.clearRect(0, 0, w, h);
 
-      // The pool of light on the page itself, beneath the rules
+      // Two layers, because one warm radial just reads as a smudge. The broad
+      // cool wash is the room; the tight warm core is the bulb. What makes it
+      // legible as light rather than colour is the ruled grid drawn on top of
+      // both — structure is what the eye reads as illumination.
       const wash = ctx.createRadialGradient(lx, ly, 0, lx, ly, radius * 0.95);
-      wash.addColorStop(0, "rgba(34, 50, 80, 0.85)");
-      wash.addColorStop(0.45, "rgba(34, 50, 80, 0.34)");
+      wash.addColorStop(0, "rgba(34, 50, 80, 0.82)");
+      wash.addColorStop(0.45, "rgba(34, 50, 80, 0.32)");
       wash.addColorStop(1, "rgba(34, 50, 80, 0)");
       ctx.fillStyle = wash;
+      ctx.fillRect(0, 0, w, h);
+
+      const core = ctx.createRadialGradient(lx, ly, 0, lx, ly, radius * 0.34);
+      core.addColorStop(0, "rgba(201, 168, 76, 0.26)");
+      core.addColorStop(0.45, "rgba(201, 168, 76, 0.1)");
+      core.addColorStop(1, "rgba(201, 168, 76, 0)");
+      ctx.fillStyle = core;
       ctx.fillRect(0, 0, w, h);
 
       ctx.drawImage(lit, 0, 0);

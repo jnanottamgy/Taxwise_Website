@@ -2,8 +2,11 @@
 
 /* ==========================================================================
    TaxWise Consultants — design tokens
-   Palette is fixed by the brand: five navies plus one off-white.
-   There is no accent colour. Light is the accent.
+   Five navies, one off-white, and one gold.
+   The gold is carried over from the firm's previous identity. It is the only
+   warm thing on the page and it is spent in a handful of places: the light
+   raking across the hero, the glyphs attached to figures, and the moments
+   where something responds to you. Everywhere else stays quiet.
    ========================================================================== */
 
 @theme {
@@ -14,6 +17,12 @@
   --color-slate: #536b94; /* large text only — 3.20:1 on ink */
   --color-mist: #7184a9; /* secondary text — 4.59:1 on ink  */
   --color-paper: #f5f4f2; /* off-white          */
+  /* The accent. Both clear AA on ink and neither is usable on paper —
+     7.55:1 and 10.74:1 on ink, but 2.08:1 and 1.46:1 on the off-white.
+     Gold belongs to the dark ground only; the light `About` section stays
+     ink-on-paper. */
+  --color-gold: #c9a84c;
+  --color-gold-lit: #e8c97a;
 
   /* Readable tints of paper, for body copy on ink */
   --color-paper-80: rgba(245, 244, 242, 0.8);
