@@ -26,6 +26,29 @@ export const firm = {
   emailFirm: "taxxwiseconsultants@gmail.com",
   mapsUrl:
     "https://maps.google.com/?q=307+1st+Floor+14th+Main+Road+RMV+Extension+Sadhashivnagar+Bangalore",
+  /** Taken from the map embed on the firm's existing site. */
+  coords: { lat: 13.0137413, lng: 77.5743894 },
+} as const;
+
+/** Opens turn-by-turn directions to the office from wherever the visitor is. */
+export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${firm.coords.lat}%2C${firm.coords.lng}`;
+
+/**
+ * The embed from the firm's existing site, which resolves to the office rather
+ * than to a dropped pin. Only ever requested after the visitor asks for it —
+ * see `Location`.
+ */
+export const mapEmbedUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.3441720941073!2d77.57438937484213!3d13.01374128730553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17ccfaa3dd93%3A0x768a45c4332b495d!2s307%2C%2014th%20Main%20Rd%2C%20Raj%20Mahal%20Vilas%20Extension%2C%20Armane%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560080!5e0!3m2!1sen!2sin!4v1729590026911!5m2!1sen!2sin";
+
+/** Degrees-minutes for the placeholder. Set in mono, like everything numeric. */
+export const coordsLabel = "13.0137° N · 77.5744° E";
+
+export const location = {
+  label: "Location",
+  headline: "Where to find us.",
+  standfirst:
+    "The office is in RMV Extension, off 14th Main. Most first meetings happen here; if it is easier, we come to you.",
 } as const;
 
 export const whatsappUrl = `https://wa.me/${firm.phonePartner.replace(

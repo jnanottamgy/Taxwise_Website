@@ -29,6 +29,12 @@ export function organizationJsonLd() {
       postalCode: firm.address.postalCode,
       addressCountry: firm.address.country,
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: firm.coords.lat,
+      longitude: firm.coords.lng,
+    },
+    hasMap: firm.mapsUrl,
     founder: {
       "@type": "Person",
       name: firm.managingPartner,

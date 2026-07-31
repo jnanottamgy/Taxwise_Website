@@ -80,6 +80,20 @@ Team is also the one section that steps outside the marginal-label spine and
 runs the full container width. Four people read as a line-up, and a line-up
 wants room.
 
+**The map.** The Google embed is the only third-party request the site can make,
+so it is not made until someone presses for it — until then the panel is a
+placeholder carrying the coordinates, and anyone who only wants directions never
+loads Google at all. Verified: zero third-party requests before the press,
+`www.google.com` after it.
+
+Once loaded it is inverted to sit on the dark ground, because a stock embed
+cannot be styled without the Maps JS API and a billing key. The naive
+`invert(1)` crushes the land fill to `#121213` and you can read nothing off it;
+the values in `Location.tsx` land it around `#3E3E3F` and a navy veil pulls the
+neutral greys back toward the palette. Google's road fill and land fill are only
+~9 apart in RGB before any filter at all — roads read by their casing, not their
+fill — so the tuning is about overall level, not road contrast.
+
 **The mark.** A shield carrying a TW monogram, supplied as `taxwise.svg` on a
 1920×1080 artboard of which the artwork occupied 327×366 — the rest was empty.
 `src/lib/brand.ts` holds the path data with the artwork's measured bounding box
@@ -141,6 +155,7 @@ src/
     Reveal.tsx           CSS scroll reveals on one shared IntersectionObserver
     LightCard.tsx        server-rendered lit surface
     CursorLight.tsx      one delegated pointer listener for every lit surface
+    Location.tsx         address, coordinates, click-to-load map
     Calendar · Services · Why · Process · Industries
     · Testimonials · About · Team · FinalCTA · Nav · Footer
   lib/
