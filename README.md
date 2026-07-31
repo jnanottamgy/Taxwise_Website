@@ -51,6 +51,19 @@ that is the only content where order is information.
 dark page it reads as a room with the blinds opened, which is the right feeling
 for the part that explains who you are hiring.
 
+**The portraits.** The four team photographs came from the firm's existing site
+shot on four unrelated backgrounds — foliage, two white studio backdrops, a grey
+wall. Dropped onto the ink ground as-is they read as four unrelated pictures, so
+they are mapped through a duotone built from the site's own palette: `ink` in the
+shadows, `slate` at the midpoint, and a light navy at the top. The highlight
+deliberately stops short of `paper` — taken all the way, the two studio backdrops
+render as glaring white blocks and the set stops reading as a set.
+
+The sources are 270×270; the shipped files are 400×400 WebP at 7–12KB each.
+`scripts/duotone-portraits.mjs` regenerates them if the firm supplies new
+photographs — it needs `sharp`, which is deliberately not a project dependency
+since it is only wanted when the pictures change.
+
 **The mark.** A shield carrying a TW monogram, supplied as `taxwise.svg` on a
 1920×1080 artboard of which the artwork occupied 327×366 — the rest was empty.
 `src/lib/brand.ts` holds the path data with the artwork's measured bounding box
@@ -73,7 +86,7 @@ The site is eight homepage sections plus a page per service.
 
 ```
 /                       hero · services · why · process · calendar
-                        · sectors · clients · firm · contact
+                        · sectors · clients · firm · team · contact
 /services/taxation
 /services/audit
 /services/gst
@@ -113,11 +126,12 @@ src/
     LightCard.tsx        server-rendered lit surface
     CursorLight.tsx      one delegated pointer listener for every lit surface
     Calendar · Services · Why · Process · Industries
-    · Testimonials · About · FinalCTA · Nav · Footer
+    · Testimonials · About · Team · FinalCTA · Nav · Footer
   lib/
     content.ts           firm details, hero, stats, process, about, nav
     services.ts          the service catalogue — every word of it
     calendar.ts          the statutory calendar
+    team.ts              the four practitioners
     brand.ts             the mark's path data and true viewBox
     jsonld.ts            AccountingService structured data
 ```

@@ -177,5 +177,6 @@ export const nav = [
   { label: "Calendar", href: "/#calendar" },
   { label: "Approach", href: "/#process" },
   { label: "Firm", href: "/#about" },
+  { label: "Team", href: "/#team" },
   { label: "Contact", href: "/#contact" },
 ] as const;
