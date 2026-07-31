@@ -105,7 +105,7 @@ export default function Mark3D({ className = "" }: { className?: string }) {
       const rz = -p.x * sy + p.z * cy;
       const ry = p.y * cp - rz * sp;
       const rz2 = p.y * sp + rz * cp;
-      const scale = Math.min(w, h) * 0.42;
+      const scale = Math.min(w, h) * 0.34;
       const f = 3.4 / (3.4 + rz2);
       return { x: w / 2 + rx * f * scale, y: h / 2 - ry * f * scale, d: rz2 };
     }
