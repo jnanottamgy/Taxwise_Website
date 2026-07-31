@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   TaxWise Consultants — design tokens
+   Palette is fixed by the brand: five navies plus one off-white.
+   There is no accent colour. Light is the accent.
+   ========================================================================== */
+
+@theme {
+  /* Brand palette — exact values, no substitutions */
+  --color-ink: #0e1b2f; /* page ground        */
+  --color-ink-2: #223250; /* raised surface     */
+  --color-ink-3: #34476a; /* rules and borders  */
+  --color-slate: #536b94; /* large text only — 3.20:1 on ink */
+  --color-mist: #7184a9; /* secondary text — 4.59:1 on ink  */
+  --color-paper: #f5f4f2; /* off-white          */
+
+  /* Readable tints of paper, for body copy on ink */
+  --color-paper-80: rgba(245, 244, 242, 0.8);
+  --color-paper-64: rgba(245, 244, 242, 0.64);
+  --color-paper-40: rgba(245, 244, 242, 0.4);
+  --color-paper-12: rgba(245, 244, 242, 0.12);
+  --color-paper-06: rgba(245, 244, 242, 0.06);
+
+  /* Typefaces — wired to next/font in layout.tsx */
+  --font-display: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Spacious scale — this practice sells calm, so the page is mostly air */
+  --spacing-section: clamp(6rem, 12vw, 11rem);
+  --spacing-gutter: clamp(1.25rem, 5vw, 4.5rem);
+
+  /* One easing for the whole site: a long, decelerating settle */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+@layer base {
+  * {
+    border-color: var(--color-paper-12);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-feature-settings: "kern" 1, "liga" 1, "cv11" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Figures must line up like a statement, everywhere */
+  .tabular,
+  time,
+  [data-figure] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  ::selection {
+    background-color: var(--color-mist);
+    color: var(--color-ink);
+  }
+
+  /* A single, visible focus treatment — never removed */
+  :focus-visible {
+    outline: 2px solid var(--color-paper);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Headings default to the display face at editorial scale */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-mist);
+}
+
+@utility rule-t {
+  border-top: 1px solid var(--color-paper-12);
+}
+
+/* The ruled-paper ground. Drawn in CSS rather than canvas so it stays crisp at
+   any pixel ratio and costs nothing per frame — the canvas on top only has to
+   carry the light. Column rules land on every fourth line, as they do on real
+   columnar paper. */
+@utility ledger-ground {
+  background-image:
+    linear-gradient(to right, rgba(113, 132, 169, 0.13) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-paper-06) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-paper-06) 1px, transparent 1px);
+  background-size:
+    22rem 22rem,
+    5.5rem 5.5rem,
+    5.5rem 5.5rem;
+}
+
+/* ==========================================================================
+   Motion — every transition uses the one easing, and all of it is optional
+   ========================================================================== */
+
+/* The hero entrance. Pure CSS so it begins at first paint instead of waiting
+   for hydration — the headline is the largest contentful paint on the page,
+   and nothing should stand between it and the screen. */
+@keyframes rise-in {
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-hero-line] {
+  animation: rise-in 0.8s var(--ease-settle) both;
+  animation-delay: var(--d, 0s);
+}
+
+[data-hero-fade] {
+  animation: fade-up 0.9s var(--ease-settle) both;
+  animation-delay: var(--d, 0s);
+}
+
+/* Scroll reveals. The element is laid out normally and only its paint is
+   deferred, so nothing shifts (CLS stays at zero). */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 20px));
+  transition:
+    opacity 0.85s var(--ease-settle),
+    transform 0.85s var(--ease-settle);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+[data-reveal][data-shown="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-draw-rule] {
+  transform: scaleX(0);
+  transition: transform 1.1s var(--ease-settle);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+[data-draw-rule][data-shown="true"] {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Reveals resolve to their finished state rather than never arriving */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-draw-rule] {
+    transform: scaleX(1) !important;
+  }
+}
