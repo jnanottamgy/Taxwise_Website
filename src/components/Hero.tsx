@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { hero, stats, whatsappUrl } from "@/lib/content";
 import { Container } from "./Section";
 import LedgerCanvas from "./LedgerCanvas";
-import StatutoryDial from "./StatutoryDial";
+import Mark3D from "./Mark3D";
 import Magnetic from "./Magnetic";
 import CountUp from "./CountUp";
 
@@ -71,17 +71,15 @@ export default function Hero() {
       {/* The light that rakes across the ruled ground */}
       <LedgerCanvas className="absolute inset-0 -z-20 h-full w-full" />
 
-      {/* The statutory year occupies the right of the masthead, which the
-          headline leaves empty — the firm's own compliance calendar as a
-          wheel, gold ticks on the filing dates and today's position marked.
-          aria-hidden because the calendar section below carries the same
-          data as real text. Hidden below lg, where the type needs the
-          full width. */}
+      {/* The crest occupies the right of the masthead, which the headline
+          leaves empty — the firm's own shield extruded into a slowly turning
+          wireframe, edges warming to gold. Scroll turns it. Hidden below lg,
+          where the type needs the full width. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden w-1/2 items-center justify-center lg:flex"
       >
-        <StatutoryDial className="h-[74%] w-full max-w-[38rem]" />
+        <Mark3D className="h-[72%] w-full max-w-[36rem]" />
       </div>
 
       {/* Vignette: lets the page fall away at the edges so the type stays first */}
