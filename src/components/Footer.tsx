@@ -9,8 +9,11 @@ export default function Footer() {
       <Container>
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div>
-            <p className="font-display text-2xl leading-none text-paper">TaxWise</p>
-            <p className="mt-2 font-mono text-[0.5625rem] uppercase tracking-[0.22em] text-mist">
+            <p className="font-display text-2xl leading-none">
+              <span className="text-paper">TaxWise</span>{" "}
+              <span className="text-mist">Consultants</span>
+            </p>
+            <p className="mt-3 font-mono text-[0.5625rem] uppercase tracking-[0.22em] text-mist">
               {firm.descriptor} · {firm.city}
             </p>
             <address className="mt-8 max-w-[26ch] text-sm not-italic leading-[1.8] text-paper-64">

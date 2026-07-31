@@ -2,21 +2,24 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { nav, whatsappUrl } from "@/lib/content";
+import { firm, nav, whatsappUrl } from "@/lib/content";
 import { Container } from "./Section";
 
+/**
+ * The firm is TaxWise Consultants. "Chartered Accountants" is what they are,
+ * not part of the name — so the wordmark carries the full name and the
+ * qualification appears only where it reads unmistakably as a descriptor.
+ */
 function Wordmark() {
   return (
     <a
-      href="#top"
-      className="group flex items-baseline gap-2.5 rounded-sm"
-      aria-label="TaxWise Consultants — back to top"
+      href="/"
+      className="group flex items-baseline gap-[0.3em] rounded-sm font-display text-[1.375rem] leading-none tracking-[-0.01em]"
+      aria-label={`${firm.name} — home`}
     >
-      <span className="font-display text-[1.375rem] leading-none tracking-[-0.01em] text-paper">
-        TaxWise
-      </span>
-      <span className="hidden font-mono text-[0.5625rem] uppercase leading-none tracking-[0.22em] text-mist transition-colors duration-300 group-hover:text-paper-80 sm:inline">
-        Chartered Accountants
+      <span className="text-paper">TaxWise</span>
+      <span className="text-mist transition-colors duration-300 group-hover:text-paper">
+        Consultants
       </span>
     </a>
   );
