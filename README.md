@@ -51,6 +51,22 @@ that is the only content where order is information.
 dark page it reads as a room with the blinds opened, which is the right feeling
 for the part that explains who you are hiring.
 
+**The mark.** A shield carrying a TW monogram, supplied as `taxwise.svg` on a
+1920×1080 artboard of which the artwork occupied 327×366 — the rest was empty.
+`src/lib/brand.ts` holds the path data with the artwork's measured bounding box
+as its viewBox, so the mark scales from a 16px favicon to the 1200px social card
+without dragging 94% dead space behind it.
+
+It is drawn in `currentColor`, not in the supplied `#090E90`. That blue measures
+**1.21:1** against the page ground — invisible — and **12.94:1** on `paper`. So
+the mark inherits `paper` on the dark ground and the brand blue stays available
+for genuinely light surfaces. Same component, no second asset, and the site's
+"no accent colour" rule survives contact with a brand palette.
+
+The mark is `aria-hidden` wherever the wordmark sits beside it, so a screen
+reader announces the firm's name once rather than twice. Pass `title` only where
+it stands alone.
+
 ## Content
 
 The site is eight homepage sections plus a page per service.
@@ -84,10 +100,14 @@ src/
     page.tsx             homepage section order
     globals.css          tokens, base, lightcard, reveal + hero keyframes
     services/[slug]/     the seven service pages (generateStaticParams)
-    icon.svg  sitemap.ts  robots.ts
+    icon.svg             favicon — the mark on an ink tile
+    apple-icon.png       180×180 touch icon
+    opengraph-image.png  1200×630 link preview
+    sitemap.ts  robots.ts
   components/
     Hero.tsx             server component; CSS-keyframe entrance
     LedgerCanvas.tsx     the raking light (the only canvas)
+    Mark.tsx             the shield mark, drawn in currentColor
     Section.tsx          Container, Section, Heading, Standfirst
     Reveal.tsx           CSS scroll reveals on one shared IntersectionObserver
     LightCard.tsx        server-rendered lit surface
@@ -98,6 +118,7 @@ src/
     content.ts           firm details, hero, stats, process, about, nav
     services.ts          the service catalogue — every word of it
     calendar.ts          the statutory calendar
+    brand.ts             the mark's path data and true viewBox
     jsonld.ts            AccountingService structured data
 ```
 
@@ -185,6 +206,4 @@ Also:
   behind.
 - **Set the canonical domain.** `firm.url` in `src/lib/content.ts` is
   `https://twchartered.com`; it drives metadata, sitemap and structured data.
-- **Add an OG image** at `src/app/opengraph-image.png` (1200×630) — link
-  previews currently fall back to text.
 - Confirm the ICAI membership wording and the FCA designation in `about`.

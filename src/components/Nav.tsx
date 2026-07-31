@@ -4,22 +4,29 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { firm, nav, whatsappUrl } from "@/lib/content";
 import { Container } from "./Section";
+import Mark from "./Mark";
 
 /**
  * The firm is TaxWise Consultants. "Chartered Accountants" is what they are,
  * not part of the name — so the wordmark carries the full name and the
  * qualification appears only where it reads unmistakably as a descriptor.
+ *
+ * The mark sits slightly taller than the cap height of the wordmark, which is
+ * what stops a shield from looking like a bullet point next to type.
  */
 function Wordmark() {
   return (
     <a
       href="/"
-      className="group flex items-baseline gap-[0.3em] rounded-sm font-display text-[1.375rem] leading-none tracking-[-0.01em]"
+      className="group flex items-center gap-3 rounded-sm"
       aria-label={`${firm.name} — home`}
     >
-      <span className="text-paper">TaxWise</span>
-      <span className="text-mist transition-colors duration-300 group-hover:text-paper">
-        Consultants
+      <Mark className="h-7 w-auto shrink-0 text-paper" />
+      <span className="flex items-baseline gap-[0.3em] font-display text-[1.375rem] leading-none tracking-[-0.01em]">
+        <span className="text-paper">TaxWise</span>
+        <span className="text-mist transition-colors duration-300 group-hover:text-paper">
+          Consultants
+        </span>
       </span>
     </a>
   );
