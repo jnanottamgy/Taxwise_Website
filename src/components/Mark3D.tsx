@@ -113,7 +113,7 @@ export default function Mark3D({ className = "" }: { className?: string }) {
     /** Depth → colour: near edges carry the gold, far edges fall to slate. */
     function pen(d1: number, d2: number) {
       const near = Math.max(0, Math.min(1, 0.5 - ((d1 + d2) / 2) * 0.55));
-      const t = Math.pow(near, 1.7);
+      const t = Math.pow(near, 1.35);
       const R = Math.round(138 + (232 - 138) * t);
       const G = Math.round(155 + (201 - 155) * t);
       const B = Math.round(191 + (122 - 191) * t);
@@ -171,7 +171,12 @@ export default function Mark3D({ className = "" }: { className?: string }) {
           ctx.lineTo(back[j].x, back[j].y);
           ctx.lineTo(back[i].x, back[i].y);
           ctx.closePath();
-          ctx.fillStyle = `rgba(34, 50, 80, ${(0.1 + n * 0.26).toFixed(3)})`;
+          // The walls warm as they near the light — bronze where they face
+          // the viewer, navy where they turn away.
+          const wr = Math.round(34 + (150 - 34) * n);
+          const wg = Math.round(50 + (122 - 50) * n);
+          const wb = Math.round(80 + (62 - 80) * n);
+          ctx.fillStyle = `rgba(${wr}, ${wg}, ${wb}, ${(0.12 + n * 0.26).toFixed(3)})`;
           ctx.fill();
         }
 
@@ -188,9 +193,9 @@ export default function Mark3D({ className = "" }: { className?: string }) {
           if (p.y > bot) bot = p.y;
         }
         const sheen = ctx.createLinearGradient(0, top, 0, bot);
-        sheen.addColorStop(0, "rgba(201, 168, 76, 0.13)");
-        sheen.addColorStop(0.45, "rgba(201, 168, 76, 0.03)");
-        sheen.addColorStop(1, "rgba(201, 168, 76, 0)");
+        sheen.addColorStop(0, "rgba(232, 201, 122, 0.24)");
+        sheen.addColorStop(0.4, "rgba(201, 168, 76, 0.07)");
+        sheen.addColorStop(1, "rgba(201, 168, 76, 0.015)");
         ctx.fillStyle = sheen;
         ctx.fill();
 
