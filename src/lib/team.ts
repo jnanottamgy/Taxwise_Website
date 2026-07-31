@@ -8,24 +8,27 @@
  * "Associate Chartered Accountant" are not interchangeable, and neither is
  * FCA.
  *
- * Order follows the firm's own published order rather than seniority or title,
- * because the source page carried no titles to rank by.
+ * All four are partners - the practice is a partnership, not one accountant's
+ * firm. Order follows the firm's own published order rather than seniority.
  */
 
 export type Member = {
   name: string;
+  /** Every one of them is a partner; the firm is a partnership. */
+  role: string;
   /** As the firm states it. Not embellished. */
   credential: string;
   /** The disciplines this person actually works in. */
   focus: string;
   bio: string;
-  /** 400×400 duotone portrait in /public/team. */
+  /** 448×448 portrait in /public/team. */
   photo: string;
 };
 
 export const team: readonly Member[] = [
   {
     name: "Shabari K J",
+    role: "Partner",
     credential: "M.Com",
     focus: "Operations · Human resources · Finance",
     bio: "Twenty years of professional experience across operational management, human resources and finance. Shabari manages the functions that keep an engagement moving on time, and the practice running behind them.",
@@ -33,6 +36,7 @@ export const team: readonly Member[] = [
   },
   {
     name: "Vinay Karlagere",
+    role: "Partner",
     credential: "Chartered Accountant",
     focus: "Income tax · Statutory and internal audit · Private equity",
     bio: "A qualified chartered accountant working on income tax matters, statutory and internal audits, and private equity investments, with a record of holding companies, partnership firms, trusts and individuals to their corporate law obligations. Holds a postgraduate degree in Investment and Risk Finance from the University of Westminster, London.",
@@ -40,6 +44,7 @@ export const team: readonly Member[] = [
   },
   {
     name: "Akshay R. Jain",
+    role: "Partner",
     credential: "Associate Chartered Accountant",
     focus: "Tax audit · Accounting · Company law",
     bio: "Significant experience in tax audit and accounting, gained at Big Four firms and multinational corporations. Handles income tax matters, statutory and internal audits, private equity investments, and company law compliance for companies, partnerships, trusts and individuals.",
@@ -47,6 +52,7 @@ export const team: readonly Member[] = [
   },
   {
     name: "Vagdev M R",
+    role: "Partner",
     credential: "Finance and accounts",
     focus: "Income tax · GST · TDS compliance",
     bio: "Over five years across income tax, GST and TDS compliance. His work on TDS covers accurate deduction and remittance within the statutory window — the obligation that attracts interest fastest when it slips — alongside experience on the operations side.",
@@ -56,7 +62,7 @@ export const team: readonly Member[] = [
 
 export const teamIntro = {
   label: "The team",
-  headline: "The people who will actually do the work.",
+  headline: "The partners who will actually do the work.",
   standfirst:
-    "A small practice means the person you meet is the person on your file. These are the four of them, what they are qualified in, and what they handle.",
+    "The firm is a partnership, and the person you meet is the person on your file. These are the four of them, what they are qualified in, and what they handle.",
 } as const;

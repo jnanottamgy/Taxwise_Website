@@ -1,5 +1,6 @@
 import { firm } from "./content";
 import { services } from "./services";
+import { team } from "./team";
 
 /**
  * Structured data for the practice. AccountingService is the most specific
@@ -15,8 +16,8 @@ export function organizationJsonLd() {
     description:
       "Chartered accountancy practice in Bangalore providing audit, taxation, GST, accounting, business advisory, ROC compliance and startup advisory services.",
     url: firm.url,
-    email: firm.emailPartner,
-    telephone: firm.phonePartner,
+    email: firm.email,
+    telephone: firm.phone,
     foundingDate: firm.founded,
     priceRange: "$$",
     currenciesAccepted: "INR",
@@ -35,18 +36,19 @@ export function organizationJsonLd() {
       longitude: firm.coords.lng,
     },
     hasMap: firm.mapsUrl,
-    founder: {
+    // A partnership, so the practice has members rather than a founder.
+    member: team.map((partner) => ({
       "@type": "Person",
-      name: firm.managingPartner,
-      jobTitle: firm.managingPartnerTitle,
-      worksFor: { "@id": `${firm.url}/#practice` },
-    },
+      name: partner.name,
+      jobTitle: partner.role,
+      memberOf: { "@id": `${firm.url}/#practice` },
+    })),
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: firm.phonePartner,
+        telephone: firm.phone,
         contactType: "customer service",
-        email: firm.emailPartner,
+        email: firm.email,
         areaServed: "IN",
         availableLanguage: ["en", "hi", "kn"],
       },

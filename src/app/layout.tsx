@@ -28,7 +28,7 @@ const plexMono = IBM_Plex_Mono({
 
 const title = `${firm.name} — Chartered Accountants, ${firm.city}`;
 const description =
-  "A chartered accountancy practice in Bangalore handling audit, taxation, GST and compliance for founders, family offices and companies. Led by HK Vinay.";
+  "A partnership of chartered accountants in Bangalore handling audit, taxation, GST and compliance for founders, family offices and companies.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(firm.url),
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     "startup advisory India",
     "TaxWise Consultants",
   ],
-  authors: [{ name: firm.managingPartner }],
+  authors: [{ name: firm.name }],
   creator: firm.name,
   publisher: firm.name,
   alternates: { canonical: "/" },

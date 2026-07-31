@@ -43,30 +43,19 @@ export default function Footer() {
             ))}
           </nav>
 
+          {/* Office line and office address only — no personal contacts. */}
           <div className="flex flex-col gap-3 text-sm">
             <a
-              href={`tel:${firm.phonePartner}`}
-              className="text-paper-64 transition-colors duration-300 hover:text-paper"
+              href={`tel:${firm.phone}`}
+              className="text-paper-64 transition-colors duration-300 hover:text-gold-lit"
             >
-              {displayPhone(firm.phonePartner)}
+              {displayPhone(firm.phone)}
             </a>
             <a
-              href={`tel:${firm.phoneFirm}`}
-              className="text-paper-64 transition-colors duration-300 hover:text-paper"
+              href={`mailto:${firm.email}`}
+              className="text-paper-64 transition-colors duration-300 hover:text-gold-lit"
             >
-              {displayPhone(firm.phoneFirm)}
-            </a>
-            <a
-              href={`mailto:${firm.emailPartner}`}
-              className="text-paper-64 transition-colors duration-300 hover:text-paper"
-            >
-              {firm.emailPartner}
-            </a>
-            <a
-              href={`mailto:${firm.emailFirm}`}
-              className="text-paper-64 transition-colors duration-300 hover:text-paper"
-            >
-              {firm.emailFirm}
+              {firm.email}
             </a>
           </div>
         </div>
@@ -76,7 +65,7 @@ export default function Footer() {
             © {year} {firm.name}
           </p>
           <p className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-mist">
-            {firm.managingPartner}, {firm.managingPartnerTitle}
+            {firm.constitution} firm · Established {firm.founded}
           </p>
         </div>
       </Container>

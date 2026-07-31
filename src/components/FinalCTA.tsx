@@ -2,21 +2,16 @@ import { finalCta, firm, whatsappUrl, displayPhone } from "@/lib/content";
 import { Container, Label } from "./Section";
 import { Reveal, DrawRule } from "./Reveal";
 
+/** The office, four ways. No personal numbers or addresses anywhere. */
 const channels = [
   {
-    label: "Speak to HK Vinay",
-    value: displayPhone(firm.phonePartner),
-    href: `tel:${firm.phonePartner}`,
+    label: "Office line",
+    value: displayPhone(firm.phone),
+    href: `tel:${firm.phone}`,
     external: false,
   },
   { label: "WhatsApp", value: "Start a conversation", href: whatsappUrl, external: true },
-  { label: "Email", value: firm.emailPartner, href: `mailto:${firm.emailPartner}`, external: false },
-  {
-    label: "Office line",
-    value: displayPhone(firm.phoneFirm),
-    href: `tel:${firm.phoneFirm}`,
-    external: false,
-  },
+  { label: "Email", value: firm.email, href: `mailto:${firm.email}`, external: false },
   {
     label: "Office",
     value: `${firm.address.street}, ${firm.address.locality}`,

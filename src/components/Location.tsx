@@ -97,10 +97,10 @@ export default function Location() {
             </Detail>
             <Detail term="Telephone">
               <a
-                href={`tel:${firm.phoneFirm}`}
+                href={`tel:${firm.phone}`}
                 className="transition-colors duration-300 hover:text-gold-lit"
               >
-                {displayPhone(firm.phoneFirm)}
+                {displayPhone(firm.phone)}
               </a>
             </Detail>
           </dl>

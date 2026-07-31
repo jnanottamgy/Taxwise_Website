@@ -3,13 +3,19 @@
  * Firm details are taken from the practice's existing published contact card.
  */
 
+/**
+ * The practice is a partnership, not one accountant's firm. There is
+ * deliberately no `managingPartner` field and no personal contact detail here:
+ * the site carries the office line and the office address only, and the people
+ * are introduced as partners in `team.ts`. Removing the fields rather than
+ * blanking them means nothing can quietly reference them again.
+ */
 export const firm = {
   name: "TaxWise Consultants",
   legalName: "TaxWise Consultants",
   descriptor: "Chartered Accountants",
+  constitution: "Partnership",
   city: "Bangalore",
-  managingPartner: "HK Vinay",
-  managingPartnerTitle: "Managing Partner",
   founded: "2015",
   url: "https://twchartered.com",
   address: {
@@ -20,10 +26,9 @@ export const firm = {
     postalCode: "560080",
     country: "IN",
   },
-  phonePartner: "+919590360434",
-  phoneFirm: "+919740540239",
-  emailPartner: "cavinaykarlagere@twchartered.com",
-  emailFirm: "taxxwiseconsultants@gmail.com",
+  /** The office line and the office address. No personal numbers. */
+  phone: "+919740540239",
+  email: "taxxwiseconsultants@gmail.com",
   mapsUrl:
     "https://maps.google.com/?q=307+1st+Floor+14th+Main+Road+RMV+Extension+Sadhashivnagar+Bangalore",
   /** Taken from the map embed on the firm's existing site. */
@@ -51,7 +56,7 @@ export const location = {
     "The office is in RMV Extension, off 14th Main. Most first meetings happen here; if it is easier, we come to you.",
 } as const;
 
-export const whatsappUrl = `https://wa.me/${firm.phonePartner.replace(
+export const whatsappUrl = `https://wa.me/${firm.phone.replace(
   "+",
   ""
 )}?text=${encodeURIComponent(
@@ -176,15 +181,15 @@ export const about = {
   label: "The firm",
   headline: "A practice built on being right the first time.",
   body: [
-    `${firm.name} is a chartered accountancy practice in ${firm.city}, led by ${firm.managingPartner}, ${firm.managingPartnerTitle}. We have advised more than five hundred individuals and businesses over the past decade.`,
-    "We are deliberately small. Every engagement is handled by a qualified chartered accountant who knows your file, so you are never explaining your own business back to a new associate.",
+    `${firm.name} is a chartered accountancy practice in ${firm.city}, run as a partnership. We have advised more than five hundred individuals and businesses over the past decade.`,
+    "We are deliberately small. Every engagement is handled by a partner who knows your file, so you are never explaining your own business back to a new associate.",
     "The work is unglamorous and exact: a return that withstands scrutiny, a set of books that closes on time, a structure that still makes sense three years from now. That is what we are for.",
   ],
   credentials: [
     { label: "Institute", value: "ICAI member firm" },
     { label: "Practice since", value: "2015" },
     { label: "Office", value: "RMV Extension, Bangalore" },
-    { label: "Engagement lead", value: `${firm.managingPartner}, FCA` },
+    { label: "Constitution", value: "Partnership firm" },
   ],
 } as const;
 

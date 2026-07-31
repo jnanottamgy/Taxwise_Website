@@ -61,12 +61,12 @@ export default function About() {
                   ))}
                 </dl>
                 <p className="mt-8 text-[0.9375rem] leading-[1.7] text-slate">
-                  {firm.managingPartner} leads every engagement personally. You can reach him on{" "}
+                  Every engagement is led by a partner. You can reach the office on{" "}
                   <a
-                    href={`tel:${firm.phonePartner}`}
+                    href={`tel:${firm.phone}`}
                     className="text-ink underline decoration-ink/25 underline-offset-4 transition-colors hover:decoration-ink"
                   >
-                    {displayPhone(firm.phonePartner)}
+                    {displayPhone(firm.phone)}
                   </a>
                   .
                 </p>

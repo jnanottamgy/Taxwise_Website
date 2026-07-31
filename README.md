@@ -1,7 +1,12 @@
 # TaxWise Consultants
 
 Marketing site for TaxWise Consultants, a chartered accountancy practice in
-Bangalore led by HK Vinay.
+Bangalore, run as a partnership of four.
+
+**The site carries office contact details only** — the office line and the
+office email, no personal numbers or addresses. `src/lib/content.ts` has no
+field for a personal contact, which is the point: they were removed rather than
+blanked, so nothing can reference one again without adding it back deliberately.
 
 ## Running it
 
@@ -268,4 +273,5 @@ Also:
   behind.
 - **Set the canonical domain.** `firm.url` in `src/lib/content.ts` is
   `https://twchartered.com`; it drives metadata, sitemap and structured data.
-- Confirm the ICAI membership wording and the FCA designation in `about`.
+- Confirm the ICAI membership wording in `about`, and that naming all four
+  partners as partners is how the firm wants to present its constitution.

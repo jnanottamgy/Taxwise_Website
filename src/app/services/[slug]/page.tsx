@@ -227,7 +227,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     id="engage-heading"
                     className="max-w-[18ch] font-display text-[clamp(2.25rem,5vw,4rem)] leading-[0.98] tracking-[-0.025em] text-paper"
                   >
-                    Talk to {firm.managingPartner} about {service.name.toLowerCase()}.
+                    Talk to a partner about {service.name.toLowerCase()}.
                   </h2>
                   <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-[1.7] text-paper-80">
                     A first conversation costs nothing and usually takes twenty minutes. Bring your
@@ -243,10 +243,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       Book a consultation
                     </a>
                     <a
-                      href={`tel:${firm.phonePartner}`}
-                      className="rounded-full border border-paper-12 px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-paper-40 hover:bg-paper-06"
+                      href={`tel:${firm.phone}`}
+                      className="rounded-full border border-paper-12 px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold hover:text-gold-lit"
                     >
-                      {displayPhone(firm.phonePartner)}
+                      {displayPhone(firm.phone)}
                     </a>
                   </div>
                 </Reveal>

@@ -53,6 +53,8 @@ export default function Team() {
                 {member.name}
               </h3>
               <p className="mt-3 font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.16em] text-mist">
+                <span className="text-gold">{member.role}</span>
+                <span aria-hidden="true"> · </span>
                 {member.credential}
               </p>
 
