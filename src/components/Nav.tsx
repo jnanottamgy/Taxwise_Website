@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   AnimatePresence,
@@ -10,6 +10,7 @@ import {
   useSpring,
 } from "framer-motion";
 import { firm, nav, whatsappUrl } from "@/lib/content";
+import { setScrollLocked } from "@/lib/smooth-scroll";
 import { Container } from "./Section";
 import Mark from "./Mark";
 import Magnetic from "./Magnetic";
@@ -43,6 +44,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
+  const toggleRef = useRef<HTMLButtonElement | null>(null);
   const reduce = useReducedMotion();
   const pathname = usePathname();
 
@@ -79,16 +81,27 @@ export default function Nav() {
     return () => io.disconnect();
   }, [pathname]);
 
-  // Close the panel on Escape, and lock the page behind it
+  // Close the panel on Escape, and lock the page behind it. Lenis drives the
+  // scroll itself, so `overflow: hidden` alone leaves the page scrolling
+  // behind the open panel — it has to be stopped directly.
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      // The panel unmounts on close; without this, focus inside it is
+      // destroyed with it and falls to <body>, so the next Tab restarts from
+      // the top of the document.
+      toggleRef.current?.focus();
+    };
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    setScrollLocked(true);
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
+      setScrollLocked(false);
     };
   }, [open]);
 
@@ -119,7 +132,7 @@ export default function Nav() {
           >
             <Wordmark />
 
-            <nav aria-label="Primary" className="hidden items-center gap-9 md:flex">
+            <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
               {nav.map((item) => {
                 const id = item.href.split("#")[1];
                 const isActive = active === id;
@@ -150,11 +163,12 @@ export default function Nav() {
             </nav>
 
             <button
+              ref={toggleRef}
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="mobile-nav"
-              className="-mr-2 flex h-11 w-11 items-center justify-center rounded-sm md:hidden"
+              className="-mr-2 flex h-11 w-11 items-center justify-center rounded-sm lg:hidden"
             >
               <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
               <span aria-hidden="true" className="relative block h-3 w-6">
@@ -181,7 +195,7 @@ export default function Nav() {
               animate={{ height: "auto", opacity: 1 }}
               exit={reduce ? undefined : { height: 0, opacity: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border-t border-paper-12 md:hidden"
+              className="overflow-hidden border-t border-paper-12 lg:hidden"
             >
               <Container>
                 <nav aria-label="Primary" className="flex flex-col py-6">

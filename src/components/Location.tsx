@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   firm,
   location,
@@ -56,6 +56,14 @@ function Detail({ term, children }: { term: string; children: React.ReactNode })
 
 export default function Location() {
   const [showMap, setShowMap] = useState(false);
+  const frameRef = useRef<HTMLDivElement | null>(null);
+
+  // Pressing "Show map" unmounts the button it was pressed with. Without
+  // moving focus onto what replaced it, focus falls to <body> and the next
+  // Tab restarts from the top of the document.
+  useEffect(() => {
+    if (showMap) frameRef.current?.focus();
+  }, [showMap]);
 
   return (
     <Section
@@ -126,7 +134,11 @@ export default function Location() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="relative aspect-[4/3] w-full overflow-hidden border border-paper-12 sm:aspect-[16/10]">
+          <div
+            ref={frameRef}
+            tabIndex={showMap ? -1 : undefined}
+            className="relative aspect-[4/3] w-full overflow-hidden border border-paper-12 sm:aspect-[16/10]"
+          >
             {showMap ? (
               <>
                 <iframe

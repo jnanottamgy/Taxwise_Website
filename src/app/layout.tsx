@@ -88,6 +88,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <body className="bg-ink text-paper antialiased">
+        {/* Marks the document as scripted before the body is parsed, so the
+            scroll-reveal styles only hide content that JavaScript can later
+            reveal. Without it, a reader with JavaScript off sees the hero and
+            then a blank page. Inline and synchronous on purpose: it has to
+            win the race against the first paint of anything below. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js')`,
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[100] focus:rounded-sm focus:bg-paper focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-[0.18em] focus:text-ink"
