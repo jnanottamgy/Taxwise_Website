@@ -4,7 +4,7 @@ import { team } from "./team";
 
 /**
  * Structured data for the practice. AccountingService is the most specific
- * schema.org type that fits a chartered accountancy firm.
+ * schema.org type that fits a tax and accounting practice.
  */
 export function organizationJsonLd() {
   return {
@@ -14,7 +14,7 @@ export function organizationJsonLd() {
     name: firm.name,
     legalName: firm.legalName,
     description:
-      "Chartered accountancy practice in Bangalore providing audit, taxation, GST, accounting, business advisory, ROC compliance and startup advisory services.",
+      "Tax consultancy firm in Bangalore providing taxation, GST, accounting, business advisory, ROC compliance and startup advisory services.",
     url: firm.url,
     email: firm.email,
     telephone: firm.phone,

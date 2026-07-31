@@ -1,7 +1,7 @@
 # TaxWise Consultants
 
-Marketing site for TaxWise Consultants, a chartered accountancy practice in
-Bangalore, run as a partnership of four.
+Marketing site for TaxWise Consultants, a tax consultancy firm in Bangalore,
+run as a partnership of four.
 
 **The site carries office contact details only** — the office line and the
 office email, no personal numbers or addresses. `src/lib/content.ts` has no
@@ -264,7 +264,7 @@ qualify and `paper-64` is used instead.
 
 ## Before launch
 
-**The professional content needs a chartered accountant's sign-off.** The
+**The professional content needs a qualified professional's sign-off.** The
 service pages and the calendar name specific sections, forms, thresholds and
 dates — section 44AB thresholds, GSTR filing days, AOC-4 and MGT-7 windows,
 section 56(2)(viib), FC-GPR and FLA timing. These are the standard positions,

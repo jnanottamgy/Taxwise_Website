@@ -28,9 +28,9 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
 });
 
-const title = `${firm.name} — Chartered Accountants, ${firm.city}`;
+const title = `${firm.name} — ${firm.descriptor}, ${firm.city}`;
 const description =
-  "A partnership of chartered accountants in Bangalore handling audit, taxation, GST and compliance for founders, family offices and companies.";
+  "A tax consultancy partnership in Bangalore handling taxation, GST, accounting and compliance for founders, family offices and companies.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(firm.url),
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   description,
   keywords: [
-    "chartered accountant Bangalore",
+    "tax consultancy firm Bangalore",
     "tax consultant Bangalore",
     "GST filing Bangalore",
     "statutory audit",

@@ -13,7 +13,7 @@
 export const firm = {
   name: "TaxWise Consultants",
   legalName: "TaxWise Consultants",
-  descriptor: "Chartered Accountants",
+  descriptor: "Tax Consultancy Firm",
   constitution: "Partnership",
   city: "Bangalore",
   founded: "2015",
@@ -70,11 +70,11 @@ export function displayPhone(e164: string) {
 }
 
 export const hero = {
-  eyebrow: "Chartered Accountants · Bangalore",
+  eyebrow: "Tax Consultancy Firm · Bangalore",
   headlineLead: "Where strategy",
   headlineEmphasis: "meets certainty.",
   standfirst:
-    "TaxWise Consultants is a chartered accountancy practice in Bangalore. We handle audit, tax and compliance for founders, family offices and companies that cannot afford to get it wrong.",
+    "TaxWise Consultants is a tax consultancy firm in Bangalore. We handle tax, accounting and compliance for founders, family offices and companies that cannot afford to get it wrong.",
   primaryCta: "Book a consultation",
   secondaryCta: "Explore services",
 } as const;
@@ -94,7 +94,7 @@ export const why = [
   {
     figure: "1",
     unit: "partner on every file",
-    body: "Your engagement is run by a chartered accountant who knows it, from the first call to the final filing. Nothing is passed down to an associate you have never met.",
+    body: "Your engagement is run by a partner who knows it, from the first call to the final filing. Nothing is passed down to an associate you have never met.",
   },
   {
     figure: "8",
@@ -181,12 +181,12 @@ export const about = {
   label: "The firm",
   headline: "A practice built on being right the first time.",
   body: [
-    `${firm.name} is a chartered accountancy practice in ${firm.city}, run as a partnership. We have advised more than five hundred individuals and businesses over the past decade.`,
+    `${firm.name} is a tax consultancy firm in ${firm.city}, run as a partnership. We have advised more than five hundred individuals and businesses over the past decade.`,
     "We are deliberately small. Every engagement is handled by a partner who knows your file, so you are never explaining your own business back to a new associate.",
     "The work is unglamorous and exact: a return that withstands scrutiny, a set of books that closes on time, a structure that still makes sense three years from now. That is what we are for.",
   ],
   credentials: [
-    { label: "Institute", value: "ICAI member firm" },
+    { label: "Practice", value: "Tax consultancy" },
     { label: "Practice since", value: "2015" },
     { label: "Office", value: "RMV Extension, Bangalore" },
     { label: "Constitution", value: "Partnership firm" },
