@@ -199,11 +199,17 @@ export const finalCta = {
   body: "A first consultation is a conversation about your position and what it will cost you to get it wrong. No charge, no obligation.",
 } as const;
 
-/** Root-relative so the same nav works from a service page as from home. */
+/**
+ * Root-relative so the same nav works from a service page as from home.
+ *
+ * The order follows the order the sections appear on the page, so the
+ * scrollspy underline travels left to right as you read rather than jumping
+ * back and forth.
+ */
 export const nav = [
   { label: "Services", href: "/#services" },
-  { label: "Calendar", href: "/#calendar" },
   { label: "Approach", href: "/#process" },
+  { label: "Calendar", href: "/#calendar" },
   { label: "Firm", href: "/#about" },
   { label: "Team", href: "/#team" },
   { label: "Contact", href: "/#contact" },
