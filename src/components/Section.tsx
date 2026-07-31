@@ -1,6 +1,30 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 
+/**
+ * The marginal label, with the gold tick that marks the start of a section.
+ * Every section label on the site renders through this, so the accent repeats
+ * on a fixed rhythm down the page instead of being applied by hand.
+ */
+export function Label({
+  children,
+  id,
+  className = "",
+  as: Tag = "p",
+}: {
+  children: ReactNode;
+  id?: string;
+  className?: string;
+  as?: "p" | "h2";
+}) {
+  return (
+    <Tag id={id} className={`label flex items-center gap-3 ${className}`}>
+      <span aria-hidden="true" className="inline-block h-px w-6 shrink-0 bg-gold" />
+      {children}
+    </Tag>
+  );
+}
+
 export function Container({
   children,
   className = "",
@@ -45,9 +69,7 @@ export function Section({
         <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 lg:grid-cols-[13rem_minmax(0,1fr)]">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <Reveal>
-              <p id={`${id}-label`} className="label">
-                {label}
-              </p>
+              <Label id={`${id}-label`}>{label}</Label>
               {aside ? <div className="mt-8 hidden lg:block">{aside}</div> : null}
             </Reveal>
           </div>

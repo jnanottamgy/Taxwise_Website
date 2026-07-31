@@ -1,5 +1,5 @@
 import { finalCta, firm, whatsappUrl, displayPhone } from "@/lib/content";
-import { Container } from "./Section";
+import { Container, Label } from "./Section";
 import { Reveal, DrawRule } from "./Reveal";
 
 const channels = [
@@ -45,7 +45,7 @@ export default function FinalCTA() {
       <Container>
         <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-16 lg:grid-cols-[13rem_minmax(0,1fr)]">
           <Reveal>
-            <p className="label">{finalCta.label}</p>
+            <Label>{finalCta.label}</Label>
           </Reveal>
 
           <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">

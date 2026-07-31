@@ -4,7 +4,7 @@ import { services, getService } from "@/lib/services";
 import { firm, whatsappUrl, displayPhone } from "@/lib/content";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { Container } from "@/components/Section";
+import { Container, Label } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import LightCard from "@/components/LightCard";
 
@@ -100,9 +100,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <section aria-labelledby="audience-heading" className="border-b border-paper-12 py-16">
           <Container>
             <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-6 lg:grid-cols-[13rem_minmax(0,1fr)]">
-              <h2 id="audience-heading" className="label">
+              <Label as="h2" id="audience-heading">
                 Who it is for
-              </h2>
+              </Label>
               <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
                 <p className="max-w-[58ch] text-[1.0625rem] leading-[1.7] text-paper-80">
                   {service.audience}
@@ -121,9 +121,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 lg:grid-cols-[13rem_minmax(0,1fr)]">
               <div className="lg:sticky lg:top-32 lg:self-start">
                 <Reveal>
-                  <h2 id="covers-heading" className="label">
+                  <Label as="h2" id="covers-heading">
                     What it covers
-                  </h2>
+                  </Label>
                 </Reveal>
               </div>
 
@@ -219,7 +219,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <Container>
             <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-10 lg:grid-cols-[13rem_minmax(0,1fr)]">
               <Reveal>
-                <p className="label">Engage us</p>
+                <Label>Engage us</Label>
               </Reveal>
               <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
                 <Reveal>
@@ -258,9 +258,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         {/* ── The other disciplines ────────────────────────────────── */}
         <section aria-labelledby="others-heading" className="border-t border-paper-12 py-20">
           <Container>
-            <h2 id="others-heading" className="label">
+            <Label as="h2" id="others-heading">
               The other disciplines
-            </h2>
+            </Label>
             <ul className="mt-10 grid gap-px bg-paper-12 sm:grid-cols-2 lg:grid-cols-3">
               {others.map((other) => (
                 <li key={other.slug}>

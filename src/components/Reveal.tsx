@@ -100,7 +100,7 @@ export function DrawRule({ className = "", delay = 0 }: { className?: string; de
     <div
       ref={ref as never}
       data-draw-rule=""
-      className={`h-px w-full origin-left bg-paper-12 ${className}`}
+      className={`h-px w-full origin-left bg-gold/45 ${className}`}
       style={{ "--reveal-delay": `${delay}s` } as React.CSSProperties}
     />
   );

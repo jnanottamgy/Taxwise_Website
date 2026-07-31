@@ -42,10 +42,13 @@ export default function Calendar() {
         {monthly.map((item, i) => (
           <Reveal key={item.form} delay={(i % 3) * 0.05} as="li" className="h-full">
             <LightCard className="flex h-full gap-6 bg-ink p-7 hover:bg-ink-2/40">
+              {/* The dates carry the gold. This section is the firm's whole
+                  argument — the dates it keeps — so it is the one place a
+                  figure itself is worth the accent, not just its glyph. */}
               <span
                 data-figure
                 aria-hidden="true"
-                className="shrink-0 font-display text-[2.75rem] leading-[0.8] text-paper"
+                className="shrink-0 font-display text-[2.75rem] leading-[0.8] text-gold"
               >
                 {item.day}
               </span>
@@ -88,7 +91,7 @@ export default function Calendar() {
                   >
                     <dt
                       data-figure
-                      className="shrink-0 font-mono text-[0.6875rem] tracking-[0.14em] text-mist sm:w-8"
+                      className="shrink-0 font-mono text-[0.6875rem] tracking-[0.14em] text-gold sm:w-8"
                     >
                       {entry.date}
                     </dt>

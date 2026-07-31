@@ -32,11 +32,28 @@ whole site is statically prerendered.
 | `gold-lit` | `#E8C97A` | lit and hover states — 10.74:1 on ink |
 
 The gold carries over from the firm's previous identity, and it is the only warm
-thing on the page. It is spent in four places and nowhere else: the core of the
-light raking across the hero, the rule beside the hero eyebrow, the glyphs
-attached to the figures — the rupee sign, the plus, the per-cent, never the
-digits — and the timeline that draws itself across the approach section as you
-scroll. Restraint is the point; a fifth use would start to look like decoration.
+thing on the page. Every use is a **mark, a rule or a figure** — never body
+copy, never a heading, never a background:
+
+| Where | What |
+|---|---|
+| Section labels | The tick before every label, via `Label` in `Section.tsx` |
+| Hero | The core of the raking light, and the rule beside the eyebrow |
+| Hero figures | The glyphs only — `₹`, `+`, `%` — never the digits |
+| Calendar | The dates themselves, monthly and annual |
+| Approach | The timeline that draws itself as you scroll |
+| Contact | The rule that draws in above the channel list |
+| Clients | The rule above each quote |
+| Cards | The specular catch along the top edge of a lit card |
+| Hover | Nav links, card arrows, the directions button |
+| Selection | `::selection` |
+
+The calendar is the one place a whole figure is gold rather than just its glyph.
+That section is the firm's entire argument — the dates it keeps — so the dates
+get the accent.
+
+Section labels all render through `Label`, so the tick repeats on a fixed rhythm
+down the page rather than being applied by hand and drifting out of sync.
 
 **Gold never touches the light section.** It measures 7.55:1 on ink but only
 2.08:1 on `paper`, so `About` stays strictly ink-on-paper.

@@ -74,7 +74,7 @@ export default function Nav() {
               <a
                 key={item.href}
                 href={item.href}
-                className="relative rounded-sm py-1 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper-64 transition-colors duration-300 hover:text-paper"
+                className="relative rounded-sm py-1 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper-64 transition-colors duration-300 hover:text-gold-lit"
               >
                 {item.label}
               </a>

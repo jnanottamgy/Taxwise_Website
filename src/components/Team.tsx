@@ -1,5 +1,5 @@
 import { team, teamIntro } from "@/lib/team";
-import { Container } from "./Section";
+import { Container, Label } from "./Section";
 import { Reveal } from "./Reveal";
 
 /**
@@ -24,7 +24,7 @@ export default function Team() {
     >
       <Container>
         <Reveal>
-          <p className="label">{teamIntro.label}</p>
+          <Label>{teamIntro.label}</Label>
           <h2
             id="team-heading"
             className="mt-8 max-w-[20ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-paper"

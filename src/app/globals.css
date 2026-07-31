@@ -77,7 +77,7 @@
   }
 
   ::selection {
-    background-color: var(--color-mist);
+    background-color: var(--color-gold);
     color: var(--color-ink);
   }
 
@@ -172,7 +172,8 @@
   );
 }
 
-/* A single specular edge along the top — the glass catch */
+/* A single specular edge along the top — the glass catch. Warm, because the
+   light in this room is warm. */
 [data-lightcard]::after {
   inset-inline: 0;
   top: 0;
@@ -180,8 +181,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(245, 244, 242, 0.34) 35%,
-    rgba(245, 244, 242, 0.34) 65%,
+    rgba(201, 168, 76, 0.55) 35%,
+    rgba(201, 168, 76, 0.55) 65%,
     transparent
   );
 }
