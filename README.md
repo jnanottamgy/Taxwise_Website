@@ -51,18 +51,22 @@ that is the only content where order is information.
 dark page it reads as a room with the blinds opened, which is the right feeling
 for the part that explains who you are hiring.
 
-**The portraits.** The four team photographs came from the firm's existing site
+**The portraits.** The four team photographs came from the firm's existing site,
 shot on four unrelated backgrounds — foliage, two white studio backdrops, a grey
-wall. Dropped onto the ink ground as-is they read as four unrelated pictures, so
-they are mapped through a duotone built from the site's own palette: `ink` in the
-shadows, `slate` at the midpoint, and a light navy at the top. The highlight
-deliberately stops short of `paper` — taken all the way, the two studio backdrops
-render as glaring white blocks and the set stops reading as a set.
+wall. They run in their own colour, cropped square on the subject and masked to
+a circle: the circle keeps the frame tight on the face and throws away the
+corners, which is where most of that variation lived. The crop overscans ~8% on
+every edge, because two of the sources carry a border artifact that otherwise
+clips the rim.
 
-The sources are 270×270; the shipped files are 400×400 WebP at 7–12KB each.
-`scripts/duotone-portraits.mjs` regenerates them if the firm supplies new
+The sources are 270×270; the shipped files are 448×448 WebP at 13–19KB each.
+`scripts/build-portraits.mjs` regenerates them if the firm supplies new
 photographs — it needs `sharp`, which is deliberately not a project dependency
 since it is only wanted when the pictures change.
+
+Team is also the one section that steps outside the marginal-label spine and
+runs the full container width. Four people read as a line-up, and a line-up
+wants room.
 
 **The mark.** A shield carrying a TW monogram, supplied as `taxwise.svg` on a
 1920×1080 artboard of which the artwork occupied 327×366 — the rest was empty.

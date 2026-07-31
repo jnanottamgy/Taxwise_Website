@@ -1,75 +1,74 @@
 import { team, teamIntro } from "@/lib/team";
-import { Section, Heading, Standfirst } from "./Section";
+import { Container } from "./Section";
 import { Reveal } from "./Reveal";
 
 /**
- * The team, set as ruled rows rather than a card grid.
+ * The team.
  *
- * The four portraits arrived shot on four different backgrounds — foliage, two
- * white studio backdrops, a grey wall. Blown up into a four-across card grid
- * they read as four unrelated pictures; kept to a modest square beside the
- * type, on a duotone mapped to the site's own palette, they read as a set.
- * The structure is the same one `Why` uses, which is the right precedent: a
- * fixed-width column on the left, prose on the right, hairline between rows.
+ * This is the one section that steps outside the page's marginal-label spine
+ * and runs the full width of the container. Four people read as a line-up, and
+ * a line-up wants room — squeezed into the narrow column they stack into
+ * something you scroll past. It also gives the page a change of pace at the
+ * point where it stops describing the practice and starts introducing it.
  *
- * Plain <img> rather than next/image: these are fixed 160px squares already
- * encoded at 400px WebP and 7-12KB each, so an optimisation round-trip would
- * cost more than it saves. Width and height are set, so CLS stays at zero.
+ * Portraits are circular. The four sources were shot on four unrelated
+ * backgrounds, and a circle crops tight to the face and throws away the
+ * corners, which is where most of that variation lived.
  */
 export default function Team() {
   return (
-    <Section
+    <section
       id="team"
-      label={teamIntro.label}
-      labelledBy="team-heading"
-      aside={
-        <p className="max-w-[22ch] text-sm leading-relaxed text-paper-64">
-          Four people. No account managers between you and them.
-        </p>
-      }
+      aria-labelledby="team-heading"
+      className="border-t border-paper-12 py-[var(--spacing-section)]"
     >
-      <Reveal>
-        <Heading id="team-heading">{teamIntro.headline}</Heading>
-        <Standfirst>{teamIntro.standfirst}</Standfirst>
-      </Reveal>
-
-      <ul className="mt-20 grid gap-x-16 gap-y-px sm:grid-cols-2">
-        {team.map((member, i) => (
-          <Reveal
-            key={member.name}
-            delay={(i % 2) * 0.08}
-            as="li"
-            className="flex flex-col gap-6 border-t border-paper-12 py-10 sm:flex-row sm:gap-8"
+      <Container>
+        <Reveal>
+          <p className="label">{teamIntro.label}</p>
+          <h2
+            id="team-heading"
+            className="mt-8 max-w-[20ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-paper"
           >
-            <img
-              src={member.photo}
-              alt={`${member.name}, ${member.credential}`}
-              width={400}
-              height={400}
-              loading="lazy"
-              decoding="async"
-              className="h-32 w-32 shrink-0 object-cover object-top sm:h-40 sm:w-40"
-            />
-            {/* The bios differ in length, so the focus line is pushed to the
-                foot of the row — otherwise it floats at a different height in
-                each cell and the grid stops looking like a grid. */}
-            <div className="flex flex-1 flex-col">
-              <h3 className="font-display text-[1.5rem] leading-none text-paper">
+            {teamIntro.headline}
+          </h2>
+          <p className="mt-8 max-w-[52ch] text-[clamp(1rem,1.4vw,1.1875rem)] leading-[1.65] text-paper-80">
+            {teamIntro.standfirst}
+          </p>
+        </Reveal>
+
+        <ul className="mt-24 grid gap-x-12 gap-y-20 sm:grid-cols-2 lg:grid-cols-4">
+          {team.map((member, i) => (
+            <Reveal key={member.name} delay={(i % 4) * 0.07} as="li" className="group flex flex-col">
+              <img
+                src={member.photo}
+                alt={member.name}
+                width={448}
+                height={448}
+                loading="lazy"
+                decoding="async"
+                className="h-[9.5rem] w-[9.5rem] rounded-full object-cover shadow-[0_0_0_1px_rgba(245,244,242,0.14)] transition-shadow duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:shadow-[0_0_0_1px_rgba(245,244,242,0.4)]"
+              />
+
+              <h3 className="mt-9 font-display text-[1.5rem] leading-none text-paper">
                 {member.name}
               </h3>
-              <p className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-mist">
+              <p className="mt-3 font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.16em] text-mist">
                 {member.credential}
               </p>
-              <p className="mt-4 mb-8 max-w-[42ch] text-[0.9375rem] leading-[1.75] text-paper-80">
+
+              <p className="mt-6 mb-8 text-[0.9375rem] leading-[1.75] text-paper-80">
                 {member.bio}
               </p>
+
+              {/* Pinned to the foot so the four rules line up across the row
+                  even though the biographies are different lengths. */}
               <p className="mt-auto border-t border-paper-12 pt-4 font-mono text-[0.625rem] uppercase leading-[1.7] tracking-[0.12em] text-paper-64">
                 {member.focus}
               </p>
-            </div>
-          </Reveal>
-        ))}
-      </ul>
-    </Section>
+            </Reveal>
+          ))}
+        </ul>
+      </Container>
+    </section>
   );
 }
