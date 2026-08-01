@@ -32,8 +32,50 @@ export default function SmoothScroll() {
     });
     registerLenis(lenis);
 
+    // Give the ambient ground some mass.
+    //
+    // The lamps are `position: fixed`, so by default they are welded to the
+    // viewport and the page slides over a background that never reacts to it.
+    // Trailing them a few pixels behind the scroll — and letting them stretch
+    // very slightly while they catch up — is what separates a background from
+    // a backdrop: the light has weight, and you feel it settle when you stop.
+    //
+    // Two custom properties, written on the ambient element itself rather than
+    // on :root, so a per-frame write invalidates one element's style instead of
+    // the document's. Both are quantised and only written when they change, so
+    // a still page writes nothing at all.
+    //
+    // None of this exists under reduced motion: this effect has already
+    // returned by then, the properties are never set, and the CSS falls back to
+    // its neutral defaults.
+    const ambient = document.querySelector<HTMLElement>(".ambient");
+    const MAX_LAG = 16; // px — past this it stops reading as inertia
+    let lag = 0;
+    let lastY: string | null = null;
+    let lastS: string | null = null;
+
     let raf = requestAnimationFrame(function tick(time) {
       lenis.raf(time);
+
+      if (ambient) {
+        const target = Math.max(-MAX_LAG, Math.min(MAX_LAG, -lenis.velocity * 0.5));
+        lag += (target - lag) * 0.11;
+
+        const y = `${Math.round(lag * 2) / 2}px`;
+        if (y !== lastY) {
+          ambient.style.setProperty("--amb-y", y);
+          lastY = y;
+        }
+
+        // Volume-preserving: it stretches along the direction of travel and
+        // narrows across it, the way a smeared highlight does.
+        const s = (1 + (Math.abs(lag) / MAX_LAG) * 0.035).toFixed(3);
+        if (s !== lastS) {
+          ambient.style.setProperty("--amb-scale", s);
+          lastS = s;
+        }
+      }
+
       raf = requestAnimationFrame(tick);
     });
 
@@ -75,6 +117,8 @@ export default function SmoothScroll() {
     return () => {
       cancelAnimationFrame(raf);
       document.removeEventListener("click", onClick);
+      ambient?.style.removeProperty("--amb-y");
+      ambient?.style.removeProperty("--amb-scale");
       registerLenis(null);
       lenis.destroy();
     };

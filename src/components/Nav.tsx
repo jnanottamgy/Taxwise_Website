@@ -100,10 +100,22 @@ export default function Nav() {
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     setScrollLocked(true);
+
+    // Tabbing past the last item in the panel used to walk straight into the
+    // page behind it — which is scroll-locked, so focus landed on controls
+    // that could not be seen or reached. Everything outside the header is
+    // taken out of the tree while the panel is open; the wordmark and the
+    // close button stay reachable, because they are inside it.
+    const behind = Array.from(
+      document.querySelectorAll<HTMLElement>("main, footer, [data-skip-link]")
+    );
+    behind.forEach((el) => (el.inert = true));
+
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
       setScrollLocked(false);
+      behind.forEach((el) => (el.inert = false));
     };
   }, [open]);
 
@@ -111,21 +123,29 @@ export default function Nav() {
 
   return (
     <header className="site-nav fixed inset-x-0 top-0 z-50">
-      {/* Reading progress — the ledger line that fills as you go */}
-      <motion.div
-        aria-hidden="true"
-        style={{ scaleX: reduce ? 1 : progress }}
-        className="absolute left-0 top-0 z-10 h-[2px] w-full origin-left bg-gold/70"
-      />
-
       <div
         data-pill={pill ? "true" : undefined}
-        className={`nav-shell transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`nav-shell overflow-hidden transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           pill
-            ? "mx-3 mt-3 rounded-2xl border border-paper-12 bg-ink/70 shadow-[0_24px_70px_-32px_rgba(0,0,0,0.85)] backdrop-blur-2xl sm:mx-6 lg:mx-10"
+            // The pill's ground and its backdrop filter are both set in
+            // globals.css, not here: they have to differ depending on whether
+            // backdrop-filter is available at all, which needs @supports.
+            ? "mx-3 mt-3 rounded-2xl border border-paper-12 shadow-[0_24px_70px_-32px_rgba(0,0,0,0.85)] sm:mx-6 lg:mx-10"
             : "mx-0 mt-0 rounded-none border border-transparent bg-transparent"
         }`}
       >
+        {/* Reading progress — the ledger line that fills as you go.
+            It lives inside the shell rather than across the top of the
+            viewport: once the rail compresses into a floating pill, a
+            full-width line above it is a stray mark with nothing to belong
+            to. In here it is part of the instrument, and the shell's own
+            radius clips its ends as the pill forms. */}
+        <motion.div
+          aria-hidden="true"
+          style={{ scaleX: reduce ? 1 : progress }}
+          className="absolute left-0 top-0 z-10 h-[2px] w-full origin-left bg-gold/70"
+        />
+
         <Container>
           <div
             className={`flex items-center justify-between gap-6 transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
@@ -200,26 +220,44 @@ export default function Nav() {
               className="overflow-hidden border-t border-paper-12 lg:hidden"
             >
               <Container>
+                {/* The items arrive after the panel has finished opening,
+                    one behind the next — the panel makes the room, then the
+                    list walks into it. Everything lands inside 0.4s, so it
+                    never delays a tap. */}
                 <nav aria-label="Primary" className="flex flex-col py-6">
-                  {nav.map((item) => (
-                    <a
+                  {nav.map((item, i) => (
+                    <motion.a
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
+                      initial={reduce ? false : { opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 0.1 + i * 0.045,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                       className="border-b border-paper-12 py-4 font-display text-2xl text-paper"
                     >
                       {item.label}
-                    </a>
+                    </motion.a>
                   ))}
-                  <a
+                  <motion.a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
+                    initial={reduce ? false : { opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.1 + nav.length * 0.045,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
                     className="mt-6 rounded-full border border-paper-40 px-6 py-3.5 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper"
                   >
                     Book a consultation
-                  </a>
+                  </motion.a>
                 </nav>
               </Container>
             </motion.div>

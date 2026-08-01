@@ -98,8 +98,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `document.documentElement.classList.add('js')`,
           }}
         />
+        {/* `data-skip-link` so the nav can take it out of the tree while the
+            mobile panel is open: it targets #main, which is inert then, and a
+            skip link that silently does nothing is worse than no skip link. */}
         <a
           href="#main"
+          data-skip-link=""
           className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[100] focus:rounded-sm focus:bg-paper focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-[0.18em] focus:text-ink"
         >
           Skip to content

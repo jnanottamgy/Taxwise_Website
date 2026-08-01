@@ -340,13 +340,23 @@ html.js [data-split][data-shown="true"] [data-word] {
    No JavaScript: three transforms on the compositor, which is free.
    ========================================================================== */
 
+/* Overscanned top and bottom, because the layer is translated a few pixels as
+   it trails the scroll and `contain: strict` clips to its own box — at
+   `inset: 0` that clip would drag a bare band across the edge of the viewport
+   with it. The lamps are gradients tens of vw across; 4vh of offset is
+   invisible on them and buys the whole travel range twice over. */
 .ambient {
   position: fixed;
-  inset: 0;
+  inset: -4vh 0;
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
   contain: strict;
+  /* Both default to the identity, so the layer is exactly where it was
+     until something is driving it — no JavaScript, no movement. */
+  transform: translate3d(0, var(--amb-y, 0px), 0) scaleY(var(--amb-scale, 1))
+    scaleX(calc(2 - var(--amb-scale, 1)));
+  will-change: transform;
 }
 
 .ambient-lamp {
@@ -443,6 +453,37 @@ html.lenis body {
 .nav-shell {
   position: relative;
   isolation: isolate;
+}
+
+/* The glass ground.
+ *
+ * `backdrop-filter` is an enhancement — Firefox only shipped it in 103, and
+ * plenty of hardware still declines to composite it — so the pill has to hold
+ * up without it. At 70% ink and no blur it does not: the page reads *as text*
+ * through the nav labels, and at the point where the dark page meets the light
+ * About section the whole rail changes colour under them.
+ *
+ * So the ground is nearly opaque by default and only thins out where the blur
+ * is actually there to do the work. On hardware that supports it nothing about
+ * the look changes; on hardware that does not, the nav is still a nav.
+ *
+ * Measured with no blur at all, over the worst ground on the site — the light
+ * About section — the labels come out at 6.2:1, so the fallback is not merely
+ * legible, it clears AA on its own. */
+.nav-shell[data-pill="true"] {
+  background-color: rgba(14, 27, 47, 0.92);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .nav-shell[data-pill="true"] {
+    background-color: rgba(14, 27, 47, 0.8);
+    /* Blur alone makes a grey pill: averaging a colourful backdrop is what
+       desaturates it. Pushing the saturation back up is the difference
+       between frosted glass and frosted plastic, and it survives on hardware
+       that quietly renders the blur at a smaller radius than it was asked
+       for — the colour still comes through even when the softness does not. */
+    backdrop-filter: blur(40px) saturate(1.5);
+  }
 }
 .nav-shell::before {
   content: "";
@@ -621,5 +662,14 @@ html {
   .ambient-lamp,
   .nav-shell::before {
     animation: none !important;
+  }
+
+  /* Belt and braces on the scroll inertia. Nothing ever drives these here —
+     the effect that writes them returns before it starts — but a layer that
+     trails the scroll is exactly what this query exists to switch off, and it
+     should not depend on a JavaScript early return to stay still. */
+  .ambient {
+    transform: none !important;
+    will-change: auto !important;
   }
 }
