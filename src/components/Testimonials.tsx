@@ -63,7 +63,12 @@ export default function Testimonials() {
               </span>
               {item.quote}
             </blockquote>
-            <figcaption className="mt-7 font-mono text-[0.625rem] uppercase leading-[1.8] tracking-[0.14em]">
+            {/* Pinned to the foot rather than sitting seven units under its own
+                quote. The two quotes are different lengths, so hanging the
+                attributions off the text left them at different heights and
+                the pair read as two unrelated blocks; sharing a baseline is
+                what makes them a pair. */}
+            <figcaption className="mt-auto pt-7 font-mono text-[0.625rem] uppercase leading-[1.8] tracking-[0.14em]">
               <span className="text-paper-64">{item.role}</span>
               <br />
               <span className="text-mist">{item.context}</span>

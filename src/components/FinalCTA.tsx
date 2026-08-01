@@ -39,7 +39,7 @@ export default function FinalCTA() {
       />
 
       <Container>
-        <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-16 lg:grid-cols-[13rem_minmax(0,1fr)]">
+        <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-16 grid-cols-[minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)]">
           <Reveal>
             <Label>{finalCta.label}</Label>
           </Reveal>
@@ -69,13 +69,20 @@ export default function FinalCTA() {
                       {...(channel.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
-                      className="group flex items-center justify-between gap-6 border-b border-paper-12 py-6 transition-colors duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-paper-40"
+                      // Label beside value is a row that cannot shrink: the
+                      // office email is one unbreakable token ~218px wide, and
+                      // with the label and the gap beside it the row's
+                      // min-content beat a 320px viewport. The column grew to
+                      // fit and the section's overflow:hidden then amputated
+                      // it — standfirst cut mid-word, every arrow gone. So it
+                      // stacks until there is room for a row.
+                      className="group flex flex-col gap-2 border-b border-paper-12 py-6 transition-colors duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-paper-40 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
                     >
                       <span className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-mist transition-colors duration-400 group-hover:text-paper">
                         {channel.label}
                       </span>
-                      <span className="flex items-center gap-4 text-right">
-                        <span className="text-[0.9375rem] text-paper-80 transition-colors duration-400 group-hover:text-paper sm:text-[1.0625rem]">
+                      <span className="flex w-full min-w-0 items-center justify-between gap-4 sm:w-auto sm:justify-start sm:text-right">
+                        <span className="min-w-0 break-words text-[0.9375rem] text-paper-80 transition-colors duration-400 group-hover:text-paper sm:text-[1.0625rem]">
                           {channel.value}
                         </span>
                         <svg

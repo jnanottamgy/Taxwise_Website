@@ -57,12 +57,18 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             }}
           />
           <Container>
-            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-10 lg:grid-cols-[13rem_minmax(0,1fr)]">
+            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)]">
               <div>
                 <nav aria-label="Breadcrumb">
-                  <ol className="flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-mist">
+                  {/* -my-3 against the link's py-3: an 11px line is a 14px tap
+                      target, and the negative margin buys the height back
+                      without moving the breadcrumb a pixel. */}
+                  <ol className="-my-3 flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-mist">
                     <li>
-                      <a href="/#services" className="transition-colors hover:text-paper">
+                      <a
+                        href="/#services"
+                        className="block py-3 transition-colors hover:text-paper"
+                      >
                         Services
                       </a>
                     </li>
@@ -111,7 +117,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         {/* ── Who it is for ────────────────────────────────────────── */}
         <section aria-labelledby="audience-heading" className="border-b border-paper-12 py-16">
           <Container>
-            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-6 lg:grid-cols-[13rem_minmax(0,1fr)]">
+            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-6 grid-cols-[minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)]">
               <Label as="h2" id="audience-heading">
                 Who it is for
               </Label>
@@ -130,7 +136,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           className="py-[var(--spacing-section)]"
         >
           <Container>
-            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 lg:grid-cols-[13rem_minmax(0,1fr)]">
+            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 grid-cols-[minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)]">
               <div className="lg:sticky lg:top-32 lg:self-start">
                 <Reveal>
                   <Label as="h2" id="covers-heading">
@@ -177,7 +183,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         {/* ── What you receive ─────────────────────────────────────── */}
         <section aria-labelledby="deliverables-heading" className="bg-paper py-[var(--spacing-section)] text-ink">
           <Container>
-            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 lg:grid-cols-[13rem_minmax(0,1fr)]">
+            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 grid-cols-[minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)]">
               <div className="lg:sticky lg:top-32 lg:self-start">
                 <Reveal>
                   <h2
@@ -229,7 +235,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             }}
           />
           <Container>
-            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-10 lg:grid-cols-[13rem_minmax(0,1fr)]">
+            <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-10 grid-cols-[minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)]">
               <Reveal>
                 <Label>Engage us</Label>
               </Reveal>

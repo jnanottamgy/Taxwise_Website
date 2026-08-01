@@ -41,15 +41,33 @@ export default function Team() {
         <ul className="mt-24 grid gap-x-12 gap-y-20 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member, i) => (
             <Reveal key={member.name} delay={(i % 4) * 0.07} as="li" className="group flex flex-col">
-              <img
-                src={member.photo}
-                alt={member.name}
-                width={448}
-                height={448}
-                loading="lazy"
-                decoding="async"
-                className="h-[9.5rem] w-[9.5rem] rounded-full object-cover shadow-[0_0_0_1px_rgba(245,244,242,0.14)] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045] group-hover:shadow-[0_0_0_1px_rgba(201,168,76,0.55),0_18px_50px_-20px_rgba(0,0,0,0.7)]"
-              />
+              {/* The four sources were shot on four unrelated backgrounds —
+                  one outdoors in daylight, three against studio white — and in
+                  a row of four that mismatch is the first thing you see. The
+                  crop threw away the corners; a vignette over the outer third
+                  of the circle takes the rest, settling every background into
+                  the page ground without touching a face or shifting a skin
+                  tone. It sits on the wrapper, so it scales with the portrait
+                  on hover instead of sliding out from under it. */}
+              <span className="relative block h-[9.5rem] w-[9.5rem] shrink-0 overflow-hidden rounded-full shadow-[0_0_0_1px_rgba(245,244,242,0.14)] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045] group-hover:shadow-[0_0_0_1px_rgba(201,168,76,0.55),0_18px_50px_-20px_rgba(0,0,0,0.7)]">
+                <img
+                  src={member.photo}
+                  alt={member.name}
+                  width={448}
+                  height={448}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 50% 46%, transparent 58%, rgba(14,27,47,0.34) 82%, rgba(14,27,47,0.62) 100%)",
+                  }}
+                />
+              </span>
 
               <h3 className="mt-9 font-display text-[1.5rem] leading-none text-paper">
                 {member.name}
@@ -57,8 +75,11 @@ export default function Team() {
               {/* Two lines' worth of space is reserved whether or not the
                   credential needs it — one of the four wraps, and without this
                   its biography starts lower than the other three and the row
-                  stops lining up. 0.6875rem at 1.6 leading = 1.1rem a line. */}
-              <p className="mt-3 min-h-[2.2rem] font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.16em] text-mist">
+                  stops lining up. 0.6875rem at 1.6 leading = 1.1rem a line.
+                  Only from sm up, where there is a row to line up: in the
+                  single-column stack it is an empty line under three of the
+                  four names and nothing to show for it. */}
+              <p className="mt-3 font-mono text-[0.6875rem] uppercase leading-[1.6] tracking-[0.16em] text-mist sm:min-h-[2.2rem]">
                 <span className="text-gold">{member.role}</span>
                 <span aria-hidden="true"> · </span>
                 {member.credential}
@@ -76,7 +97,7 @@ export default function Team() {
                   box-sizing is border-box here: it has to cover two lines
                   (2 × 1.0625rem), the top padding (1rem) and the rule (1px),
                   or the padding alone satisfies it and the rule never moves. */}
-              <p className="mt-auto min-h-[calc(2*1.0625rem+1rem+1px)] border-t border-paper-12 pt-4 font-mono text-[0.625rem] uppercase leading-[1.7] tracking-[0.12em] text-paper-64">
+              <p className="mt-auto border-t border-paper-12 pt-4 font-mono text-[0.625rem] uppercase leading-[1.7] tracking-[0.12em] text-paper-64 sm:min-h-[calc(2*1.0625rem+1rem+1px)]">
                 {member.focus}
               </p>
             </Reveal>

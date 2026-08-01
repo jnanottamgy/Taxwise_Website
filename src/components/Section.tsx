@@ -67,7 +67,7 @@ export function Section({
       className={`py-[var(--spacing-section)] ${className}`}
     >
       <Container>
-        <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 lg:grid-cols-[13rem_minmax(0,1fr)]">
+        <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 grid-cols-[minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)]">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <Reveal>
               <Label id={`${id}-label`}>{label}</Label>
