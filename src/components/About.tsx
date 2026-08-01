@@ -12,8 +12,24 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="bg-paper py-[var(--spacing-section)] text-ink"
+      className="section-dawn relative bg-paper py-[var(--spacing-section)] text-ink"
     >
+      {/* The one place the page changes ground. Left as a hard edge it is a
+          seam; given a band of light above it, the off-white reads as arriving
+          rather than being cut in. The gold hairline is the horizon. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -translate-y-full"
+      >
+        <div className="h-px w-full bg-gold/45" />
+        <div
+          className="h-32 w-full"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(245,244,242,0.13), rgba(201,168,76,0.05) 42%, transparent)",
+          }}
+        />
+      </div>
       <Container>
         <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 lg:grid-cols-[13rem_minmax(0,1fr)]">
           <div className="lg:sticky lg:top-32 lg:self-start">

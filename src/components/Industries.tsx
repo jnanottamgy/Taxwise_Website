@@ -15,8 +15,8 @@ export default function Industries() {
         </p>
       }
     >
-      <Reveal>
-        <Heading id="industries-heading">Where we have already learned the hard parts.</Heading>
+      <Heading id="industries-heading">Where we have already learned the hard parts.</Heading>
+      <Reveal delay={0.18}>
         <Standfirst>
           Sector experience is not a badge. It is knowing which credit gets disallowed, which
           disclosure gets questioned, and which deadline is the one people miss.

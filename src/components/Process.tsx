@@ -67,8 +67,8 @@ export default function Process() {
         </p>
       }
     >
-      <Reveal>
-        <Heading id="process-heading">How an engagement actually runs.</Heading>
+      <Heading id="process-heading">How an engagement actually runs.</Heading>
+      <Reveal delay={0.18}>
         <Standfirst>
           No engagement starts with paperwork. It starts with understanding what you are trying to
           do, and what the law will let you do about it.

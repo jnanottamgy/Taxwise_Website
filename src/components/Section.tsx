@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
+import SplitHeading from "./SplitHeading";
 
 /**
  * The marginal label, with the gold tick that marks the start of a section.
@@ -82,23 +83,26 @@ export function Section({
   );
 }
 
-/** The editorial headline used at the top of each section. */
+/**
+ * The editorial headline used at the top of each section. It carries its own
+ * entrance — the words rise one after the next — so it is not wrapped in a
+ * `Reveal`; whatever follows it is delayed behind it instead.
+ */
 export function Heading({
   children,
   className = "",
   id,
 }: {
-  children: ReactNode;
+  children: string;
   className?: string;
   id?: string;
 }) {
   return (
-    <h2
+    <SplitHeading
+      text={children}
       id={id}
       className={`max-w-[20ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-paper ${className}`}
-    >
-      {children}
-    </h2>
+    />
   );
 }
 

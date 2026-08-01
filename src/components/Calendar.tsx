@@ -22,8 +22,8 @@ export default function Calendar() {
         </p>
       }
     >
-      <Reveal>
-        <Heading id="calendar-heading">The dates we keep, so you do not have to.</Heading>
+      <Heading id="calendar-heading">The dates we keep, so you do not have to.</Heading>
+      <Reveal delay={0.18}>
         <Standfirst>
           Nothing here is secret, and all of it is missable. This is the calendar we run for every
           client — published in full, because a practice that keeps its deadlines has no reason to

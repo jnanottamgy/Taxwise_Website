@@ -57,8 +57,8 @@ export default function Services() {
         </p>
       }
     >
-      <Reveal>
-        <Heading id="services-heading">Everything a company owes, handled in one place.</Heading>
+      <Heading id="services-heading">Everything a company owes, handled in one place.</Heading>
+      <Reveal delay={0.18}>
         <Standfirst>
           Audit, tax and compliance are not separate problems. We run them together, which is how
           the answer to one stops creating a problem in another.

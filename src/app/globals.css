@@ -273,6 +273,50 @@ html.js [data-draw-rule] {
   transition-delay: var(--reveal-delay, 0s);
 }
 
+/* Headings rise word by word rather than fading in as a block.
+ *
+ * Each word sits in its own overflow-hidden slot and lifts out of the edge —
+ * the hero's entrance, extended to every section heading so the page has one
+ * typographic language instead of one animated headline and eight static
+ * ones. The words are server-rendered spans with per-word delays; the shared
+ * IntersectionObserver only flips one attribute on the heading.
+ *
+ * A word is `display: inline-block`, which makes it a block box for baseline
+ * purposes — hence the explicit `pb` on the slot, so descenders are not
+ * clipped by the very overflow that produces the effect. */
+html.js [data-split] [data-word] {
+  transform: translateY(105%);
+  transition: transform 0.9s var(--ease-settle);
+  transition-delay: var(--wd, 0s);
+}
+
+html.js [data-split][data-shown="true"] [data-word] {
+  transform: none;
+}
+
+/* The light section arrives rather than cutting in: as it enters, the ground
+   lifts the last of the dark off itself. `clip-path` on a full-bleed section
+   is the one property that can do this without a wrapper and without
+   disturbing anything inside — and unlike transform or filter it does not
+   make the section a containing block for the fixed nav. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.js .section-dawn {
+      animation: dawn linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 46%;
+    }
+    @keyframes dawn {
+      from {
+        clip-path: inset(6% 0 0 0);
+      }
+      to {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+}
+
 [data-draw-rule][data-shown="true"] {
   transform: scaleX(1);
 }
@@ -548,6 +592,13 @@ html {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+  }
+
+  /* Heading words sit in overflow-hidden slots, so an unresolved one is not
+     merely un-animated — it is invisible. They land immediately, without
+     waiting on an observer that may never report. */
+  [data-split] [data-word] {
+    transform: none !important;
   }
 
   [data-draw-rule] {

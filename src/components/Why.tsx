@@ -5,8 +5,8 @@ import { Reveal } from "./Reveal";
 export default function Why() {
   return (
     <Section id="why" label="Why TaxWise" labelledBy="why-heading">
-      <Reveal>
-        <Heading id="why-heading">Four things that do not change.</Heading>
+      <Heading id="why-heading">Four things that do not change.</Heading>
+      <Reveal delay={0.18}>
         <Standfirst>
           Most practices will tell you they are thorough. These are the specific commitments we
           hold ourselves to, and the numbers behind them.
