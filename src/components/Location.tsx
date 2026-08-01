@@ -11,6 +11,7 @@ import {
 } from "@/lib/content";
 import { Section } from "./Section";
 import { Reveal } from "./Reveal";
+import SplitHeading from "./SplitHeading";
 
 /**
  * Where the office is.
@@ -76,14 +77,13 @@ export default function Location() {
         </p>
       }
     >
-      <Reveal>
-        <h2
-          id="location-heading"
-          className="max-w-[20ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-paper"
-        >
-          {location.headline}
-        </h2>
-        <p className="mt-8 max-w-[52ch] text-[clamp(1rem,1.4vw,1.1875rem)] leading-[1.65] text-paper-80">
+      <SplitHeading
+        id="location-heading"
+        text={location.headline}
+        className="max-w-[20ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-paper"
+      />
+      <Reveal delay={0.12} className="mt-8">
+        <p className="max-w-[52ch] text-[clamp(1rem,1.4vw,1.1875rem)] leading-[1.65] text-paper-80">
           {location.standfirst}
         </p>
       </Reveal>

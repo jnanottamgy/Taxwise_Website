@@ -1,6 +1,7 @@
 import { about, firm, displayPhone } from "@/lib/content";
 import { Container } from "./Section";
 import { Reveal } from "./Reveal";
+import SplitHeading from "./SplitHeading";
 
 /**
  * The one light section. After a long dark page this reads as a room with the
@@ -41,14 +42,11 @@ export default function About() {
           </div>
 
           <div className="lg:border-l lg:border-ink/12 lg:pl-[clamp(2rem,5vw,5rem)]">
-            <Reveal>
-              <h2
-                id="about-heading"
-                className="max-w-[18ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-ink"
-              >
-                {about.headline}
-              </h2>
-            </Reveal>
+            <SplitHeading
+              id="about-heading"
+              text={about.headline}
+              className="max-w-[18ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-ink"
+            />
 
             <div className="mt-16 grid gap-x-16 gap-y-14 lg:grid-cols-[minmax(0,1fr)_18rem]">
               <Reveal delay={0.1}>

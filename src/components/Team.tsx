@@ -1,6 +1,7 @@
 import { team, teamIntro } from "@/lib/team";
 import { Container, Label } from "./Section";
 import { Reveal } from "./Reveal";
+import SplitHeading from "./SplitHeading";
 
 /**
  * The team.
@@ -25,13 +26,14 @@ export default function Team() {
       <Container>
         <Reveal>
           <Label>{teamIntro.label}</Label>
-          <h2
-            id="team-heading"
-            className="mt-8 max-w-[20ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-paper"
-          >
-            {teamIntro.headline}
-          </h2>
-          <p className="mt-8 max-w-[52ch] text-[clamp(1rem,1.4vw,1.1875rem)] leading-[1.65] text-paper-80">
+        </Reveal>
+        <SplitHeading
+          id="team-heading"
+          text={teamIntro.headline}
+          className="mt-8 max-w-[20ch] font-display text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[0.98] tracking-[-0.025em] text-paper"
+        />
+        <Reveal delay={0.12} className="mt-8">
+          <p className="max-w-[52ch] text-[clamp(1rem,1.4vw,1.1875rem)] leading-[1.65] text-paper-80">
             {teamIntro.standfirst}
           </p>
         </Reveal>

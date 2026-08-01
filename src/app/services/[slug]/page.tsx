@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Container, Label } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import LightCard from "@/components/LightCard";
+import SplitHeading from "@/components/SplitHeading";
 import Magnetic from "@/components/Magnetic";
 
 export function generateStaticParams() {
@@ -74,24 +75,34 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
 
               <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
-                <h1 className="max-w-[16ch] font-display text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.92] tracking-[-0.03em] text-paper">
-                  {service.name}
-                </h1>
-                <p className="mt-10 max-w-[54ch] text-[clamp(1.0625rem,1.5vw,1.25rem)] leading-[1.65] text-paper-80">
-                  {service.standfirst}
-                </p>
+                {/* The masthead arrives in three beats — name, then what it is,
+                    then the statute it answers to — rather than all at once. */}
+                <SplitHeading
+                  as="h1"
+                  delay={0.08}
+                  step={0.06}
+                  text={service.name}
+                  className="max-w-[16ch] font-display text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.92] tracking-[-0.03em] text-paper"
+                />
+                <Reveal delay={0.22} className="mt-10">
+                  <p className="max-w-[54ch] text-[clamp(1.0625rem,1.5vw,1.25rem)] leading-[1.65] text-paper-80">
+                    {service.standfirst}
+                  </p>
+                </Reveal>
 
                 {/* The statute block — the reference card of the discipline */}
-                <dl className="mt-14 grid max-w-[46rem] gap-px bg-paper-12 sm:grid-cols-2">
-                  {service.statute.map((row) => (
-                    <div key={row.label} className="bg-ink px-5 py-4">
-                      <dt className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-mist">
-                        {row.label}
-                      </dt>
-                      <dd className="mt-1.5 text-[0.9375rem] text-paper">{row.value}</dd>
-                    </div>
-                  ))}
-                </dl>
+                <Reveal delay={0.34} className="mt-14">
+                  <dl className="grid max-w-[46rem] gap-px bg-paper-12 sm:grid-cols-2">
+                    {service.statute.map((row) => (
+                      <div key={row.label} className="bg-ink px-5 py-4">
+                        <dt className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-mist">
+                          {row.label}
+                        </dt>
+                        <dd className="mt-1.5 text-[0.9375rem] text-paper">{row.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </Reveal>
               </div>
             </div>
           </Container>
@@ -223,14 +234,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <Label>Engage us</Label>
               </Reveal>
               <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
-                <Reveal>
-                  <h2
-                    id="engage-heading"
-                    className="max-w-[18ch] font-display text-[clamp(2.25rem,5vw,4rem)] leading-[0.98] tracking-[-0.025em] text-paper"
-                  >
-                    Talk to a partner about {service.name.toLowerCase()}.
-                  </h2>
-                  <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-[1.7] text-paper-80">
+                <SplitHeading
+                  id="engage-heading"
+                  text={`Talk to a partner about ${service.name.toLowerCase()}.`}
+                  className="max-w-[18ch] font-display text-[clamp(2.25rem,5vw,4rem)] leading-[0.98] tracking-[-0.025em] text-paper"
+                />
+                <Reveal delay={0.14} className="mt-8">
+                  <p className="max-w-[46ch] text-[1.0625rem] leading-[1.7] text-paper-80">
                     A first conversation costs nothing and usually takes twenty minutes. Bring your
                     last return, or just the question.
                   </p>

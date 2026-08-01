@@ -1,6 +1,7 @@
 import { finalCta, firm, whatsappUrl, displayPhone } from "@/lib/content";
 import { Container, Label } from "./Section";
 import { Reveal, DrawRule } from "./Reveal";
+import SplitHeading from "./SplitHeading";
 
 /** The office, four ways. No personal numbers or addresses anywhere. */
 const channels = [
@@ -44,19 +45,19 @@ export default function FinalCTA() {
           </Reveal>
 
           <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
-            <Reveal>
-              <h2
-                id="contact-heading"
-                className="max-w-[16ch] font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] tracking-[-0.03em] text-paper"
-              >
-                {finalCta.headline}
-              </h2>
-              <p className="mt-8 max-w-[46ch] text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-paper-80">
+            <SplitHeading
+              id="contact-heading"
+              text={finalCta.headline}
+              step={0.06}
+              className="max-w-[16ch] font-display text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] tracking-[-0.03em] text-paper"
+            />
+            <Reveal delay={0.14} className="mt-8">
+              <p className="max-w-[46ch] text-[clamp(1rem,1.4vw,1.125rem)] leading-[1.7] text-paper-80">
                 {finalCta.body}
               </p>
             </Reveal>
 
-            <Reveal delay={0.12}>
+            <Reveal delay={0.2}>
               <ul className="mt-16 max-w-[46rem]">
                 <li>
                   <DrawRule />

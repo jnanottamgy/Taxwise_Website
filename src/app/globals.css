@@ -273,6 +273,13 @@ html.js [data-draw-rule] {
   transition-delay: var(--reveal-delay, 0s);
 }
 
+/* The `html.js` prefix is not decoration: without it this selector is a
+   weight lighter than the one above and loses to it, and the rule sits at
+   scaleX(0) forever — an invisible hairline, and no error anywhere. */
+html.js [data-draw-rule][data-shown="true"] {
+  transform: scaleX(1);
+}
+
 /* Headings rise word by word rather than fading in as a block.
  *
  * Each word sits in its own overflow-hidden slot and lifts out of the edge —
@@ -315,10 +322,6 @@ html.js [data-split][data-shown="true"] [data-word] {
       }
     }
   }
-}
-
-[data-draw-rule][data-shown="true"] {
-  transform: scaleX(1);
 }
 
 /* ==========================================================================
