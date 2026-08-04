@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { firm } from "@/lib/content";
 import { services } from "@/lib/services";
 import { allPosts } from "@/lib/insights";
+import { roles } from "@/lib/careers";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -27,6 +28,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.7,
     },
+    {
+      url: `${firm.url}/careers`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    },
+    ...roles.map((role) => ({
+      url: `${firm.url}/careers/${role.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    })),
     ...posts.map((post) => ({
       url: `${firm.url}/insights/${post.slug}`,
       // The post's own date, not the build's — a crawler should not be told

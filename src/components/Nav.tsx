@@ -154,12 +154,13 @@ export default function Nav() {
           >
             <Wordmark />
 
-            {/* Seven links and a button do not fit at 36px of gap on a 1024
-                laptop — the CTA ran past the edge of the pill. The gap closes
-                below xl rather than the whole rail collapsing to a hamburger
-                at a width that has plenty of room for it. */}
+            {/* The rail is the one surface with a hard width limit. Seven
+                links and a button fit at 1024 with the gap closed below xl;
+                eight wrapped the call to action onto two lines, which is why
+                `secondary` items are dropped here and kept in the panel and
+                the footer. */}
             <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex xl:gap-9">
-              {nav.map((item) => {
+              {nav.filter((i) => !i.secondary).map((item) => {
                 const id = item.href.split("#")[1];
                 // Two ways to be current: you are on the item's own route, or
                 // you are reading the homepage section it points at. The route
@@ -185,9 +186,9 @@ export default function Nav() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-sheen block rounded-full border border-paper-12 bg-paper-06 px-5 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-colors duration-300 hover:border-gold hover:text-gold-lit"
+                  className="btn-sheen block whitespace-nowrap rounded-full border border-paper-12 bg-paper-06 px-5 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-colors duration-300 hover:border-gold hover:text-gold-lit"
                 >
-                  Arrange a consultation
+                  Arrange a call
                 </a>
               </Magnetic>
             </nav>

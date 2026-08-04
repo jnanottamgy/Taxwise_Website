@@ -49,7 +49,7 @@ export default function Team() {
                   the page ground without touching a face or shifting a skin
                   tone. It sits on the wrapper, so it scales with the portrait
                   on hover instead of sliding out from under it. */}
-              <span className="relative block h-[9.5rem] w-[9.5rem] shrink-0 overflow-hidden rounded-full shadow-[0_0_0_1px_rgba(245,244,242,0.14)] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045] group-hover:shadow-[0_0_0_1px_rgba(201,168,76,0.55),0_18px_50px_-20px_rgba(0,0,0,0.7)]">
+              <span className="relative block h-[9.5rem] w-[9.5rem] shrink-0 overflow-hidden rounded-full shadow-[0_0_0_1px_rgba(245,244,242,0.14)] transition duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045] group-hover:shadow-[0_0_0_1px_rgba(201,168,76,0.55),0_18px_50px_-20px_rgba(0,0,0,0.7)]">
                 <img
                   src={member.photo}
                   alt={member.name}

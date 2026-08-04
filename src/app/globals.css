@@ -86,7 +86,28 @@
     color: var(--color-ink);
   }
 
-  /* A single, visible focus treatment — never removed */
+  /* A single, visible focus treatment — never removed, and never animated.
+
+     The ring has to be on the first frame a control receives focus, which took
+     two things. Controls use `transition`, not `transition-all`: `all`
+     includes `outline-width`, whose computed value is 0 while the style is
+     `none`, so every button grew its ring in from nothing over 400ms and a
+     keyboard user spent that time on an unmarked control. And the colour is
+     pinned here rather than inherited, because `transition` does include
+     `outline-color` — on the one light-filled button `currentColor` is dark
+     navy, and the ring would have faded up from invisible against a dark
+     ground. Nothing interpolable changes on focus now. */
+  a,
+  button,
+  select,
+  input,
+  textarea,
+  summary,
+  [tabindex]:not([tabindex="-1"]) {
+    outline-color: var(--color-paper);
+    outline-offset: 3px;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-paper);
     outline-offset: 3px;

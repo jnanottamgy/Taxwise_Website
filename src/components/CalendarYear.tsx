@@ -41,7 +41,7 @@ export default function CalendarYear() {
         </h3>
         <span
           aria-hidden="true"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-paper-12 text-mist transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-gold group-hover:text-gold-lit group-open:rotate-180"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-paper-12 text-mist transition duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:border-gold group-hover:text-gold-lit group-open:rotate-180"
         >
           <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="m3 6 5 5 5-5" strokeLinecap="square" />

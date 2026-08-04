@@ -329,14 +329,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-sheen block rounded-full bg-paper px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-ink transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(232,201,122,0.45)]"
+                        className="btn-sheen block rounded-full bg-paper px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-ink transition duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(232,201,122,0.45)]"
                       >
                         Arrange a consultation
                       </a>
                     </Magnetic>
                     <a
                       href={`tel:${firm.phone}`}
-                      className="rounded-full border border-paper-12 px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold hover:text-gold-lit"
+                      className="rounded-full border border-paper-12 px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold hover:text-gold-lit"
                     >
                       {displayPhone(firm.phone)}
                     </a>

@@ -226,6 +226,13 @@ export type NavItem = {
   href: string;
   /** The route subtree this item is responsible for, if any. */
   owns?: string;
+  /**
+   * Kept out of the desktop rail, which is the one surface with a hard width
+   * limit — eight links and a button wrapped the call to action onto two lines
+   * at 1024. It still appears in the mobile panel and the footer, both of
+   * which have vertical room, so nothing is actually lost.
+   */
+  secondary?: boolean;
 };
 
 export const nav: readonly NavItem[] = [
@@ -241,7 +248,11 @@ export const nav: readonly NavItem[] = [
   { label: "Calendar", href: "/#calendar" },
   { label: "Insights", href: "/insights", owns: "/insights" },
   { label: "Firm", href: "/#about" },
-  { label: "Team", href: "/#team" },
+  // Firm and Team are adjacent sections about the same subject, and Firm
+  // lands a reader immediately above Team. Careers is a destination people
+  // arrive looking for, so it takes the rail slot.
+  { label: "Team", href: "/#team", secondary: true },
+  { label: "Careers", href: "/careers", owns: "/careers" },
   { label: "Contact", href: "/#contact" },
 ];
 

@@ -394,7 +394,7 @@ export default function Calendar({
           <button
             type="button"
             onClick={download}
-            className="btn-sheen mt-8 inline-flex items-center gap-3 rounded-full border border-paper-12 px-6 py-3.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-paper transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold hover:text-gold-lit"
+            className="btn-sheen mt-8 inline-flex items-center gap-3 rounded-full border border-paper-12 px-6 py-3.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-paper transition duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-gold hover:text-gold-lit"
           >
             Add to your calendar
             <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.25">

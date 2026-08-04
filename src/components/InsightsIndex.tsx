@@ -86,7 +86,7 @@ export default function InsightsIndex({
                     <svg
                       aria-hidden="true"
                       viewBox="0 0 16 16"
-                      className="h-3.5 w-3.5 shrink-0 text-mist transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:text-gold"
+                      className="h-3.5 w-3.5 shrink-0 text-mist transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:text-gold"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.25"
