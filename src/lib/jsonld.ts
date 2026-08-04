@@ -14,7 +14,7 @@ export function organizationJsonLd() {
     name: firm.name,
     legalName: firm.legalName,
     description:
-      "Finance and tax advisory partnership headquartered in Bangalore, advising clients internationally. Three practices, each containing the last: compliance and reporting, CFO advisory, and startup advisory.",
+      "Finance and tax advisory firm headquartered in Bangalore, advising clients internationally. End-to-end finance, tax and fundraising advisory across three practices, each containing the last: compliance and reporting, CFO advisory, and startup advisory.",
     url: firm.url,
     email: firm.email,
     telephone: firm.phone,

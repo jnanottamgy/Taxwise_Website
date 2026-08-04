@@ -128,7 +128,12 @@ export default function Hero() {
               </em>
             </h1>
 
-            <Fade delay={0.48} className="mt-8 max-w-[46ch]">
+            {/* 46ch set the standfirst to five lines at the old length. The line
+                now carries the scope of the work as well as the description, so
+                the measure opens to the top of the comfortable range — 66
+                characters — rather than letting a sixth line push the statistics
+                band off a 900px laptop screen. */}
+            <Fade delay={0.48} className="mt-8 max-w-[54ch]">
               <p className="text-[clamp(1rem,1.5vw,1.1875rem)] leading-[1.7] text-paper-80">
                 {hero.standfirst}
               </p>

@@ -88,7 +88,7 @@ export const hero = {
   headlineLead: "Where strategy",
   headlineEmphasis: "meets certainty.",
   standfirst:
-    "TaxWise is a finance and tax advisory partnership headquartered in Bangalore, advising clients in India and internationally. Founders, family offices and companies retain us for tax, accounting and regulatory compliance that holds up under examination.",
+    "TaxWise is a finance and tax advisory firm headquartered in Bangalore, advising clients in India and internationally. Founders, family offices and companies retain us for end-to-end finance, tax and fundraising advisory — and for compliance that holds up under examination.",
   primaryCta: "Arrange a consultation",
   secondaryCta: "Explore our practices",
 } as const;
