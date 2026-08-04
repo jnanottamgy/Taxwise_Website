@@ -17,8 +17,12 @@ export default function Footer() {
               "radial-gradient(60% 90% at 50% 130%, rgba(201,168,76,0.07), transparent 62%)",
           }}
         />
-        <p className="absolute -bottom-[0.18em] left-1/2 -translate-x-1/2 whitespace-nowrap font-display text-[clamp(6rem,17vw,15rem)] leading-none tracking-[-0.03em] text-paper/[0.03]">
-          TaxWise Consultants
+        {/* One word instead of two, so it is set far larger than the old
+            lockup and pushed further under the fold of the plate — at this
+            size the letterforms have to sit below the content rather than
+            behind it, or the address reads through the strokes. */}
+        <p className="absolute -bottom-[0.32em] left-1/2 -translate-x-1/2 whitespace-nowrap font-display text-[clamp(8rem,23vw,19rem)] leading-none tracking-[-0.03em] text-paper/[0.028]">
+          {firm.name}
         </p>
       </div>
       <Container className="relative">
@@ -26,15 +30,14 @@ export default function Footer() {
           <div>
             {/* The same lockup as the nav, one step larger — this is the
                 signature at the foot of the page. */}
-            <p className="flex items-center gap-3.5 font-display text-2xl leading-none">
+            <p className="flex items-center gap-3.5 font-display text-[1.75rem] leading-none text-paper">
               <Mark className="h-8 w-auto shrink-0 text-paper" />
-              <span>
-                <span className="text-paper">TaxWise</span>{" "}
-                <span className="text-mist">Consultants</span>
-              </span>
+              {firm.name}
             </p>
-            <p className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-mist">
-              {firm.descriptor} · {firm.city}
+            <p className="mt-3 font-mono text-[0.6875rem] uppercase leading-[1.7] tracking-[0.18em] text-mist">
+              {firm.descriptor}
+              <br />
+              Head office, {firm.city} · {firm.areaServed}
             </p>
             <address className="mt-8 max-w-[26ch] text-sm not-italic leading-[1.8] text-paper-64">
               {firm.address.street}

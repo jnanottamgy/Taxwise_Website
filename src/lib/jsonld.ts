@@ -14,14 +14,15 @@ export function organizationJsonLd() {
     name: firm.name,
     legalName: firm.legalName,
     description:
-      "Tax consultancy firm in Bangalore. Three practices, each containing the last: compliance and reporting, CFO advisory, and startup advisory.",
+      "Finance and tax advisory partnership with its head office in Bangalore, serving clients worldwide. Three practices, each containing the last: compliance and reporting, CFO advisory, and startup advisory.",
     url: firm.url,
     email: firm.email,
     telephone: firm.phone,
     foundingDate: firm.founded,
     priceRange: "$$",
     currenciesAccepted: "INR",
-    areaServed: { "@type": "Country", name: "India" },
+    // The head office is in Bangalore; the practice is not limited to it.
+    areaServed: [{ "@type": "Country", name: "India" }, firm.areaServed],
     address: {
       "@type": "PostalAddress",
       streetAddress: `${firm.address.street}, ${firm.address.locality}`,
@@ -49,7 +50,7 @@ export function organizationJsonLd() {
         telephone: firm.phone,
         contactType: "customer service",
         email: firm.email,
-        areaServed: "IN",
+        areaServed: firm.areaServed,
         availableLanguage: ["en", "hi", "kn"],
       },
     ],

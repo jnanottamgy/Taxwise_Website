@@ -2,11 +2,12 @@
  * The people.
  *
  * Names, qualifications and biographical facts are taken from the firm's own
- * team page. The prose is tightened to match the rest of the site's voice —
- * no fact is added, removed or upgraded. In particular the qualifications are
- * reproduced exactly as the firm states them: "Chartered Accountant" and
- * "Associate Chartered Accountant" are not interchangeable, and neither is
- * FCA.
+ * team page, and corrected where the firm has since told us otherwise. The
+ * prose is tightened to match the rest of the site's voice — no fact is added,
+ * removed or upgraded. In particular the qualifications are reproduced exactly
+ * as the firm states them: "Chartered Accountant" and "Associate Chartered
+ * Accountant" are not interchangeable, and neither is FCA. Vinay Karlagere is
+ * an ACA, which the old site under-stated as the bare title.
  *
  * All four are partners - the practice is a partnership, not one accountant's
  * firm. Order follows the firm's own published order rather than seniority.
@@ -37,9 +38,9 @@ export const team: readonly Member[] = [
   {
     name: "Vinay Karlagere",
     role: "Partner",
-    credential: "Chartered Accountant",
+    credential: "Associate Chartered Accountant",
     focus: "Income tax · Statutory and internal audit · Private equity",
-    bio: "A qualified chartered accountant working on income tax matters, statutory and internal audits, and private equity investments, with a record of holding companies, partnership firms, trusts and individuals to their corporate law obligations. Holds a postgraduate degree in Investment and Risk Finance from the University of Westminster, London.",
+    bio: "An associate chartered accountant working on income tax matters, statutory and internal audits, and private equity investments, with a record of holding companies, partnership firms, trusts and individuals to their corporate law obligations. Holds a postgraduate degree in Investment and Risk Finance from the University of Westminster, London.",
     photo: "/team/vinay-karlagere.webp",
   },
   {

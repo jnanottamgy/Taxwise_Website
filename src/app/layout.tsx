@@ -28,9 +28,9 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
 });
 
-const title = `${firm.name} — ${firm.descriptor}, ${firm.city}`;
+const title = `${firm.name} — ${firm.descriptor}`;
 const description =
-  "A tax consultancy partnership in Bangalore handling taxation, GST, accounting and compliance for founders, family offices and companies.";
+  "A finance and tax advisory partnership with its head office in Bangalore, working worldwide. Compliance and reporting, CFO advisory and startup advisory for founders, family offices and companies.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(firm.url),
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
   },
   description,
   keywords: [
-    "tax consultancy firm Bangalore",
-    "tax consultant Bangalore",
-    "GST filing Bangalore",
-    "statutory audit",
-    "ROC compliance",
+    "finance and tax advisory",
+    "tax advisory Bangalore",
+    "outsourced CFO services",
+    "GST and TDS compliance",
     "startup advisory India",
-    "TaxWise Consultants",
+    "virtual CFO India",
+    "TaxWise",
   ],
   authors: [{ name: firm.name }],
   creator: firm.name,

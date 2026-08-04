@@ -11,11 +11,13 @@
  * blanking them means nothing can quietly reference them again.
  */
 export const firm = {
-  name: "TaxWise Consultants",
-  legalName: "TaxWise Consultants",
-  descriptor: "Tax Consultancy Firm",
+  name: "TaxWise",
+  legalName: "TaxWise",
+  descriptor: "Finance and Tax Advisory",
   constitution: "Partnership",
+  /** Where the head office is. The practice itself works worldwide. */
   city: "Bangalore",
+  areaServed: "Worldwide",
   founded: "2015",
   url: "https://twchartered.com",
   address: {
@@ -65,14 +67,14 @@ export const location = {
   label: "Location",
   headline: "Where to find us.",
   standfirst:
-    "The office is in RMV Extension, off 14th Main. Most first meetings happen here; if it is easier, we come to you.",
+    "The head office is in RMV Extension, off 14th Main. Most first meetings happen here; if you are elsewhere in India or abroad, we work remotely and meet where it suits you.",
 } as const;
 
 export const whatsappUrl = `https://wa.me/${firm.phone.replace(
   "+",
   ""
 )}?text=${encodeURIComponent(
-  "Hello — I'd like to arrange a consultation with TaxWise Consultants."
+  `Hello — I'd like to arrange a consultation with ${firm.name}.`
 )}`;
 
 /** Formats +919590360434 as +91 95903 60434 */
@@ -82,11 +84,11 @@ export function displayPhone(e164: string) {
 }
 
 export const hero = {
-  eyebrow: "Tax Consultancy Firm · Bangalore",
+  eyebrow: `${firm.descriptor} · ${firm.city}`,
   headlineLead: "Where strategy",
   headlineEmphasis: "meets certainty.",
   standfirst:
-    "TaxWise Consultants is a tax consultancy firm in Bangalore. We handle tax, accounting and compliance for founders, family offices and companies that cannot afford to get it wrong.",
+    "TaxWise is a finance and tax advisory firm with its head office in Bangalore, working with clients worldwide. We handle tax, accounting and compliance for founders, family offices and companies that cannot afford to get it wrong.",
   primaryCta: "Book a consultation",
   secondaryCta: "Explore services",
 } as const;
@@ -193,14 +195,15 @@ export const about = {
   label: "The firm",
   headline: "A practice built on being right the first time.",
   body: [
-    `${firm.name} is a tax consultancy firm in ${firm.city}, run as a partnership. We have advised more than five hundred individuals and businesses over the past decade.`,
+    `${firm.name} is a finance and tax advisory firm run as a partnership, with its head office in ${firm.city} and clients across India and overseas. We have advised more than five hundred individuals and businesses over the past decade.`,
     "We are deliberately small. Every engagement is handled by a partner who knows your file, so you are never explaining your own business back to a new associate.",
     "The work is unglamorous and exact: a return that withstands scrutiny, a set of books that closes on time, a structure that still makes sense three years from now. That is what we are for.",
   ],
   credentials: [
-    { label: "Practice", value: "Tax consultancy" },
+    { label: "Practice", value: "Finance and tax advisory" },
     { label: "Practice since", value: "2015" },
-    { label: "Office", value: "RMV Extension, Bangalore" },
+    { label: "Head office", value: "RMV Extension, Bangalore" },
+    { label: "Clients", value: "India and overseas" },
     { label: "Constitution", value: "Partnership firm" },
   ],
 } as const;

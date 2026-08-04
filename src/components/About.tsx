@@ -67,7 +67,11 @@ export default function About() {
                       key={row.label}
                       className="flex items-baseline justify-between gap-6 border-b border-ink/12 py-4"
                     >
-                      <dt className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-slate">
+                      {/* The label is the fixed element in the pair, so it
+                          holds its line and the value wraps. "Head office"
+                          breaking across two lines put its row out of step
+                          with the four beside it. */}
+                      <dt className="whitespace-nowrap font-mono text-[0.625rem] uppercase tracking-[0.16em] text-slate">
                         {row.label}
                       </dt>
                       <dd className="text-right text-[0.9375rem] text-ink">{row.value}</dd>

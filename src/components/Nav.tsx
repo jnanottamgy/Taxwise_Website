@@ -32,11 +32,11 @@ function Wordmark() {
       aria-label={`${firm.name} — home`}
     >
       <Mark className="h-7 w-auto shrink-0 text-paper" />
-      <span className="flex items-baseline gap-[0.3em] font-display text-[1.375rem] leading-none tracking-[-0.01em]">
-        <span className="text-paper">TaxWise</span>
-        <span className="text-mist transition-colors duration-300 group-hover:text-paper">
-          Consultants
-        </span>
+      {/* One word now, so the mark carries the lockup and the wordmark is set
+          a step larger than the two-part version it replaces — a short name
+          in the old size read as a fragment of something longer. */}
+      <span className="font-display text-[1.5rem] leading-none tracking-[-0.01em] text-paper">
+        {firm.name}
       </span>
     </a>
   );
