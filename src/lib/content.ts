@@ -30,7 +30,7 @@ export const firm = {
   },
   /** The office line and the office address. No personal numbers. */
   phone: "+919740540239",
-  email: "taxxwiseconsultants@gmail.com",
+  email: "info@twchartered.com",
   /**
    * The firm's own Google Maps link — its verified listing, supplied by the
    * practice. Preferred over a search-by-address URL, which only guesses at

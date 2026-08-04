@@ -69,13 +69,14 @@ export default function FinalCTA() {
                       {...(channel.external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}
-                      // Label beside value is a row that cannot shrink: the
-                      // office email is one unbreakable token ~218px wide, and
-                      // with the label and the gap beside it the row's
-                      // min-content beat a 320px viewport. The column grew to
-                      // fit and the section's overflow:hidden then amputated
-                      // it — standfirst cut mid-word, every arrow gone. So it
-                      // stacks until there is room for a row.
+                      // Label beside value is a row that cannot shrink: an
+                      // email is one unbreakable token, and with the label and
+                      // the gap beside it the row's min-content beat a 320px
+                      // viewport. The column grew to fit and the section's
+                      // overflow:hidden then amputated it — standfirst cut
+                      // mid-word, every arrow gone. It stacks until there is
+                      // room for a row, which also keeps the layout safe
+                      // against a longer address than the one here today.
                       className="group flex flex-col gap-2 border-b border-paper-12 py-6 transition-colors duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-paper-40 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
                     >
                       <span className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-mist transition-colors duration-400 group-hover:text-paper">
