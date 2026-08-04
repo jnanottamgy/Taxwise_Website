@@ -31,7 +31,7 @@ Two things in the same season are fixed to the calendar regardless of when you m
 
 Registrar late fees run per day and they do not stop. There is no ceiling, which is unusual, and the arithmetic gets away from people: a filing that is nine months late is not nine times worse than one that is a month late in any intuitive sense, but it is exactly that in rupees.
 
-The larger cost is usually elsewhere. A company with overdue filings is a company that cannot complete a bank facility, a due diligence or a share transfer without first spending a fortnight cleaning up. The fee is annoying. The delay to the transaction is what it actually costs.
+The larger cost is usually elsewhere. A company with overdue filings cannot complete a bank facility, a due diligence exercise or a share transfer without first spending a fortnight putting the record straight. The fee is an irritation. The delay to the transaction is the real cost.
 
 ## The practical version
 

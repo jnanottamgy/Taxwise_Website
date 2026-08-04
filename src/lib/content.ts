@@ -67,7 +67,7 @@ export const location = {
   label: "Location",
   headline: "Where to find us.",
   standfirst:
-    "The head office is in RMV Extension, off 14th Main. Most first meetings happen here; if you are elsewhere in India or abroad, we work remotely and meet where it suits you.",
+    "Our head office is in RMV Extension, off 14th Main. Most first meetings are held here; for clients elsewhere in India or overseas, we work remotely and meet wherever is convenient.",
 } as const;
 
 export const whatsappUrl = `https://wa.me/${firm.phone.replace(
@@ -88,14 +88,14 @@ export const hero = {
   headlineLead: "Where strategy",
   headlineEmphasis: "meets certainty.",
   standfirst:
-    "TaxWise is a finance and tax advisory firm with its head office in Bangalore, working with clients worldwide. We handle tax, accounting and compliance for founders, family offices and companies that cannot afford to get it wrong.",
-  primaryCta: "Book a consultation",
-  secondaryCta: "Explore services",
+    "TaxWise is a finance and tax advisory partnership headquartered in Bangalore, advising clients in India and internationally. Founders, family offices and companies retain us for tax, accounting and regulatory compliance that holds up under examination.",
+  primaryCta: "Arrange a consultation",
+  secondaryCta: "Explore our practices",
 } as const;
 
 export const stats = [
   { figure: "10", suffix: "+", label: "Years in practice", detail: "Established 2015" },
-  { figure: "500", suffix: "+", label: "Clients advised", detail: "Individuals and companies" },
+  { figure: "500", suffix: "+", label: "Clients advised", detail: "Individuals, firms and companies" },
   { figure: "50", prefix: "₹", suffix: "Cr+", label: "Tax lawfully saved", detail: "Across all engagements" },
   { figure: "100", suffix: "%", label: "Compliance record", detail: "No filing missed to date" },
 ] as const;
@@ -107,23 +107,23 @@ export const stats = [
 export const why = [
   {
     figure: "1",
-    unit: "partner on every file",
-    body: "Your engagement is run by a partner who knows it, from the first call to the final filing. Nothing is passed down to an associate you have never met.",
+    unit: "partner leads every engagement",
+    body: "Every engagement is led by a partner, from the first conversation to the final filing. No part of it is delegated to an associate you have not met.",
   },
   {
     figure: "8",
     unit: "sectors in active practice",
-    body: "From SaaS ESOPs to joint development agreements, we have already met the problem your sector produces — and know which position survives an assessment.",
+    body: "From SaaS ESOPs to joint development agreements, we have met the questions your sector raises before — and know which positions withstand assessment.",
   },
   {
     figure: "0",
     unit: "deadlines missed since 2015",
-    body: "Statutory dates sit on our calendar with reminders that start weeks out. In ten years of practice we have not filed a single return late.",
+    body: "Statutory dates sit on our calendar, with reminders that begin weeks in advance. In ten years of practice, not one return has been filed late.",
   },
   {
     figure: "24h",
-    unit: "reply, on working days",
-    body: "Questions get answered the same or next working day. If something needs longer, you are told when to expect it rather than left waiting.",
+    unit: "response, on working days",
+    body: "Questions are answered the same or the next working day. Where a matter requires longer, you are told when to expect an answer rather than left to follow up.",
   },
 ] as const;
 
@@ -131,27 +131,27 @@ export const process = [
   {
     step: "01",
     name: "Consultation",
-    body: "We start with your position — what you own, what you owe, and what you are planning next.",
+    body: "We begin with your position: what you own, what you owe, and what you intend to do next.",
   },
   {
     step: "02",
     name: "Assessment",
-    body: "We review filings, books and structure to find both exposure and opportunity, and tell you which is urgent.",
+    body: "We review filings, books and structure to identify both exposure and opportunity, and tell you which requires attention first.",
   },
   {
     step: "03",
     name: "Strategy",
-    body: "You receive a written plan with the tax and compliance impact of each option quantified in rupees.",
+    body: "You receive a written plan setting out each option, with its tax and compliance consequences quantified in rupees.",
   },
   {
     step: "04",
     name: "Execution",
-    body: "We file, register and represent. Deadlines sit on our calendar, not yours.",
+    body: "We file, register and represent you before the authorities. Deadlines sit on our calendar, not yours.",
   },
   {
     step: "05",
     name: "Review",
-    body: "Quarterly reviews keep the plan intact as the law, and your business, keep moving.",
+    body: "Quarterly reviews keep the plan current as the law changes and the business grows.",
   },
 ] as const;
 
@@ -195,15 +195,15 @@ export const about = {
   label: "The firm",
   headline: "A practice built on being right the first time.",
   body: [
-    `${firm.name} is a finance and tax advisory firm run as a partnership, with its head office in ${firm.city} and clients across India and overseas. We have advised more than five hundred individuals and businesses over the past decade.`,
-    "We are deliberately small. Every engagement is handled by a partner who knows your file, so you are never explaining your own business back to a new associate.",
+    `${firm.name} is a partnership rather than a practice built around a single name. Four partners carry the work between them, and more than five hundred individuals and businesses have been advised over the past decade.`,
+    "The practice is deliberately small. The partner you meet is the partner who does the work, so you are never required to explain your own business to someone new.",
     "The work is unglamorous and exact: a return that withstands scrutiny, a set of books that closes on time, a structure that still makes sense three years from now. That is what we are for.",
   ],
   credentials: [
     { label: "Practice", value: "Finance and tax advisory" },
     { label: "Practice since", value: "2015" },
     { label: "Head office", value: "RMV Extension, Bangalore" },
-    { label: "Clients", value: "India and overseas" },
+    { label: "Client base", value: "India and overseas" },
     { label: "Constitution", value: "Partnership firm" },
   ],
 } as const;
@@ -211,7 +211,7 @@ export const about = {
 export const finalCta = {
   label: "Start here",
   headline: "Tell us what you are planning.",
-  body: "A first consultation is a conversation about your position and what it will cost you to get it wrong. No charge, no obligation.",
+  body: "A first consultation is a conversation about your position, the options open to you, and the exposures worth addressing now. There is no charge and no obligation.",
 } as const;
 
 /**

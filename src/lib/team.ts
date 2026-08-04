@@ -32,7 +32,7 @@ export const team: readonly Member[] = [
     role: "Partner",
     credential: "M.Com",
     focus: "Operations · Human resources · Finance",
-    bio: "Twenty years of professional experience across operational management, human resources and finance. Shabari manages the functions that keep an engagement moving on time, and the practice running behind them.",
+    bio: "Twenty years of professional experience across operational management, human resources and finance. Shabari oversees the functions that keep an engagement moving to schedule, and the practice running behind it.",
     photo: "/team/shabari-kj.webp",
   },
   {
@@ -40,7 +40,7 @@ export const team: readonly Member[] = [
     role: "Partner",
     credential: "Associate Chartered Accountant",
     focus: "Income tax · Statutory and internal audit · Private equity",
-    bio: "An associate chartered accountant working on income tax matters, statutory and internal audits, and private equity investments, with a record of holding companies, partnership firms, trusts and individuals to their corporate law obligations. Holds a postgraduate degree in Investment and Risk Finance from the University of Westminster, London.",
+    bio: "An associate chartered accountant advising on income tax matters, statutory and internal audit, and private equity investment, with a record of holding companies, partnership firms, trusts and individuals to their corporate law obligations. Holds a postgraduate degree in Investment and Risk Finance from the University of Westminster, London.",
     photo: "/team/vinay-karlagere.webp",
   },
   {
@@ -48,7 +48,7 @@ export const team: readonly Member[] = [
     role: "Partner",
     credential: "Associate Chartered Accountant",
     focus: "Tax audit · Accounting · Company law",
-    bio: "Significant experience in tax audit and accounting, gained at Big Four firms and multinational corporations. Handles income tax matters, statutory and internal audits, private equity investments, and company law compliance for companies, partnerships, trusts and individuals.",
+    bio: "Substantial experience in tax audit and accounting, gained at Big Four firms and multinational corporations. Advises on income tax matters, statutory and internal audit, private equity investment, and company law compliance for companies, partnerships, trusts and individuals.",
     photo: "/team/akshay-r-jain.webp",
   },
   {
@@ -56,14 +56,14 @@ export const team: readonly Member[] = [
     role: "Partner",
     credential: "Finance and accounts",
     focus: "Income tax · GST · TDS compliance",
-    bio: "Over five years across income tax, GST and TDS compliance. His work on TDS covers accurate deduction and remittance within the statutory window — the obligation that attracts interest fastest when it slips — alongside experience on the operations side.",
+    bio: "Over five years across income tax, GST and TDS compliance. His work on TDS covers accurate deduction and remittance within the statutory window — the obligation that accrues interest fastest when missed — alongside experience on the operational side.",
     photo: "/team/vagdev-mr.webp",
   },
 ] as const;
 
 export const teamIntro = {
   label: "The team",
-  headline: "The partners who will actually do the work.",
+  headline: "The partners who will hold your file.",
   standfirst:
-    "The firm is a partnership, and the person you meet is the person on your file. These are the four of them, what they are qualified in, and what they handle.",
+    "The firm is a partnership: the person you meet is the person on your file. These are the four partners, their qualifications, and the areas each one handles.",
 } as const;

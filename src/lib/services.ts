@@ -50,11 +50,11 @@ export const services: readonly Service[] = [
     name: "Compliance & Reporting",
     tier: 1,
     summary:
-      "The recurring work every business owes — books, returns and statements, run on a calendar rather than against a deadline.",
+      "The recurring obligations every business carries — books, returns and financial statements, run to a calendar rather than against a deadline.",
     standfirst:
-      "Compliance is not difficult work. It is unforgiving work. A return filed late, a credit claimed after its window, a statement that does not reconcile — each one costs more to fix than it would have cost to do on time. So this runs on a calendar, and the due date is never the first time anyone looks at it.",
+      "Compliance is not difficult work. It is unforgiving work. A return filed late, a credit claimed after its window has closed, a statement that does not reconcile — each costs materially more to remedy than it would have cost to complete on time. This practice therefore runs to a calendar, and a due date is never the first occasion on which anyone examines it.",
     audience:
-      "Companies, LLPs, partnership firms and proprietors who need the statutory year run properly — and any business that needs a lender-ready set of numbers.",
+      "Companies, LLPs, partnership firms and proprietors that require the statutory year administered properly — and any business that needs a lender-ready set of numbers.",
     points: [
       "Bookkeeping and accounting",
       "GST and TDS compliance",
@@ -64,7 +64,7 @@ export const services: readonly Service[] = [
     sections: [
       {
         title: "Bookkeeping and accounting",
-        body: "Recorded and closed every month rather than assembled at year end. It is what makes an audit find a finished set of accounts, and it is the difference between hearing about a problem in March and hearing about it the following December.",
+        body: "Recorded and closed monthly rather than assembled at year end. It is what allows an audit to begin from a finished set of accounts, and it is the difference between identifying a problem in March and discovering it the following December.",
         items: [
           "Recording, classification and ledger scrutiny",
           "Bank, vendor and customer reconciliation",
@@ -84,7 +84,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "TDS — quarterly and annual",
-        body: "Deducted at the right rate, deposited by the 7th, reported every quarter. These are the dues that attract interest fastest when they slip, and the ones a buyer's diligence checks first.",
+        body: "Deducted at the correct rate, deposited by the 7th and reported each quarter. These are the liabilities that accrue interest fastest when missed, and the first item a buyer's due diligence examines.",
         items: [
           "Monthly deduction and deposit, including section 192 on salary",
           "Quarterly returns in Forms 24Q, 26Q and 27Q",
@@ -94,7 +94,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Financial statements",
-        body: "The year-end set, prepared in the form the Companies Act prescribes rather than the form the accounting package happens to export.",
+        body: "The year-end set, prepared in the form the Companies Act prescribes rather than the form the accounting package happens to produce.",
         items: [
           "Financial statements in Schedule III format",
           "Consolidation where the group requires it",
@@ -114,7 +114,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Audit reports",
-        body: "Prepared and reported where statute requires it, to the Standards on Auditing — and with a management letter that tells you what we found in your controls whether or not the law required us to mention it.",
+        body: "Prepared and reported where statute requires, in accordance with the Standards on Auditing — together with a management letter setting out what we found in your controls, whether or not the law obliged us to raise it.",
         items: [
           "Statutory audit reporting under section 143, with CARO 2020",
           "Tax audit under section 44AB — Form 3CA or 3CB with the 3CD annexure",
@@ -124,7 +124,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Provisional and projected statements",
-        body: "The statements a bank's credit team asks for, in the form they expect, with the assumptions written down beside the numbers instead of buried three tabs into a spreadsheet.",
+        body: "The statements a bank's credit team requires, in the form they expect, with the assumptions set out beside the figures rather than buried three tabs into a spreadsheet.",
         items: [
           "Provisional financial statements for the current year",
           "Projected statements across the sanction period",
@@ -134,10 +134,10 @@ export const services: readonly Service[] = [
       },
     ],
     deliverables: [
-      "A closed set of books each month, on a calendar agreed at the start of the year",
+      "A closed set of books each month, to a calendar agreed at the start of the year",
       "Every return filed within its window, with the acknowledgement on file",
       "Financial statements in Schedule III format, audit-ready",
-      "A compliance calendar for the year, shared before the year begins",
+      "A compliance calendar for the year, issued before the year begins",
     ],
     statute: [
       { label: "Governing Acts", value: "Income-tax Act 1961 · CGST Act 2017" },
@@ -152,11 +152,11 @@ export const services: readonly Service[] = [
     tier: 2,
     includes: "compliance",
     summary:
-      "A finance function you do not have to build — structure, controls, cash and capital, with the whole compliance cycle running underneath it.",
+      "A finance function you do not have to build — structure, controls, cash and capital, with the full compliance cycle running beneath it.",
     standfirst:
-      "There is a stage where the question stops being whether the returns were filed and starts being whether the business can answer for its own numbers. That is a finance function, and most companies need one well before they can justify hiring one. We run it — structure, controls, cash, capital — with everything in Compliance & Reporting continuing underneath.",
+      "There comes a point at which the question is no longer whether the returns were filed, but whether the business can account for its own numbers. That requires a finance function, and most companies need one well before they can justify appointing one. We provide it — structure, controls, cash, capital — with everything in Compliance & Reporting continuing beneath.",
     audience:
-      "Companies past the stage where a founder keeps the books, groups that need restructuring, and businesses raising, deploying or defending capital.",
+      "Companies beyond the point at which a founder keeps the books, groups requiring restructuring, and businesses raising, deploying or defending capital.",
     points: [
       "An end-to-end finance team",
       "Structuring and restructuring",
@@ -167,7 +167,7 @@ export const services: readonly Service[] = [
     sections: [
       {
         title: "Incorporation, structuring and restructuring",
-        body: "Which vehicle, held by whom, in what order — with the tax and compliance consequence of each option quantified before you commit to any of them. These are the decisions that are effectively irreversible.",
+        body: "Which vehicle, held by whom, in what order — with the tax and compliance consequence of each option quantified before you commit to any of them. These decisions are, in practice, irreversible.",
         items: [
           "Choice of vehicle: company, LLP, firm or trust",
           "Holding and subsidiary structures, and group reorganisation",
@@ -177,7 +177,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "An end-to-end finance team",
-        body: "Deployed rather than described. The people, the calendar and the reporting run as your finance function — and hand over cleanly to an in-house team when there is one to hand over to.",
+        body: "Deployed rather than described. The people, the calendar and the reporting operate as your finance function — and transfer cleanly to an in-house team when there is one to receive it.",
         items: [
           "Accounts, compliance and reporting run as a single function",
           "A monthly pack written for the person making the decision",
@@ -187,7 +187,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Payroll advisory and compliance",
-        body: "Salary processing with the withholding and contributions computed and deposited on time, and the structuring advice that sits behind the payslip.",
+        body: "Salary processing with withholding and statutory contributions computed and deposited on time, and the structuring advice that sits behind the payslip.",
         items: [
           "Payroll processing, payslips and Form 16",
           "TDS on salary under section 192, deposited by the 7th",
@@ -197,7 +197,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Cash, receivables and payables",
-        body: "The working capital cycle managed as a cycle: what is owed to you, what you owe, and what is actually in the account this week. Profitable businesses run out of cash for want of this.",
+        body: "The working capital cycle managed as a cycle: what is owed to you, what you owe, and what is in the account this week. Profitable businesses run short of cash for want of exactly this.",
         items: [
           "Cash flow forecasting, weekly and monthly",
           "Receivable ageing, follow-up and a credit policy that is enforced",
@@ -207,7 +207,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Internal control audit",
-        body: "Testing whether the controls you believe exist are the controls actually operating. Commissioned by the board rather than required by statute, which is what makes it useful.",
+        body: "Testing whether the controls you believe exist are the controls in operation. Commissioned by the board rather than required by statute, which is precisely what makes it useful.",
         items: [
           "Process walkthroughs and control testing",
           "Segregation of duties and authorisation limits",
@@ -217,7 +217,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Valuation and fundraising",
-        body: "Valuation prepared on the basis the relevant law prescribes rather than the one that flatters, and the file a funding round will ask to see.",
+        body: "Valuation prepared on the basis the relevant law prescribes rather than the one that flatters, together with the file a funding round will expect to see.",
         items: [
           "Fair market value under Rule 11UA for issues and transfers",
           "Discounted cash flow, comparable company and net asset approaches",
@@ -227,7 +227,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Mergers and acquisitions",
-        body: "The work either side of a deal: knowing what is in the numbers before the other party does.",
+        body: "The work on either side of a transaction: understanding what is in the numbers before the other party does.",
         items: [
           "Financial and tax due diligence, buy side and sell side",
           "Deal structuring and the tax cost of each alternative",
@@ -255,11 +255,11 @@ export const services: readonly Service[] = [
     tier: 3,
     includes: "cfo-advisory",
     summary:
-      "From incorporation to the data room — recognition, cap table, ESOPs and the legal file, with the full CFO function behind it.",
+      "From incorporation to the data room — recognition, capitalisation table, ESOPs and the legal file, with the full CFO function behind it.",
     standfirst:
-      "A round is won or delayed in the data room. Cap tables that do not reconcile, ESOP grants without board approval, share issues without a valuation report on file — none of these are hard to get right at the time, and all of them are expensive to fix under a term sheet. We set it up correctly on day one and keep it that way between rounds.",
+      "A round is won or delayed in the data room. Capitalisation tables that do not reconcile, ESOP grants without board approval, share issues without a valuation report on file — none is difficult to get right at the time, and each is expensive to remedy under a term sheet. We establish it correctly on day one and maintain it between rounds.",
     audience:
-      "Founders incorporating, companies preparing to raise, and startups already holding institutional capital.",
+      "Founders at incorporation, companies preparing to raise, and startups already holding institutional capital.",
     points: [
       "Incorporation and structure",
       "DPIIT and grant assistance",
@@ -269,10 +269,10 @@ export const services: readonly Service[] = [
     sections: [
       {
         title: "Incorporation and organisation structure",
-        body: "Getting the company on the register with the registrations it will need in its first year, and the founder arrangements agreed while everyone still agrees.",
+        body: "Placing the company on the register with the registrations it will require in its first year, and settling the founder arrangements while everyone is still in agreement.",
         items: [
           "SPICe+ incorporation, with PAN, TAN, EPFO and ESIC in the same form",
-          "Memorandum and articles drafted for the structure you actually intend",
+          "Memorandum and articles drafted for the structure you intend",
           "Founders' and shareholders' agreement, vesting and reverse vesting",
           "Advice on the holding structure before the first round, not after it",
         ],
@@ -289,7 +289,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Capital structuring and ESOP management",
-        body: "Every issue of shares and every grant of options is a compliance event with a paper trail. We keep the trail complete, so diligence finds it already assembled.",
+        body: "Every issue of shares and every grant of options is a compliance event with a documentary trail. We keep that trail complete, so due diligence finds it already assembled.",
         items: [
           "Cap table maintenance across rounds, on a fully diluted basis",
           "ESOP scheme drafting, board and shareholder approval, grant letters",
@@ -299,7 +299,7 @@ export const services: readonly Service[] = [
       },
       {
         title: "Legal assistance",
-        body: "The agreements and filings a young company signs before it has a general counsel — prepared with the tax and compliance consequence already considered, and taken to counsel where a matter needs one.",
+        body: "The agreements and filings a young company enters into before it has a general counsel — prepared with the tax and compliance consequences already considered, and referred to counsel where a matter requires it.",
         items: [
           "Term sheet and shareholders' agreement review",
           "Commercial contracts, employment and consultancy agreements",
@@ -310,7 +310,7 @@ export const services: readonly Service[] = [
     ],
     deliverables: [
       "The incorporation file: certificate, PAN, TAN, every registration",
-      "A cap table that reconciles to the register of members, maintained",
+      "A capitalisation table that reconciles to the register of members, maintained",
       "An ESOP scheme with every grant documented and approved",
       "A data room index, kept current between rounds",
     ],

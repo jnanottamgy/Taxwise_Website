@@ -82,7 +82,7 @@ export default function InsightsIndex({
                     {lead.excerpt}
                   </p>
                   <p className="mt-8 flex items-center gap-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper-64 transition-colors duration-500 group-hover:text-paper">
-                    Read it
+                    Read in full
                     <svg
                       aria-hidden="true"
                       viewBox="0 0 16 16"
@@ -166,7 +166,7 @@ export default function InsightsIndex({
             </ol>
           ) : (
             <p className="mt-12 border-t border-paper-12 py-16 text-[0.9375rem] leading-[1.7] text-paper-64">
-              Nothing filed under {filter} yet. There will be.
+              Nothing published under {filter} yet.
             </p>
           )}
         </Container>

@@ -211,8 +211,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <Reveal>
                     <p className="max-w-[58ch] text-[1.0625rem] leading-[1.7] text-paper-80">
                       {service.name} is not a narrower engagement than the practices beneath it. It
-                      contains {carried.length === 1 ? "the one below" : "both of them"} whole — the
-                      same work, by the same partners, on the same file.
+                      contains {carried.length === 1 ? "the one below" : "both of them"} in full —
+                      the same work, by the same partners, on the same file.
                     </p>
                   </Reveal>
 
@@ -315,13 +315,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
                 <SplitHeading
                   id="engage-heading"
-                  text={`Talk to a partner about ${service.name.toLowerCase()}.`}
+                  text={`Speak with a partner about ${service.name.toLowerCase()}.`}
                   className="max-w-[18ch] font-display text-[clamp(2.25rem,5vw,4rem)] leading-[0.98] tracking-[-0.025em] text-paper"
                 />
                 <Reveal delay={0.14} className="mt-8">
                   <p className="max-w-[46ch] text-[1.0625rem] leading-[1.7] text-paper-80">
                     A first conversation costs nothing and usually takes twenty minutes. Bring your
-                    last return, or just the question.
+                    most recent return, or simply the question.
                   </p>
                   <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
                     <Magnetic strength={0.25}>
@@ -331,7 +331,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         rel="noopener noreferrer"
                         className="btn-sheen block rounded-full bg-paper px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-ink transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(232,201,122,0.45)]"
                       >
-                        Book a consultation
+                        Arrange a consultation
                       </a>
                     </Magnetic>
                     <a

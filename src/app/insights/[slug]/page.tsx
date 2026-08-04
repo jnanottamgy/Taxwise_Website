@@ -203,13 +203,13 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
                 <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
                   <SplitHeading
                     id="engage-heading"
-                    text="Does this apply to you? Ask."
+                    text="Does this apply to your position?"
                     className="max-w-[18ch] font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[0.98] tracking-[-0.025em] text-paper"
                   />
                   <Reveal delay={0.14} className="mt-8">
                     <p className="max-w-[46ch] text-[1.0625rem] leading-[1.7] text-paper-80">
-                      A first conversation costs nothing and usually takes twenty minutes. Bring the
-                      question this raised.
+                      A first conversation costs nothing and usually takes twenty minutes. Bring
+                      the question this raised.
                     </p>
                     <div className="mt-10">
                       <Magnetic strength={0.25}>
@@ -219,7 +219,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
                           rel="noopener noreferrer"
                           className="btn-sheen inline-block rounded-full bg-paper px-8 py-4 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-ink transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_rgba(232,201,122,0.45)]"
                         >
-                          Book a consultation
+                          Arrange a consultation
                         </a>
                       </Magnetic>
                     </div>

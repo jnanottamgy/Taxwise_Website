@@ -30,7 +30,7 @@ const plexMono = IBM_Plex_Mono({
 
 const title = `${firm.name} — ${firm.descriptor}`;
 const description =
-  "A finance and tax advisory partnership with its head office in Bangalore, working worldwide. Compliance and reporting, CFO advisory and startup advisory for founders, family offices and companies.";
+  "A finance and tax advisory partnership headquartered in Bangalore, advising clients internationally. Compliance and reporting, CFO advisory and startup advisory for founders, family offices and companies.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(firm.url),

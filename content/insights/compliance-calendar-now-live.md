@@ -17,7 +17,7 @@ Every recurring monthly obligation — TDS and TCS on the 7th, GSTR-1 on the 11t
 
 You can page through any month, filter to one authority, and click a date to see what falls on it.
 
-## The part that actually helps
+## The part that does the work
 
 Reading a due date on a website helps for exactly as long as you are looking at the website. So the calendar downloads.
 

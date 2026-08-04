@@ -63,15 +63,15 @@ export default function Process() {
       labelledBy="process-heading"
       aside={
         <p className="max-w-[22ch] text-sm leading-relaxed text-paper-64">
-          Five steps. You always know which one you are in.
+          Five stages. You always know which one you are in.
         </p>
       }
     >
-      <Heading id="process-heading">How an engagement actually runs.</Heading>
+      <Heading id="process-heading">How an engagement is run.</Heading>
       <Reveal delay={0.18}>
         <Standfirst>
-          No engagement starts with paperwork. It starts with understanding what you are trying to
-          do, and what the law will let you do about it.
+          No engagement begins with paperwork. It begins with understanding what you intend to
+          do, and what the law permits you to do about it.
         </Standfirst>
       </Reveal>
 

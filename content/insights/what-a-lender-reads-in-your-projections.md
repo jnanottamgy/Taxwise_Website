@@ -1,5 +1,5 @@
 ---
-title: What a lender actually reads in your projections
+title: What a lender reads in your projections
 date: 2026-05-22
 category: Finance
 excerpt: A credit team is not reading your revenue line. They are reading three ratios and testing whether your assumptions survive contact with your own history.
@@ -12,7 +12,7 @@ The business writes them looking forward: this is where we are going. The credit
 
 Understanding that gap is most of the work.
 
-## What is actually being checked
+## What is being tested
 
 **Debt service coverage.** Cash available to service debt, divided by what the debt costs. Below about 1.25 the proposal is difficult regardless of how good the story is, because there is no headroom for a bad quarter.
 

@@ -376,4 +376,4 @@ export function countdownLabel(days: number) {
 }
 
 export const calendarNote =
-  "Standard statutory dates. Extensions are issued from time to time, and filings tied to the annual general meeting move with it. We track your actual dates against your own AGM and turnover.";
+  "These are the standard statutory dates. Extensions are issued periodically, and filings tied to the annual general meeting move with it. For clients, we track the applicable dates against your own AGM and turnover.";

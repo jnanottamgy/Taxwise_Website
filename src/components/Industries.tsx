@@ -11,15 +11,15 @@ export default function Industries() {
       labelledBy="industries-heading"
       aside={
         <p className="max-w-[22ch] text-sm leading-relaxed text-paper-64">
-          Each sector fails compliance in its own particular way.
+          Every sector fails compliance in its own particular way.
         </p>
       }
     >
-      <Heading id="industries-heading">Where we have already learned the hard parts.</Heading>
+      <Heading id="industries-heading">Where we have already met the exceptions.</Heading>
       <Reveal delay={0.18}>
         <Standfirst>
-          Sector experience is not a badge. It is knowing which credit gets disallowed, which
-          disclosure gets questioned, and which deadline is the one people miss.
+          Sector experience is not a credential. It is knowing which credit is disallowed, which
+          disclosure is questioned, and which deadline is the one that gets missed.
         </Standfirst>
       </Reveal>
 

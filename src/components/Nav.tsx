@@ -187,7 +187,7 @@ export default function Nav() {
                   rel="noopener noreferrer"
                   className="btn-sheen block rounded-full border border-paper-12 bg-paper-06 px-5 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper transition-colors duration-300 hover:border-gold hover:text-gold-lit"
                 >
-                  Book a consultation
+                  Arrange a consultation
                 </a>
               </Magnetic>
             </nav>
@@ -266,7 +266,7 @@ export default function Nav() {
                     }}
                     className="mt-6 rounded-full border border-paper-40 px-6 py-3.5 text-center font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper"
                   >
-                    Book a consultation
+                    Arrange a consultation
                   </motion.a>
                 </nav>
               </Container>

@@ -11,12 +11,12 @@ import InsightsIndex, { type Card } from "@/components/InsightsIndex";
 export const metadata: Metadata = {
   title: "Insights & Updates",
   description:
-    "Notes from the practice: what changed in tax and regulation, what it costs to get wrong, and what we are working on.",
+    "Developments in tax and regulation, what they mean in practice, and notes from the work itself — written by the partners who do it.",
   alternates: { canonical: "/insights", types: { "application/rss+xml": "/insights/rss.xml" } },
   openGraph: {
     title: `Insights & Updates — ${firm.name}`,
     description:
-      "Notes from the practice: what changed in tax and regulation, what it costs to get wrong, and what we are working on.",
+      "Developments in tax and regulation, what they mean in practice, and notes from the work itself — written by the partners who do it.",
     url: `${firm.url}/insights`,
   },
 };
@@ -71,8 +71,8 @@ export default function InsightsPage() {
                 />
                 <Reveal delay={0.22} className="mt-10">
                   <p className="max-w-[54ch] text-[clamp(1.0625rem,1.5vw,1.25rem)] leading-[1.65] text-paper-80">
-                    What changed in tax and regulation, what it costs to get wrong, and what we are
-                    working on. Written by the partners doing the work, not by a content desk.
+                    Developments in tax and regulation, what they mean in practice, and notes from
+                    the work itself. Written by the partners who do it.
                   </p>
                   <a
                     href="/insights/rss.xml"
@@ -106,7 +106,7 @@ export default function InsightsPage() {
           <section className="py-[var(--spacing-section)]">
             <Container>
               <p className="max-w-[46ch] text-[1.0625rem] leading-[1.7] text-paper-64">
-                Nothing published yet. The first note is being written.
+                Nothing published yet. The first note is in preparation.
               </p>
             </Container>
           </section>

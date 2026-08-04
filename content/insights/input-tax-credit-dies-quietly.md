@@ -24,9 +24,9 @@ Since the amendment to section 16(2)(aa), credit is available only where the inv
 
 Which means a vendor who files late, files wrong, or does not file at all is quietly spending your money. You paid the tax to them. Whether you can recover it from the Government depends entirely on whether they told the Government they collected it.
 
-## What a monthly reconciliation is actually for
+## What a monthly reconciliation is for
 
-The exercise is not bookkeeping tidiness. It is finding, every month, the invoices that are in your purchase register and not in your 2B — while there is still time to do something about it.
+The exercise is not bookkeeping tidiness. It is identifying, every month, the invoices that appear in your purchase register and not in your 2B — while there is still time to act on them.
 
 The list that comes out of it is short and it is actionable:
 

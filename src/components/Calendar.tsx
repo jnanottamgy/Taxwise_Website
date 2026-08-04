@@ -204,9 +204,9 @@ export default function Calendar({
       <Heading id="calendar-heading">The dates we keep, so you do not have to.</Heading>
       <Reveal delay={0.18}>
         <Standfirst>
-          Nothing here is secret, and all of it is missable. This is the calendar we run for every
-          client — published in full, and downloadable, because a practice that keeps its deadlines
-          has no reason to keep them quiet.
+          None of this is confidential, and all of it is easily missed. This is the calendar we
+          run for every client, published in full and available to download — a practice that keeps
+          its deadlines has no reason to keep them private.
         </Standfirst>
       </Reveal>
 
@@ -402,8 +402,8 @@ export default function Calendar({
             </svg>
           </button>
           <p className="mt-3 max-w-[30ch] text-[0.75rem] leading-[1.6] text-paper-64">
-            An .ics file with every date{filter ? ` for ${filter.toLowerCase()}` : ""}, repeating
-            each year, reminding you three days ahead.
+            An .ics file containing every date{filter ? ` for ${filter.toLowerCase()}` : ""},
+            repeating annually, with a reminder three days in advance.
           </p>
         </Reveal>
 
@@ -474,7 +474,7 @@ export default function Calendar({
                 ? `Nothing falls due on ${selectedDay} ${monthName(cursor.month)}${
                     filter ? ` for ${filter.toLowerCase()}` : ""
                   }.`
-                : `Nothing in ${monthName(cursor.month)} for ${filter?.toLowerCase()}. Clear the filter to see the rest of the month.`}
+                : `No ${filter?.toLowerCase()} obligations fall in ${monthName(cursor.month)}. Clear the filter to see the rest of the month.`}
             </p>
           )}
 

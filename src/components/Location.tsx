@@ -73,7 +73,7 @@ export default function Location() {
       labelledBy="location-heading"
       aside={
         <p className="max-w-[22ch] text-sm leading-relaxed text-paper-64">
-          Off 14th Main, a few minutes from Sadashivanagar.
+          Off 14th Main, minutes from Sadashivanagar.
         </p>
       }
     >
@@ -179,7 +179,7 @@ export default function Location() {
                 </button>
                 <p className="max-w-[26ch] text-center text-[0.75rem] leading-[1.6] text-paper-64">
                   Loads Google Maps. Nothing is requested from Google until you
-                  press it.
+                  choose to.
                 </p>
               </div>
             )}

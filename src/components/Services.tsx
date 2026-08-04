@@ -44,16 +44,17 @@ export default function Services() {
       labelledBy="services-heading"
       aside={
         <p className="max-w-[22ch] text-sm leading-relaxed text-paper-64">
-          Three practices, each one containing the last. Nothing is handed to a
-          subcontractor.
+          Three practices, each containing the last. No part of the work is
+          subcontracted.
         </p>
       }
     >
       <Heading id="services-heading">Everything a company owes, handled in one place.</Heading>
       <Reveal delay={0.18}>
         <Standfirst>
-          The three practices are not alternatives. Each one contains the one below it whole, so
-          you start where you are — and when you move up, nothing has to be explained twice.
+          The three practices are not alternatives. Each contains the one beneath it in full, so
+          you engage at the level you need — and when the requirement grows, nothing is explained
+          twice.
         </Standfirst>
       </Reveal>
 
