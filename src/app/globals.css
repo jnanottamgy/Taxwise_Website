@@ -597,6 +597,196 @@ html.lenis body {
   animation: page-in 0.6s var(--ease-settle) backwards;
 }
 
+/* ==========================================================================
+   Article prose.
+
+   The one place on the site where the markup is not written by hand: it comes
+   out of a Markdown file, so every element an author might reasonably use has
+   to already look right. Everything is set to the same system as the rest of
+   the page — display serif for headings, sans for reading, mono for anything
+   that is a label — at a measure of about 68 characters, which is where a long
+   passage stops being work.
+   ========================================================================== */
+
+[data-article] {
+  max-width: 68ch;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-paper-80);
+}
+
+[data-article] > * + * {
+  margin-top: 1.5em;
+}
+
+[data-article] h2 {
+  max-width: 22ch;
+  margin-top: 2.6em;
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 3vw, 2.125rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-paper);
+}
+
+[data-article] h3 {
+  max-width: 26ch;
+  margin-top: 2.2em;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.2;
+  color: var(--color-paper);
+}
+
+/* Emphasis carries the paper rather than the gold: gold is spent on figures
+   and on things that respond to you, and a paragraph with three bold phrases
+   in it would spend the whole budget in one screen. */
+[data-article] strong {
+  font-weight: 500;
+  color: var(--color-paper);
+}
+
+[data-article] em {
+  font-style: italic;
+}
+
+[data-article] a {
+  color: var(--color-gold-lit);
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 201, 122, 0.35);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.3s var(--ease-settle);
+}
+
+[data-article] a:hover {
+  text-decoration-color: var(--color-gold-lit);
+}
+
+[data-article] ul,
+[data-article] ol {
+  padding-left: 0;
+  list-style: none;
+}
+
+[data-article] li + li {
+  margin-top: 0.7em;
+}
+
+[data-article] li {
+  position: relative;
+  padding-left: 1.75rem;
+}
+
+/* The same hairline mark the service lists use, rather than a bullet — the
+   site has one vocabulary for "an item in a list" and this is it. */
+[data-article] ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--color-ink-3);
+}
+
+[data-article] ol {
+  counter-reset: prose;
+}
+
+[data-article] ol > li {
+  counter-increment: prose;
+}
+
+[data-article] ol > li::before {
+  content: counter(prose, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+  color: var(--color-gold);
+}
+
+[data-article] blockquote {
+  margin-left: 0;
+  border-left: 1px solid var(--color-gold);
+  padding-left: 1.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  line-height: 1.35;
+  color: var(--color-paper);
+}
+
+[data-article] hr {
+  margin-block: 3em;
+  border: 0;
+  border-top: 1px solid var(--color-paper-12);
+}
+
+/* A table is the one thing here that can be wider than the measure, so it gets
+   its own scroll container rather than pushing the page sideways. */
+[data-article] table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+[data-article] th,
+[data-article] td {
+  border-bottom: 1px solid var(--color-paper-12);
+  padding: 0.75rem 1.25rem 0.75rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+[data-article] th {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-mist);
+}
+
+[data-article] td {
+  color: var(--color-paper-80);
+}
+
+[data-article] code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-paper-06);
+  border: 1px solid var(--color-paper-12);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  color: var(--color-paper);
+}
+
+[data-article] pre {
+  overflow-x: auto;
+  background: var(--color-paper-06);
+  border: 1px solid var(--color-paper-12);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+[data-article] pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+[data-article] img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
 /* Scrollbar, tuned to the instrument */
 ::-webkit-scrollbar {
   width: 10px;

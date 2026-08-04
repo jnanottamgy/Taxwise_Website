@@ -154,7 +154,11 @@ export default function Nav() {
           >
             <Wordmark />
 
-            <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
+            {/* Seven links and a button do not fit at 36px of gap on a 1024
+                laptop — the CTA ran past the edge of the pill. The gap closes
+                below xl rather than the whole rail collapsing to a hamburger
+                at a width that has plenty of room for it. */}
+            <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex xl:gap-9">
               {nav.map((item) => {
                 const id = item.href.split("#")[1];
                 const isActive = active === id;

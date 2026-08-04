@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 import { firm } from "@/lib/content";
 import { services } from "@/lib/services";
+import { allPosts } from "@/lib/insights";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const posts = allPosts();
 
   return [
     {
@@ -17,6 +19,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    {
+      // The index changes whenever a post is added, which is the point of it.
+      url: `${firm.url}/insights`,
+      lastModified: posts[0] ? new Date(posts[0].date) : now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    ...posts.map((post) => ({
+      url: `${firm.url}/insights/${post.slug}`,
+      // The post's own date, not the build's — a crawler should not be told
+      // every article changed because the site was redeployed.
+      lastModified: new Date(post.date),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
     })),
   ];
 }

@@ -225,6 +225,7 @@ export const nav = [
   { label: "Services", href: "/#services" },
   { label: "Approach", href: "/#process" },
   { label: "Calendar", href: "/#calendar" },
+  { label: "Insights", href: "/insights" },
   { label: "Firm", href: "/#about" },
   { label: "Team", href: "/#team" },
   { label: "Contact", href: "/#contact" },
