@@ -96,6 +96,21 @@ function readPost(file: string): Post {
   };
 }
 
+/**
+ * A Markdown file in this folder that is not a post.
+ *
+ * `README.md` is the authoring guide, and it lives here rather than in `docs`
+ * because GitHub renders a folder's README when you browse into it — which
+ * puts the instructions in front of the person about to write a post. It is
+ * still a `.md` file, so the reader has to know not to parse it.
+ *
+ * A leading underscore marks a draft: `_next-piece.md` sits in the folder,
+ * commits safely, and does not publish until it is renamed.
+ */
+function isPost(file: string) {
+  return /\.mdx?$/.test(file) && file !== "README.md" && !file.startsWith("_");
+}
+
 let cache: Post[] | null = null;
 
 /** Every post, newest first. */
@@ -105,7 +120,7 @@ export function allPosts(): Post[] {
 
   cache = fs
     .readdirSync(DIR)
-    .filter((f) => /\.mdx?$/.test(f))
+    .filter(isPost)
     .map(readPost)
     .sort((a, b) => b.date.localeCompare(a.date));
 

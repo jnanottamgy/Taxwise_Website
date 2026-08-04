@@ -26,6 +26,14 @@ You do not need to install anything. The whole job can be done in a browser.
 To **edit** a published post, open its file and press the pencil icon.
 To **unpublish** one, delete the file.
 
+### Drafts
+
+Start the filename with an underscore — `_half-written-piece.md` — and it will
+sit in this folder without publishing. Take the underscore off when it is ready.
+
+(This file, `README.md`, is the guide you are reading and is never published
+either.)
+
 ---
 
 ## The template
