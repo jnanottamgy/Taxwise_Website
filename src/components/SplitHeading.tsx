@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { Fragment, useEffect, useRef, type ReactNode } from "react";
 import { observeReveal } from "./Reveal";
 
 /**
@@ -47,16 +47,31 @@ export default function SplitHeading({
     <Tag ref={ref} id={id} data-split="" className={className} aria-label={text}>
       <span aria-hidden="true">
         {words.map((word, i) => (
-          <span key={i} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
-            <span
-              data-word
-              className="inline-block"
-              style={{ "--wd": `${delay + i * step}s` } as React.CSSProperties}
-            >
-              {word}
-              {i < words.length - 1 ? " " : ""}
+          <Fragment key={i}>
+            <span className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+              <span
+                data-word
+                className="inline-block"
+                style={{ "--wd": `${delay + i * step}s` } as React.CSSProperties}
+              >
+                {word}
+              </span>
             </span>
-          </span>
+            {/* An ordinary space, and outside the slot.
+             *
+             * It used to be a non-breaking space inside the word, because a
+             * trailing space at the end of an inline-block's own line box is
+             * removed by white-space processing and the words ran together.
+             * But that put U+00A0 between every word of every heading on the
+             * site, and find-in-page will not match a typed space against one:
+             * you could read a heading and be unable to search for it.
+             *
+             * Out here it sits in the parent's inline formatting context,
+             * where it is a real space — searchable, and the natural place for
+             * the line to break. It carries no ink, so leaving it out of the
+             * animated slot changes nothing anyone can see. */}
+            {i < words.length - 1 ? " " : null}
+          </Fragment>
         ))}
       </span>
       {children}

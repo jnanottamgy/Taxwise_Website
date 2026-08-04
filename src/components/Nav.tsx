@@ -9,7 +9,7 @@ import {
   useScroll,
   useSpring,
 } from "framer-motion";
-import { firm, nav, whatsappUrl } from "@/lib/content";
+import { firm, nav, navOwnsRoute, whatsappUrl } from "@/lib/content";
 import { setScrollLocked } from "@/lib/smooth-scroll";
 import { Container } from "./Section";
 import Mark from "./Mark";
@@ -161,13 +161,17 @@ export default function Nav() {
             <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex xl:gap-9">
               {nav.map((item) => {
                 const id = item.href.split("#")[1];
-                const isActive = active === id;
+                // Two ways to be current: you are on the item's own route, or
+                // you are reading the homepage section it points at. The route
+                // wins, because it is a fact rather than a scroll position.
+                const onRoute = navOwnsRoute(item, pathname);
+                const isActive = onRoute || (pathname === "/" && !!id && active === id);
                 return (
                   <a
                     key={item.href}
                     href={item.href}
                     data-active={isActive || undefined}
-                    aria-current={isActive ? "true" : undefined}
+                    aria-current={onRoute ? "page" : isActive ? "location" : undefined}
                     className={`nav-link relative rounded-sm py-1 font-mono text-[0.6875rem] uppercase tracking-[0.18em] transition-colors duration-300 ${
                       isActive ? "text-paper" : "text-paper-64 hover:text-gold-lit"
                     }`}
@@ -234,6 +238,8 @@ export default function Nav() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
+                      aria-current={navOwnsRoute(item, pathname) ? "page" : undefined}
+                      data-active={navOwnsRoute(item, pathname) || undefined}
                       initial={reduce ? false : { opacity: 0, y: 14 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
@@ -241,7 +247,7 @@ export default function Nav() {
                         delay: 0.1 + i * 0.045,
                         ease: [0.16, 1, 0.3, 1],
                       }}
-                      className="border-b border-paper-12 py-4 font-display text-2xl text-paper"
+                      className="flex items-center justify-between gap-4 border-b border-paper-12 py-4 font-display text-2xl text-paper aria-[current]:text-gold-lit"
                     >
                       {item.label}
                     </motion.a>

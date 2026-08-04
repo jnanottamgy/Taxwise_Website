@@ -221,12 +221,32 @@ export const finalCta = {
  * scrollspy underline travels left to right as you read rather than jumping
  * back and forth.
  */
-export const nav = [
-  { label: "Services", href: "/#services" },
+export type NavItem = {
+  label: string;
+  href: string;
+  /** The route subtree this item is responsible for, if any. */
+  owns?: string;
+};
+
+export const nav: readonly NavItem[] = [
+  /**
+   * `owns` is the route subtree an item is responsible for, so the top bar can
+   * say "you are here" on a page as well as in a homepage section. Without it
+   * nothing was ever marked current outside the homepage: a reader on a
+   * service page or an article had no indication in the nav of where they
+   * were.
+   */
+  { label: "Services", href: "/#services", owns: "/services" },
   { label: "Approach", href: "/#process" },
   { label: "Calendar", href: "/#calendar" },
-  { label: "Insights", href: "/insights" },
+  { label: "Insights", href: "/insights", owns: "/insights" },
   { label: "Firm", href: "/#about" },
   { label: "Team", href: "/#team" },
   { label: "Contact", href: "/#contact" },
-] as const;
+];
+
+/** True when `pathname` is the item's route, or a page inside it. */
+export function navOwnsRoute(item: NavItem, pathname: string) {
+  if (!item.owns) return false;
+  return pathname === item.owns || pathname.startsWith(`${item.owns}/`);
+}
