@@ -14,7 +14,7 @@ export function organizationJsonLd() {
     name: firm.name,
     legalName: firm.legalName,
     description:
-      "Tax consultancy firm in Bangalore providing taxation, GST, accounting, business advisory, ROC compliance and startup advisory services.",
+      "Tax consultancy firm in Bangalore. Three practices, each containing the last: compliance and reporting, CFO advisory, and startup advisory.",
     url: firm.url,
     email: firm.email,
     telephone: firm.phone,

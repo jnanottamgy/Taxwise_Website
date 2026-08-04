@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { services, getService } from "@/lib/services";
+import { services, getService, containedBy } from "@/lib/services";
 import { firm, whatsappUrl, displayPhone } from "@/lib/content";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -40,7 +40,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const service = getService(slug);
   if (!service) notFound();
 
-  const others = services.filter((s) => s.slug !== service.slug);
+  // The practices this one carries whole, outermost first.
+  const carried = containedBy(service);
 
   return (
     <>
@@ -63,7 +64,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   {/* -my-3 against the link's py-3: an 11px line is a 14px tap
                       target, and the negative margin buys the height back
                       without moving the breadcrumb a pixel. */}
-                  <ol className="-my-3 flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-mist">
+                  <ol className="-my-3 flex flex-wrap items-center gap-x-2 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-mist">
                     <li>
                       <a
                         href="/#services"
@@ -73,11 +74,21 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       </a>
                     </li>
                     <li aria-hidden="true">/</li>
-                    <li className="text-paper-80" aria-current="page">
+                    <li className="py-3 text-paper-80" aria-current="page">
                       {service.name}
                     </li>
                   </ol>
                 </nav>
+
+                {/* Which rung. The catalogue is a ladder, and a reader who
+                    lands here from search has not seen the ladder. */}
+                <p className="mt-8 font-mono text-[0.625rem] uppercase leading-[1.8] tracking-[0.16em] text-mist">
+                  <span data-figure className="text-gold">
+                    {String(service.tier).padStart(2, "0")}
+                  </span>
+                  <span aria-hidden="true"> · </span>
+                  Practice {service.tier} of {services.length}
+                </p>
               </div>
 
               <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
@@ -180,6 +191,68 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </Container>
         </section>
 
+        {/* ── What it also carries ─────────────────────────────────── */}
+        {carried.length ? (
+          <section
+            aria-labelledby="carries-heading"
+            className="border-t border-paper-12 py-[var(--spacing-section)]"
+          >
+            <Container>
+              <div className="grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-12 grid-cols-[minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)]">
+                <div className="lg:sticky lg:top-32 lg:self-start">
+                  <Reveal>
+                    <Label as="h2" id="carries-heading">
+                      And everything below
+                    </Label>
+                  </Reveal>
+                </div>
+
+                <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
+                  <Reveal>
+                    <p className="max-w-[58ch] text-[1.0625rem] leading-[1.7] text-paper-80">
+                      {service.name} is not a narrower engagement than the practices beneath it. It
+                      contains {carried.length === 1 ? "the one below" : "both of them"} whole — the
+                      same work, by the same partners, on the same file.
+                    </p>
+                  </Reveal>
+
+                  {/* The contained practice's own headings, listed. It is the
+                      shortest honest answer to "so what does that actually
+                      include", and it costs no duplicated prose. */}
+                  {carried.map((inner, i) => (
+                    <Reveal key={inner.slug} delay={0.08 + i * 0.06}>
+                      <div className="mt-14 border-t border-paper-12 pt-8">
+                        <h3 className="font-display text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.1] text-paper">
+                          <a
+                            href={`/services/${inner.slug}`}
+                            className="transition-colors duration-400 hover:text-gold-lit"
+                          >
+                            {inner.name}
+                          </a>
+                        </h3>
+                        <ul className="mt-7 grid gap-x-14 sm:grid-cols-2">
+                          {inner.sections.map((section) => (
+                            <li
+                              key={section.title}
+                              className="flex items-baseline gap-3 border-t border-paper-12 py-3.5 text-[0.875rem] leading-[1.6] text-paper-64"
+                            >
+                              <span
+                                aria-hidden="true"
+                                className="mt-[0.5em] h-px w-3 shrink-0 bg-ink-3"
+                              />
+                              {section.title}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            </Container>
+          </section>
+        ) : null}
+
         {/* ── What you receive ─────────────────────────────────────── */}
         <section aria-labelledby="deliverables-heading" className="bg-paper py-[var(--spacing-section)] text-ink">
           <Container>
@@ -274,31 +347,57 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </Container>
         </section>
 
-        {/* ── The other disciplines ────────────────────────────────── */}
-        <section aria-labelledby="others-heading" className="border-t border-paper-12 py-20">
+        {/* ── The ladder ───────────────────────────────────────────── */}
+        {/* All three, in order, with the one you are on marked — rather than
+            "the others", which would present a nested catalogue as a flat set
+            of alternatives and lose the only thing worth knowing about it. */}
+        <section aria-labelledby="ladder-heading" className="border-t border-paper-12 py-20">
           <Container>
-            <Label as="h2" id="others-heading">
-              The other disciplines
+            <Label as="h2" id="ladder-heading">
+              The three practices
             </Label>
-            <ul className="mt-10 grid gap-px bg-paper-12 sm:grid-cols-2 lg:grid-cols-3">
-              {others.map((other) => (
-                <li key={other.slug}>
-                  <LightCard className="flex h-full flex-col justify-between gap-8 bg-ink p-7 hover:bg-ink-2/40">
-                    <h3 className="font-display text-[1.5rem] leading-none text-paper">
-                      <a
-                        href={`/services/${other.slug}`}
-                        className="after:absolute after:inset-0 after:content-['']"
-                      >
-                        {other.name}
-                      </a>
-                    </h3>
-                    <p className="text-[0.875rem] leading-[1.65] text-paper-64">
-                      {other.points.join(" · ")}
-                    </p>
-                  </LightCard>
-                </li>
-              ))}
-            </ul>
+            <ol className="mt-10 grid gap-px bg-paper-12 lg:grid-cols-3">
+              {services.map((other) => {
+                const here = other.slug === service.slug;
+                return (
+                  <li key={other.slug}>
+                    <LightCard
+                      className={`flex h-full flex-col justify-between gap-8 p-7 ${
+                        here ? "bg-ink-2/55" : "bg-ink hover:bg-ink-2/40"
+                      }`}
+                    >
+                      <div>
+                        <p className="flex items-center gap-3 font-mono text-[0.625rem] uppercase tracking-[0.16em]">
+                          <span data-figure className="text-gold">
+                            {String(other.tier).padStart(2, "0")}
+                          </span>
+                          {here ? (
+                            <span className="text-paper-80" aria-current="true">
+                              You are here
+                            </span>
+                          ) : null}
+                        </p>
+                        <h3 className="mt-4 font-display text-[1.5rem] leading-[1.1] text-paper">
+                          {here ? (
+                            other.name
+                          ) : (
+                            <a
+                              href={`/services/${other.slug}`}
+                              className="after:absolute after:inset-0 after:content-['']"
+                            >
+                              {other.name}
+                            </a>
+                          )}
+                        </h3>
+                      </div>
+                      <p className="text-[0.875rem] leading-[1.65] text-paper-64">
+                        {other.points.join(" · ")}
+                      </p>
+                    </LightCard>
+                  </li>
+                );
+              })}
+            </ol>
           </Container>
         </section>
       </main>

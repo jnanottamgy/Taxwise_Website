@@ -104,9 +104,13 @@ export default function Location() {
               <span className="tabular">{coordsLabel}</span>
             </Detail>
             <Detail term="Telephone">
+              {/* A standalone value in a list, not a link inside a sentence, so
+                  the 44px minimum applies to it. The negative margin buys the
+                  height out of the row's own padding, so the number does not
+                  move. */}
               <a
                 href={`tel:${firm.phone}`}
-                className="transition-colors duration-300 hover:text-gold-lit"
+                className="-my-3 inline-flex min-h-[2.75rem] items-center transition-colors duration-300 hover:text-gold-lit"
               >
                 {displayPhone(firm.phone)}
               </a>
