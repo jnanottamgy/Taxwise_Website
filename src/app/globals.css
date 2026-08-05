@@ -884,3 +884,133 @@ html {
     will-change: auto !important;
   }
 }
+
+/* ==========================================================================
+   Print
+
+   A role description and an article are the two things on this site people
+   actually put on paper — a candidate forwards a post, a client keeps a note
+   on a deadline. Neither survived the trip. Browsers drop background colours
+   by default, so off-white body text landed on white paper at 1.06:1 and the
+   sheet came out blank; and anything not yet scrolled past was still at
+   `opacity: 0`, so printing straight after load produced a blank sheet even
+   with backgrounds on. This inverts the page to ink on paper, resolves every
+   entrance, and drops the furniture that means nothing without a screen.
+   ========================================================================== */
+
+@media print {
+  /* Ink on paper. Stated on the elements rather than inherited, because the
+     tinted text utilities (paper-80, paper-64, mist) set their own colour and
+     inheritance would never reach them. */
+  html,
+  body {
+    background: #fff !important;
+    color: #10161f !important;
+  }
+
+  body *,
+  body *::before,
+  body *::after {
+    /* Colour as well as image. A filled panel — the role's detail block, a
+       card — keeps its navy otherwise, and the text inside it goes from
+       invisible-on-white to invisible-on-navy, which is no better. */
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: #10161f !important;
+    border-color: #b9bfc9 !important;
+  }
+
+  /* The hairline marks are backgrounds on empty spans, so the rule above
+     erases them along with the panels. They are the only decoration worth the
+     ink: they carry the structure of a list and the start of a label. */
+  [aria-hidden="true"][class*="bg-gold"],
+  [aria-hidden="true"][class*="bg-ink-3"],
+  [aria-hidden="true"][class*="bg-paper"] {
+    background: #9aa3b0 !important;
+  }
+
+  /* Nothing on this page is allowed to arrive late — the reader is holding it.
+     Every entrance resolves to its finished state, whether or not the observer
+     that drives it ever fired. */
+  [data-reveal],
+  [data-split] [data-word],
+  [data-lightcard] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  [data-split] [data-word] {
+    /* The slot clips an unresolved word out of sight; unclip it as well. */
+    overflow: visible !important;
+  }
+
+  [data-draw-rule] {
+    transform: scaleX(1) !important;
+    background: #b9bfc9 !important;
+  }
+
+  /* Furniture with no meaning off-screen: fixed chrome that would print on
+     every page, decorative grounds, the light layers, and the calls to action
+     that cannot be tapped on paper. */
+  .site-nav,
+  .ambient,
+  #cursor-glow,
+  [data-skip-link],
+  footer nav {
+    display: none !important;
+  }
+
+  /* The decorative grounds are aria-hidden fills; their gradients are already
+     stripped above, but they still hold layout, so take them out. Marks and
+     separators that happen to be aria-hidden are left alone — they carry the
+     spacing of the line they sit in. */
+  [aria-hidden="true"][class*="absolute inset-0"] {
+    display: none !important;
+  }
+
+  /* The prose keeps its structure but loses the dark-ground treatment. */
+  [data-article] a[href^="http"]::after {
+    /* On paper a link is a dead end unless it says where it goes. Confined to
+       article prose: doing it site-wide would litter every nav list. */
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid-page;
+    color: #0b1220 !important;
+  }
+
+  li,
+  p,
+  blockquote,
+  table {
+    break-inside: avoid-page;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Sections are laid out for a scrolling viewport; on A4 that whitespace is
+     a wasted page. */
+  main section,
+  main header {
+    padding-block: 1.5rem !important;
+    border-color: #d6dae1 !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+
+  @page {
+    margin: 18mm 16mm;
+  }
+}

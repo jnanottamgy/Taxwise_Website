@@ -146,7 +146,31 @@ export default function ApplicationForm({
 
   return (
     <>
-      <form ref={formRef} onSubmit={onSubmit} noValidate={false}>
+      {/* The two cases where the form itself is no use: on paper, where it is
+          nine empty boxes, and with scripting off, where submitting it does
+          nothing at all. Both get the address instead — the form was only ever
+          a way of addressing an email. */}
+      <p className="hidden text-[1.0625rem] leading-[1.7] print:block">
+        Applications go to{" "}
+        <a href={`mailto:${firm.email}`} className="underline underline-offset-4">
+          {firm.email}
+        </a>
+        . Tell us which post you are after, attach your CV, and a partner will read it.
+      </p>
+      <noscript>
+        <p className="text-[1.0625rem] leading-[1.7] text-paper-80">
+          The form below needs JavaScript to address your application. Without it, email{" "}
+          <a
+            href={`mailto:${firm.email}`}
+            className="text-gold-lit underline decoration-gold/35 underline-offset-4"
+          >
+            {firm.email}
+          </a>{" "}
+          directly — name the post you are after and attach your CV. It reaches the same place.
+        </p>
+      </noscript>
+
+      <form ref={formRef} onSubmit={onSubmit} noValidate={false} className="print:hidden">
         <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
           {/* The role sits first: it changes how everything below is read. */}
           <div className="sm:col-span-2">
