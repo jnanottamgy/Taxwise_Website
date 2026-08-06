@@ -189,8 +189,8 @@ export const services: readonly Service[] = [
         title: "Payroll advisory and compliance",
         body: "Salary processing with withholding and statutory contributions computed and deposited on time, and the structuring advice that sits behind the payslip.",
         items: [
-          "Payroll processing, payslips and Form 16",
-          "TDS on salary under section 192, deposited by the 7th",
+          "Payroll processing, payslips and Form 130",
+          "TDS on salary under section 392, deposited by the 7th",
           "Provident Fund and ESI computation and deposit by the 15th",
           "Salary structuring and professional tax registration",
         ],
