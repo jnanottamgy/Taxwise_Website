@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<!-- 96px declared, 32-unit viewBox: renders identically at any size, but Google
+     asks a favicon be square with sides a multiple of 48, and it reads the
+     declared dimensions. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="96" height="96">
   <rect width="32" height="32" fill="#0E1B2F"/>
   <!-- The shield, scaled from its 1920x1080 artboard into a 32px tile with
        even optical padding. Drawn in paper, not the brand blue, which is
