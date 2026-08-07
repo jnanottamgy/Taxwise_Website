@@ -83,7 +83,7 @@ export const roles: readonly Role[] = [
       "An audit that produces only an opinion has done half the job. This role runs the fieldwork on statutory and tax audits, assembles the working paper file, and drafts the findings the client is going to act on — the part of the engagement that is worth more than the signature.",
     responsibilities: [
       "Statutory audit fieldwork under the Standards on Auditing, with CARO reporting",
-      "Tax audit under section 44AB — Form 3CD preparation and clause-level verification",
+      "Tax audit under section 63 — Form 26 preparation and clause-level verification",
       "Verification of the accounting software audit trail",
       "Drafting the management letter, with findings ranked by exposure",
       "Reconciling turnover reported under income tax against GST",
@@ -114,10 +114,10 @@ export const roles: readonly Role[] = [
       "Most tax is decided by choices made months before a return is filed. This role sits in those conversations: structuring the position, quantifying the alternatives, and then defending what was done when an assessment asks about it.",
     responsibilities: [
       "Direct tax planning for companies, promoters and family offices",
-      "Capital gains structuring, including section 54 exemptions and slump sale",
+      "Capital gains structuring, including section 84 exemptions and slump sale",
       "Assessment and reassessment proceedings on the faceless portal",
-      "Appeals in Form 35 before the Commissioner (Appeals)",
-      "Section 195 determinations and transfer pricing coordination",
+      "Appeals in Form 99 before the Commissioner (Appeals)",
+      "Section 393 determinations and transfer pricing coordination",
     ],
     requirements: [
       "Qualified chartered accountant with four or more years in direct tax",

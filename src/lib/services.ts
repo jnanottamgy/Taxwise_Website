@@ -8,11 +8,17 @@
  * below — and the site renders the relationship rather than repeating the
  * lists three times over.
  *
- * Written against Indian statute — the Income-tax Act 1961, the Companies Act
+ * Written against Indian statute — the Income-tax Act 2025, the Companies Act
  * 2013, the CGST Act 2017 and the LLP Act 2008 — because a practice is judged
  * on whether it names the right form, not on adjectives. Statutory dates are
  * the standard positions and move when CBDT or CBIC extends them; the site
  * says so wherever a date appears.
+ *
+ * The Income-tax Act 2025 replaced the 1961 Act on 1 April 2026, and the
+ * Income-tax Rules 2026 renumbered the forms with it. Sections and forms here
+ * are the new ones. Work still being completed for tax year 2025-26 — the
+ * returns and audit reports falling due through 2026 — runs on the old
+ * numbering, so a reader may reasonably see both this year.
  */
 
 export type ServiceSection = {
@@ -86,10 +92,10 @@ export const services: readonly Service[] = [
         title: "TDS — quarterly and annual",
         body: "Deducted at the correct rate, deposited by the 7th and reported each quarter. These are the liabilities that accrue interest fastest when missed, and the first item a buyer's due diligence examines.",
         items: [
-          "Monthly deduction and deposit, including section 192 on salary",
-          "Quarterly returns in Forms 24Q, 26Q and 27Q",
-          "Form 16 and Form 16A issued on time",
-          "Lower or nil deduction certificates under section 197",
+          "Monthly deduction and deposit — section 392 on salary, section 393 on the rest",
+          "Quarterly returns in Forms 138, 140 and 144",
+          "Form 130 and Form 131 issued on time",
+          "Lower or nil deduction certificates under section 395",
         ],
       },
       {
@@ -104,12 +110,12 @@ export const services: readonly Service[] = [
       },
       {
         title: "Income tax returns",
-        body: "Filed across every ITR form, with the computation reconciled to Form 26AS and the Annual Information Statement before anything is submitted — an AIS mismatch is the single most common trigger for a notice.",
+        body: "Filed across every ITR form, with the computation reconciled to Form 168 and the Annual Information Statement before anything is submitted — an AIS mismatch is the single most common trigger for a notice.",
         items: [
           "ITR-1 to ITR-7, as the entity and its income require",
-          "Reconciliation against Form 26AS, AIS and TIS",
+          "Reconciliation against Form 168, AIS and TIS",
           "Quarterly advance tax computation before each instalment",
-          "Revised and updated returns, including ITR-U under section 139(8A)",
+          "Original, revised and updated returns, all under section 263",
         ],
       },
       {
@@ -117,7 +123,9 @@ export const services: readonly Service[] = [
         body: "Prepared and reported where statute requires, in accordance with the Standards on Auditing — together with a management letter setting out what we found in your controls, whether or not the law obliged us to raise it.",
         items: [
           "Statutory audit reporting under section 143, with CARO 2020",
-          "Tax audit under section 44AB — Form 3CA or 3CB with the 3CD annexure",
+          // Section 143 above is the Companies Act 2013, not the income tax
+          // Act, so it is untouched by the 2025 renumbering.
+          "Tax audit under section 63 — the consolidated Form 26",
           "Internal and stock audit, physical count and reconciliation",
           "A management letter on control gaps, ranked by exposure",
         ],
@@ -140,7 +148,7 @@ export const services: readonly Service[] = [
       "A compliance calendar for the year, issued before the year begins",
     ],
     statute: [
-      { label: "Governing Acts", value: "Income-tax Act 1961 · CGST Act 2017" },
+      { label: "Governing Acts", value: "Income-tax Act 2025 · CGST Act 2017" },
       { label: "GSTR-3B", value: "20th of the following month" },
       { label: "TDS deposit", value: "7th of the following month" },
       { label: "Return due date", value: "31 July · 31 October if audited" },
@@ -282,9 +290,14 @@ export const services: readonly Service[] = [
         body: "The recognitions and schemes a startup is entitled to, applied for properly. Most applications are refused on documentation rather than on merit.",
         items: [
           "DPIIT startup recognition",
-          "Section 80-IAC deduction, where eligible",
+          // 80-IAC of the 1961 Act is section 140 of the 2025 Act.
+          "Section 140 deduction — the three-year holiday, where eligible",
           "Startup India Seed Fund and state scheme applications",
-          "Angel tax position under section 56(2)(viib), and the exemption route",
+          // Was "angel tax position under section 56(2)(viib)". That charge is
+          // abolished and the section repealed, so the line advertised advice
+          // on a provision that no longer exists. What actually still governs a
+          // priced round is the valuation and the pricing rules under it.
+          "Share valuation for a priced round, and the pricing rules that still bind it",
         ],
       },
       {
@@ -317,7 +330,7 @@ export const services: readonly Service[] = [
     statute: [
       { label: "Incorporation", value: "Companies Act 2013 · SPICe+" },
       { label: "Recognition", value: "DPIIT · Startup India" },
-      { label: "Angel tax", value: "Section 56(2)(viib), Income-tax Act" },
+      { label: "Startup holiday", value: "Section 140, Income-tax Act 2025" },
       { label: "FC-GPR", value: "30 days from receipt of funds" },
     ],
   },

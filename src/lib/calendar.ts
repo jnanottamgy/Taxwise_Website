@@ -94,7 +94,7 @@ export const obligations: readonly Obligation[] = [
     day: 31,
     month: 5,
     form: "TDS returns — Q4",
-    detail: "Forms 24Q, 26Q and 27Q for January to March.",
+    detail: "Forms 138, 140 and 144 for January to March.",
     authority: "Income tax",
   },
 
@@ -109,8 +109,8 @@ export const obligations: readonly Obligation[] = [
   {
     day: 15,
     month: 6,
-    form: "Form 16",
-    detail: "Salary TDS certificates issued to employees.",
+    form: "Form 130",
+    detail: "Salary TDS certificates issued to employees. Form 16 until tax year 2025-26.",
     authority: "Income tax",
   },
   {
@@ -140,7 +140,7 @@ export const obligations: readonly Obligation[] = [
     day: 31,
     month: 7,
     form: "TDS returns — Q1",
-    detail: "Forms 24Q, 26Q and 27Q for April to June.",
+    detail: "Forms 138, 140 and 144 for April to June.",
     authority: "Income tax",
   },
 
@@ -156,7 +156,7 @@ export const obligations: readonly Obligation[] = [
     day: 30,
     month: 9,
     form: "Tax audit report",
-    detail: "Form 3CA or 3CB with the 3CD annexure, under section 44AB.",
+    detail: "The consolidated Form 26, under section 63.",
     authority: "Income tax",
   },
   {
@@ -200,13 +200,13 @@ export const obligations: readonly Obligation[] = [
     day: 31,
     month: 10,
     form: "TDS returns — Q2",
-    detail: "Forms 24Q, 26Q and 27Q for July to September.",
+    detail: "Forms 138, 140 and 144 for July to September.",
     authority: "Income tax",
   },
   {
     day: 31,
     month: 10,
-    form: "Form 3CEB",
+    form: "Form 48",
     detail: "Transfer pricing report, where the provisions apply.",
     authority: "Income tax",
   },
@@ -255,7 +255,7 @@ export const obligations: readonly Obligation[] = [
     day: 31,
     month: 1,
     form: "TDS returns — Q3",
-    detail: "Forms 24Q, 26Q and 27Q for October to December.",
+    detail: "Forms 138, 140 and 144 for October to December.",
     authority: "Income tax",
   },
 
@@ -271,7 +271,7 @@ export const obligations: readonly Obligation[] = [
     day: 31,
     month: 3,
     form: "Financial year ends",
-    detail: "Books are closed, and updated returns under section 139(8A) fall due.",
+    detail: "Books are closed, and updated returns under section 263 fall due.",
     authority: "Income tax",
   },
 ];

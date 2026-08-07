@@ -6,7 +6,7 @@ import { obligations, monthName } from "@/lib/calendar";
  * The grid above it is the working tool, but it only ever shows one month —
  * which means the rendered HTML only ever contains one month. This block is
  * the rest: every dated obligation, server-rendered, so the page still answers
- * "when is Form 3CEB due" for a reader with JavaScript off and for a search
+ * "when is Form 48 due" for a reader with JavaScript off and for a search
  * engine that never runs any. It is a server component passed in as a child,
  * so none of it reaches the client bundle.
  *
