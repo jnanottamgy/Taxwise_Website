@@ -2,7 +2,7 @@
  * The service catalogue.
  *
  * Three practices, and they are nested rather than parallel: CFO Advisory
- * contains everything in Compliance & Reporting, and Startup Advisory contains
+ * contains everything in Core CA Practice, and Startup Advisory contains
  * everything in CFO Advisory. That containment is the most useful thing about
  * the structure, so it is modelled here as data — `includes` names the tier
  * below — and the site renders the relationship rather than repeating the
@@ -47,7 +47,7 @@ export type Service = {
 export const services: readonly Service[] = [
   {
     slug: "compliance",
-    name: "Compliance & Reporting",
+    name: "Core CA Practice",
     tier: 1,
     summary:
       "The recurring obligations every business carries — books, returns and financial statements, run to a calendar rather than against a deadline.",
@@ -154,7 +154,7 @@ export const services: readonly Service[] = [
     summary:
       "A finance function you do not have to build — structure, controls, cash and capital, with the full compliance cycle running beneath it.",
     standfirst:
-      "There comes a point at which the question is no longer whether the returns were filed, but whether the business can account for its own numbers. That requires a finance function, and most companies need one well before they can justify appointing one. We provide it — structure, controls, cash, capital — with everything in Compliance & Reporting continuing beneath.",
+      "There comes a point at which the question is no longer whether the returns were filed, but whether the business can account for its own numbers. That requires a finance function, and most companies need one well before they can justify appointing one. We provide it — structure, controls, cash, capital — with everything in Core CA Practice continuing beneath.",
     audience:
       "Companies beyond the point at which a founder keeps the books, groups requiring restructuring, and businesses raising, deploying or defending capital.",
     points: [
@@ -329,7 +329,7 @@ export function getService(slug: string) {
 
 /**
  * The practices this one contains, outermost first. Startup Advisory contains
- * CFO Advisory, which contains Compliance & Reporting — so a page can say what
+ * CFO Advisory, which contains Core CA Practice — so a page can say what
  * it carries without the catalogue having to repeat itself.
  */
 export function containedBy(service: Service): readonly Service[] {

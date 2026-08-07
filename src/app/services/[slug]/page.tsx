@@ -315,7 +315,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="lg:border-l lg:border-paper-12 lg:pl-[clamp(2rem,5vw,5rem)]">
                 <SplitHeading
                   id="engage-heading"
-                  text={`Speak with a partner about ${service.name.toLowerCase()}.`}
+                  // Not lowercased. These are the firm's named practices, and
+                  // two of the three carry an initialism — `toLowerCase()` was
+                  // already printing "speak with a partner about cfo advisory",
+                  // and "core ca practice" would have been worse.
+                  text={`Speak with a partner about ${service.name}.`}
                   className="max-w-[18ch] font-display text-[clamp(2.25rem,5vw,4rem)] leading-[0.98] tracking-[-0.025em] text-paper"
                 />
                 <Reveal delay={0.14} className="mt-8">

@@ -6,7 +6,7 @@ import LightCard from "./LightCard";
 /**
  * The three practices.
  *
- * They are nested, not parallel — CFO Advisory contains Compliance & Reporting
+ * They are nested, not parallel — CFO Advisory contains Core CA Practice
  * whole, and Startup Advisory contains CFO Advisory whole — so this is drawn
  * as a ladder rather than as a grid of equals. Three full-width rungs, each
  * numbered, each one step lighter than the last, and each of the upper two
@@ -109,7 +109,9 @@ export default function Services() {
                     {/* paper-64, not mist: mist clears 4.5:1 on the page ground
                         but not on this raised surface. */}
                     <p className="mt-8 flex items-center gap-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper-64 transition-colors duration-500 group-hover:text-paper">
-                      Explore {service.name.toLowerCase()}
+                      {/* Set in uppercase by the class, so the name goes in as
+                          written — lowercasing it first destroyed CA and CFO. */}
+                      Explore {service.name}
                       <Arrow />
                     </p>
                   </div>

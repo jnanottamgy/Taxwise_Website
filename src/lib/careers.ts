@@ -16,7 +16,7 @@
 export type Role = {
   slug: string;
   title: string;
-  /** Compliance & Reporting, CFO Advisory, Startup Advisory, or All practices. */
+  /** Core CA Practice, CFO Advisory, Startup Advisory, or All practices. */
   practice: string;
   /** "Full time", "Articleship", "Contract". */
   type: string;
@@ -73,7 +73,7 @@ export const roles: readonly Role[] = [
   {
     slug: "audit-and-assurance-associate",
     title: "Associate — Audit and Assurance",
-    practice: "Compliance & Reporting",
+    practice: "Core CA Practice",
     type: "Full time",
     location: "Bangalore · Hybrid",
     experience: "1-3 years",
